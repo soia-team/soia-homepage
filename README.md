@@ -14,19 +14,46 @@ plugins, and role-based experts for Codex, Claude Code, and WorkBuddy.
 
 - `/` — brand and product overview
 - `/open/` — eight public capability domains
+- `/open/<domain>/` — level-3 capability-domain page
+- `/open/<domain>/<skill>/` — level-4 Skill detail page
 - `/products/` — Skills, workflows, plugins, and experts
 - `/course/` — SOIA Agent workflow course
 - `/services/` — workflow and private expert delivery
 - `/about/` — principles, boundaries, and public evidence
+- `/en/...` — complete English route family with reciprocal language links
+
+The level-3 and level-4 catalog is generated from the public
+`soia-open-skills/docs/skills/README.md` source, rather than being maintained by
+hand in multiple pages. Top-level Chinese and English pages remain curated so a
+catalog refresh cannot erase their editorial narrative.
+
+## Run locally
+
+```bash
+pnpm dev
+```
+
+Then open `http://127.0.0.1:4173/`.
+
+The latest shareable design and information-architecture receipt is in
+[`docs/open-design-review-2026-08-02.md`](docs/open-design-review-2026-08-02.md).
 
 ## Validate
 
 ```bash
-python3 scripts/validate_site.py
+pnpm test
 ```
 
-The site is dependency-free and uses shared HTML, CSS, and JavaScript. It does
-not process payments or collect credentials.
+To refresh the bilingual capability catalog from a local checkout of the public
+source repository:
+
+```bash
+python3 scripts/generate_capability_pages.py --source-root <path-to-soia-open-skills>
+```
+
+The site has no runtime package dependency and uses shared HTML, CSS, and
+JavaScript. It does not process payments or collect credentials. Latin webfonts
+are self-hosted with OFL-1.1 license and provenance files under `assets/fonts/`.
 
 ## Repository roles
 

@@ -9,19 +9,25 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://soia-team.github.io"
-FORMAL_PAGES = {
-    "home": Path("index.html"),
-    "open": Path("open/index.html"),
-    "products": Path("products/index.html"),
-    "course": Path("course/index.html"),
-    "services": Path("services/index.html"),
-    "about": Path("about/index.html"),
-}
 REQUIRED_FILES = [
-    *FORMAL_PAGES.values(),
+    Path("index.html"),
+    Path("open/index.html"),
+    Path("products/index.html"),
+    Path("course/index.html"),
+    Path("services/index.html"),
+    Path("about/index.html"),
+    Path("en/index.html"),
+    Path("en/open/index.html"),
+    Path("en/products/index.html"),
+    Path("en/course/index.html"),
+    Path("en/services/index.html"),
+    Path("en/about/index.html"),
     Path("404.html"),
     Path("assets/styles.css"),
     Path("assets/site.js"),
+    Path("assets/fonts/public-sans-latin.woff2"),
+    Path("assets/fonts/space-grotesk-latin.woff2"),
+    Path("assets/fonts/jetbrains-mono-latin.woff2"),
     Path("robots.txt"),
     Path("sitemap.xml"),
     Path("favicon.ico"),
@@ -29,30 +35,12 @@ REQUIRED_FILES = [
 ]
 PLACEHOLDERS = ["TODO", "lorem ipsum", "YOUR_", "example.com"]
 INTERNAL_TERMS = [
-    "第一桶金",
-    "收入目标",
-    "营收目标",
-    "价格实验",
-    "定价实验",
-    "价格是首轮验证假设",
-    "渠道策略",
-    "获客策略",
-    "转化策略",
-    "lead scoring",
-    "线索评分",
-    "客户笔记",
-    "客户名单",
-    "私有仓结构",
-    "私有仓库结构",
-    "私有插件产品库",
-    "私有专家",
-    "private expert",
-    "一客户一私有 overlay",
-    "内部任务板",
-    "任务看板",
-    "人工权益表",
-    "验证续费",
-    "自动授权",
+    "第一桶金", "收入目标", "营收目标", "价格实验", "定价实验",
+    "价格是首轮验证假设", "渠道策略", "获客策略", "转化策略",
+    "lead scoring", "线索评分", "客户笔记", "客户名单", "私有仓结构",
+    "私有仓库结构", "私有插件产品库", "私有专家", "private expert",
+    "一客户一私有 overlay", "内部任务板", "任务看板", "人工权益表",
+    "验证续费", "自动授权",
 ]
 LEGACY_ASSET_RE = re.compile(
     r"(?:href|src)\s*=\s*([\"'])(?:/)?(?:styles\.css|script\.js)\1",
@@ -68,6 +56,7 @@ class SiteParser(HTMLParser):
         self.stylesheets = []
         self.scripts = []
         self.canonicals = []
+        self.alternates = {}
         self.descriptions = []
         self.title_parts = []
         self.in_title = False
@@ -91,7 +80,6 @@ class SiteParser(HTMLParser):
             self.in_title = True
         elif tag == "main":
             self.main_count += 1
-
         if "data-site-header" in data:
             self.header_mounts += 1
         if "data-site-footer" in data:
@@ -107,6 +95,8 @@ class SiteParser(HTMLParser):
                 self.stylesheets.append(href)
             if href and "canonical" in rel:
                 self.canonicals.append(href)
+            if href and "alternate" in rel and data.get("hreflang"):
+                self.alternates[data["hreflang"]] = href
         if tag == "script" and data.get("src"):
             self.scripts.append(data["src"])
         if tag == "meta" and (data.get("name") or "").casefold() == "description":
@@ -136,6 +126,12 @@ def fail(message):
     return 1
 
 
+def page_url(relative_path: Path) -> str:
+    if relative_path == Path("index.html"):
+        return f"{BASE_URL}/"
+    return f"{BASE_URL}/{relative_path.parent.as_posix()}/"
+
+
 def local_target(href):
     parts = urlsplit(href)
     if parts.scheme or parts.netloc or not parts.path:
@@ -146,12 +142,23 @@ def local_target(href):
     if path == "/":
         return ROOT / "index.html"
     relative = path.lstrip("/")
-    if path.endswith("/"):
-        return ROOT / relative / "index.html"
-    return ROOT / relative
+    return ROOT / relative / "index.html" if path.endswith("/") else ROOT / relative
 
 
-def validate_html(relative_path, expected_page=None, require_canonical=True):
+def expected_lang(relative_path: Path) -> str:
+    return "en" if relative_path.parts and relative_path.parts[0] == "en" else "zh-CN"
+
+
+def expected_page(relative_path: Path) -> str:
+    parts = list(relative_path.parts[:-1])
+    if parts and parts[0] == "en":
+        parts.pop(0)
+    if not parts:
+        return "home"
+    return "open" if parts[0] == "open" else parts[0]
+
+
+def validate_html(relative_path: Path, require_canonical=True):
     status = 0
     path = ROOT / relative_path
     html = path.read_text(encoding="utf-8")
@@ -159,36 +166,34 @@ def validate_html(relative_path, expected_page=None, require_canonical=True):
     parser.feed(html)
     label = relative_path.as_posix()
 
-    if parser.lang != "zh-CN":
-        status |= fail(f"{label}: must declare lang=zh-CN")
+    if parser.lang != expected_lang(relative_path):
+        status |= fail(f"{label}: unexpected html lang {parser.lang!r}")
     if not parser.title:
         status |= fail(f"{label}: missing non-empty title")
     if len(parser.descriptions) != 1 or not parser.descriptions[0]:
         status |= fail(f"{label}: requires one non-empty meta description")
     if parser.main_count != 1:
         status |= fail(f"{label}: requires exactly one main landmark")
-    if parser.header_mounts != 1:
-        status |= fail(f"{label}: requires one data-site-header mount")
-    if parser.footer_mounts != 1:
-        status |= fail(f"{label}: requires one data-site-footer mount")
+    if parser.header_mounts != 1 or parser.footer_mounts != 1:
+        status |= fail(f"{label}: requires shared header and footer mounts")
     if parser.stylesheets != ["/assets/styles.css"]:
         status |= fail(f"{label}: must use only /assets/styles.css")
     if parser.scripts != ["/assets/site.js"]:
         status |= fail(f"{label}: must use only /assets/site.js")
-    if require_canonical and len(parser.canonicals) != 1:
-        status |= fail(f"{label}: requires one canonical link")
-    if expected_page is not None and parser.body_page != expected_page:
-        status |= fail(f"{label}: body data-page must be {expected_page!r}")
+    if require_canonical:
+        if parser.canonicals != [page_url(relative_path)]:
+            status |= fail(f"{label}: canonical URL mismatch")
+        if set(parser.alternates) != {"zh-CN", "en", "x-default"}:
+            status |= fail(f"{label}: requires zh-CN, en and x-default alternates")
+    if relative_path != Path("404.html") and parser.body_page != expected_page(relative_path):
+        status |= fail(f"{label}: body data-page mismatch")
     if LEGACY_ASSET_RE.search(html):
-        status |= fail(f"{label}: references legacy styles.css or script.js")
+        status |= fail(f"{label}: references legacy root assets")
 
     lowered = html.casefold()
-    for needle in PLACEHOLDERS:
+    for needle in PLACEHOLDERS + INTERNAL_TERMS:
         if needle.casefold() in lowered:
-            status |= fail(f"{label}: placeholder found: {needle}")
-    for needle in INTERNAL_TERMS:
-        if needle.casefold() in lowered:
-            status |= fail(f"{label}: internal-only term found: {needle}")
+            status |= fail(f"{label}: prohibited or placeholder text found: {needle}")
 
     for href in parser.hrefs:
         if href.startswith("#"):
@@ -201,35 +206,26 @@ def validate_html(relative_path, expected_page=None, require_canonical=True):
         target = local_target(href)
         if target is not None and not target.exists():
             status |= fail(f"{label}: missing local target for {href}")
-
     return status, parser.title, len(parser.hrefs)
 
 
-def validate_sitemap():
+def validate_sitemap(pages: list[Path]):
     status = 0
-    sitemap_path = ROOT / "sitemap.xml"
     try:
-        tree = ET.parse(sitemap_path)
+        tree = ET.parse(ROOT / "sitemap.xml")
     except ET.ParseError as error:
         return fail(f"sitemap.xml: invalid XML: {error}")
-
     namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
     actual = {
         (node.text or "").strip()
         for node in tree.findall("sm:url/sm:loc", namespace)
     }
-    expected = {
-        f"{BASE_URL}/",
-        f"{BASE_URL}/open/",
-        f"{BASE_URL}/products/",
-        f"{BASE_URL}/course/",
-        f"{BASE_URL}/services/",
-        f"{BASE_URL}/about/",
-    }
+    expected = {page_url(page) for page in pages}
     if actual != expected:
-        missing = sorted(expected - actual)
-        extra = sorted(actual - expected)
-        status |= fail(f"sitemap.xml: route mismatch; missing={missing}, extra={extra}")
+        status |= fail(
+            f"sitemap.xml: route mismatch; missing={len(expected - actual)}, "
+            f"extra={len(actual - expected)}"
+        )
     return status
 
 
@@ -238,17 +234,20 @@ def main():
     for relative_path in REQUIRED_FILES:
         if not (ROOT / relative_path).exists():
             status |= fail(f"missing {relative_path.as_posix()}")
-    if (ROOT / "styles.css").exists():
-        status |= fail("legacy root styles.css must be removed")
-    if (ROOT / "script.js").exists():
-        status |= fail("legacy root script.js must be removed")
+    if (ROOT / "styles.css").exists() or (ROOT / "script.js").exists():
+        status |= fail("legacy root assets must be removed")
     if status:
         return status
 
+    pages = sorted(
+        path.relative_to(ROOT)
+        for path in ROOT.rglob("index.html")
+        if ".git" not in path.parts
+    )
     titles = {}
     total_links = 0
-    for page_name, relative_path in FORMAL_PAGES.items():
-        page_status, title, link_count = validate_html(relative_path, page_name)
+    for relative_path in pages:
+        page_status, title, link_count = validate_html(relative_path)
         status |= page_status
         total_links += link_count
         if title in titles:
@@ -259,20 +258,18 @@ def main():
             titles[title] = relative_path.as_posix()
 
     page_status, _, link_count = validate_html(
-        Path("404.html"), expected_page=None, require_canonical=False
+        Path("404.html"), require_canonical=False
     )
     status |= page_status
     total_links += link_count
-    status |= validate_sitemap()
+    status |= validate_sitemap(pages)
 
     robots = (ROOT / "robots.txt").read_text(encoding="utf-8")
-    expected_sitemap_line = f"Sitemap: {BASE_URL}/sitemap.xml"
-    if expected_sitemap_line not in robots:
+    if f"Sitemap: {BASE_URL}/sitemap.xml" not in robots:
         status |= fail("robots.txt: missing canonical sitemap URL")
-
     if status == 0:
         print(
-            f"[OK] validated {len(FORMAL_PAGES)} formal pages, 404, shared assets, "
+            f"[OK] validated {len(pages)} routed pages, 404, shared assets, "
             f"{total_links} links, robots.txt and sitemap.xml"
         )
     return status
