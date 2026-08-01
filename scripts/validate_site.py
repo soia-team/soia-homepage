@@ -24,6 +24,7 @@ REQUIRED_FILES = [
     Path("assets/site.js"),
     Path("robots.txt"),
     Path("sitemap.xml"),
+    Path("favicon.ico"),
     Path(".nojekyll"),
 ]
 PLACEHOLDERS = ["TODO", "lorem ipsum", "YOUR_", "example.com"]
