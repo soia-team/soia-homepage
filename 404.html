@@ -3,19 +3,33 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#f5f1e8" />
+    <meta name="robots" content="noindex, follow" />
     <title>页面未找到｜SOIA</title>
-    <link rel="stylesheet" href="styles.css" />
+    <meta name="description" content="这个 SOIA 页面不存在。返回首页，或继续浏览公开 Skills 与公开产品。" />
+    <link rel="stylesheet" href="/assets/styles.css" />
   </head>
-  <body>
-    <main class="closing shell">
-      <p class="kicker">404 / NOT FOUND</p>
-      <h1>这个页面<br /><span>还没有被编排。</span></h1>
-      <p>返回 SOIA 首页，查看公开 Skills、工作流与专家产品路线。</p>
-      <div class="hero-actions">
-        <a class="button button-primary" href="/">返回首页</a>
-        <a class="button button-secondary" href="https://github.com/soia-team/soia-open-skills">查看开源仓 ↗</a>
-      </div>
+  <body data-page="404">
+    <a class="skip-link" href="#main">跳到正文</a>
+    <div data-site-header></div>
+
+    <main id="main">
+      <section class="page-hero">
+        <div class="shell">
+          <p class="kicker">404 / ROUTE NOT FOUND</p>
+          <h1>这里没有页面，<br /><em>但入口仍然清楚。</em></h1>
+          <p class="page-lead">链接可能已经更新，或地址输入有误。可以回到首页，也可以直接查看公开能力与产品状态。</p>
+          <div class="hero-actions">
+            <a class="button button--orange" href="/">返回首页</a>
+            <a class="button button--ghost" href="/open/">浏览 Open</a>
+            <a class="button button--ghost" href="/products/">查看 Products</a>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <div data-site-footer></div>
+    <script src="/assets/site.js" defer></script>
   </body>
 </html>
