@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="color-scheme" content="light" /><meta name="theme-color" content="#fbfaf7" />
+    <title>SOIA 文档｜安装、边界与证据</title><meta name="description" content="SOIA 公开文档：如何选择、安装、组合和验证公开 Skills，并理解公开能力与私有资料的边界。" />
+    <meta property="og:title" content="SOIA 文档｜安装、边界与证据" /><meta property="og:description" content="从第一个公开 Skill 开始，沿着安装、组合、验证和交接完成一次可复核运行。" /><meta property="og:type" content="website" /><meta property="og:url" content="https://soia-team.github.io/docs/" /><meta property="og:image" content="https://soia-team.github.io/assets/og.png" /><meta property="og:image:alt" content="SOIA 公开文档" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:image" content="https://soia-team.github.io/assets/og.png" />
+    <link rel="canonical" href="https://soia-team.github.io/docs/" /><link rel="alternate" hreflang="zh-CN" href="https://soia-team.github.io/docs/" /><link rel="alternate" hreflang="en" href="https://soia-team.github.io/en/docs/" /><link rel="alternate" hreflang="x-default" href="https://soia-team.github.io/docs/" /><link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body data-page="docs"><a class="skip-link" href="#main">跳到正文</a><div data-site-header></div>
+    <main id="main">
+      <section class="page-hero docs-hero"><div class="shell"><p class="eyebrow">DOCS / 文档</p><h1>从一个公开 Skill 开始，<br /><em>跑出一条可复核路径。</em></h1><p class="page-lead">这份文档讲清楚 SOIA 能力如何被发现、安装、组合和验收。它只说明公开能力，不要求你提交密码、Token、Cookie 或客户资料。</p></div></section>
+      <section class="section"><div class="shell docs-layout"><nav class="docs-nav" aria-label="文档章节"><a href="#start">01 · 从哪里开始</a><a href="#install">02 · 安装方式</a><a href="#boundary">03 · 四层边界</a><a href="#evidence">04 · 证据与交接</a></nav><article class="docs-article">
+        <section id="start"><p class="kicker">01 / START</p><h2>先按结果找能力，不必先背名字。</h2><p>进入<a href="/open/">开放生态</a>，按能力域或任务关键词浏览。每个 Skill 详情页都有一句话摘要、输入与输出、安装入口、安全边界和公共源码链接。</p><ol><li>写下一个重复任务的结果，而不是一个工具名。</li><li>在能力域目录中找到最小可用 Skill。</li><li>先看公开说明，再决定是否安装整个领域插件。</li></ol></section>
+        <section id="install"><p class="kicker">02 / INSTALL</p><h2>三种入口，对应三种使用深度。</h2><p>公开目录同时面向 Claude Code、Codex 和 WorkBuddy。命令以领域插件为单位，单 Skill 入口适合快速试用。</p><pre class="code-block">claude plugin marketplace add soia-team/soia-open-skills
+claude plugin install soia-meta@soia
+
+codex plugin marketplace add soia-team/soia-open-skills
+codex plugin add soia-meta@soia</pre><p>安装后先运行一个低风险、可撤回的任务；涉及发布、付款、删除、权限或外部写入时，保留人工确认。</p></section>
+        <section id="boundary"><p class="kicker">03 / BOUNDARY</p><h2>四层模型，把能力和资料分开。</h2><div class="spec-grid"><article class="spec-card"><span class="spec-label">L1 · SOIA</span><h3>公共入口</h3><p>品牌、导航、文档和产品说明，告诉你从哪里开始。</p></article><article class="spec-card"><span class="spec-label">L2 · OPEN</span><h3>开放生态</h3><p>通用 Skills、公开插件、源码、许可证和版本证据。</p></article><article class="spec-card"><span class="spec-label">L3 · DOMAIN</span><h3>能力域</h3><p>知识、环境、工程、内容、设计、协作和教育等领域目录。</p></article><article class="spec-card"><span class="spec-label">L4 · DELIVERY</span><h3>交付形态</h3><p>Skill、Workflow、Plugin、Expert 或经授权的私有适配。</p></article></div></section>
+        <section id="evidence"><p class="kicker">04 / EVIDENCE</p><h2>每一次运行，都应该留下能交接的回执。</h2><p>公开能力的事实真源是对应 GitHub 仓库和规范文档。运行结束后至少记录输入、输出、文件变化、验证结果、已知限制和下一步。</p><ul><li><a href="https://github.com/soia-team/soia-open-skills" target="_blank" rel="noreferrer">公开 Skill 总仓 ↗</a>：插件、manifest 和索引。</li><li><a href="https://github.com/soia-team/soia-open-pkm-vault-skills" target="_blank" rel="noreferrer">知识与内容能力仓 ↗</a>：归档、提炼和内容转换。</li><li>涉及私有资料时，使用<a href="/services/">服务与合作</a>页面确认范围；公共仓库不承载授权资料。</li></ul></section>
+      </article><nav class="docs-toc" aria-label="本页目录"><a href="#start">从哪里开始</a><a href="#install">安装方式</a><a href="#boundary">四层边界</a><a href="#evidence">证据与交接</a></nav></div></section>
+    </main><div data-site-footer></div><script src="/assets/site.js" defer></script>
+  </body>
+</html>

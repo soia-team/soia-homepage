@@ -25,7 +25,7 @@
     <a class="skip-link" href="#main">跳到正文</a>
     <div data-site-header></div>
     <main id="main">
-      <section class="domain-hero">
+      <section class="domain-hero docs-hero">
         <div class="shell">
           <nav class="breadcrumb" aria-label="面包屑">
             <a href="/">SOIA</a><span aria-hidden="true">/</span>
@@ -43,7 +43,7 @@
             </div>
             <aside class="domain-stat">
               <span>公开目录快照</span>
-              <strong>30</strong>
+              <strong>26</strong>
               <span>个已记录 Skills</span>
             </aside>
           </div>
@@ -51,7 +51,7 @@
         </div>
       </section>
 
-      <section class="section">
+      <section class="section docs-domain-section">
         <div class="shell">
           <div class="section-header">
             <div><p class="kicker">SKILL INDEX</p><h2>按结果选择，不必背名字。</h2></div>
@@ -59,7 +59,7 @@
           </div>
           <div class="catalog-toolbar">
             <input class="search-field" type="search" placeholder="搜索这个能力域里的 Skills……" aria-label="搜索这个能力域里的 Skills……" data-catalog-search />
-            <span class="catalog-note">8249650aba · 2026-08-02</span>
+            <span class="catalog-note">c8bb7411c0 · 2026-08-01</span>
           </div>
           <div class="catalog-list">
           <a class="catalog-row" data-catalog-card href="/open/pkm-vault/soia-pkm-alipan-curator/">
@@ -79,7 +79,7 @@
           </a>
           <a class="catalog-row" data-catalog-card href="/open/pkm-vault/soia-pkm-bootstrap-vault-base/">
             <code>soia-pkm-bootstrap-vault-base</code>
-            <p>以 plan-first、create-only、可检查的方式初始化平台中立的 AI-native Markdown vault 基座，包含分区下钻规则、工作台生命周期、模板与多 AI 适配层</p>
+            <p>初始化知识库中立的 Markdown vault 骨架、多 AI 入口与 PKM 闭环，不包含平台特化配置</p>
             <span class="row-action">查看详情 →</span>
           </a>
           <a class="catalog-row" data-catalog-card href="/open/pkm-vault/soia-pkm-bootstrap-vault-ima/">
@@ -89,7 +89,7 @@
           </a>
           <a class="catalog-row" data-catalog-card href="/open/pkm-vault/soia-pkm-bootstrap-vault-obsidian/">
             <code>soia-pkm-bootstrap-vault-obsidian</code>
-            <p>以 dry-run 和保留未知配置的结构化合并方式，把已有 Markdown vault 配置为 Obsidian 消费端，启用 Bases 与可选宽页 CSS</p>
+            <p>将已有 Markdown vault 配置为 Obsidian 消费端，并衔接通用 vault 基座</p>
             <span class="row-action">查看详情 →</span>
           </a>
           <a class="catalog-row" data-catalog-card href="/open/pkm-vault/soia-pkm-clip-douyin/">
@@ -137,11 +137,6 @@
             <p>通过苏格拉底式逐问，把用户对 vault 文章的回答整理成其本人观点，并写入「我的看法」或主题综述</p>
             <span class="row-action">查看详情 →</span>
           </a>
-          <a class="catalog-row" data-catalog-card href="/open/pkm-vault/soia-pkm-extract-vault-knowledge/">
-            <code>soia-pkm-extract-vault-knowledge</code>
-            <p>从工作台、冻结证据、文章、项目研究或历史导入语料中提炼去状态、可复用且带来源的长期知识，同时保留原始证据并隔离敏感信息</p>
-            <span class="row-action">查看详情 →</span>
-          </a>
           <a class="catalog-row" data-catalog-card href="/open/pkm-vault/soia-pkm-interpret-article-analysis/">
             <code>soia-pkm-interpret-article-analysis</code>
             <p>为 vault 长文或论文生成独立 AI 解读，帮助判断是否值得深挖，且不改原文或代写用户观点</p>
@@ -157,29 +152,14 @@
             <p>同步微信读书已读书目与划线到 Obsidian 书库，并调用微信读书 API 补单本书详情</p>
             <span class="row-action">查看详情 →</span>
           </a>
-          <a class="catalog-row" data-catalog-card href="/open/pkm-vault/soia-pkm-log-agent-sessions/">
-            <code>soia-pkm-log-agent-sessions</code>
-            <p>为 Claude Code、Codex 等本地 AI 接入最小化 vault 会话改动快照，支持去重、dry-run、既有 notify 合并和安全卸载</p>
-            <span class="row-action">查看详情 →</span>
-          </a>
-          <a class="catalog-row" data-catalog-card href="/open/pkm-vault/soia-pkm-maintain-vault-health/">
-            <code>soia-pkm-maintain-vault-health</code>
-            <p>只读审计 Markdown/Obsidian vault 的死链、歧义文件名、标签策略与过期内容，并按授权重建知识库地图或周健康简报</p>
-            <span class="row-action">查看详情 →</span>
-          </a>
-          <a class="catalog-row" data-catalog-card href="/open/pkm-vault/soia-pkm-manage-vault-lifecycle/">
-            <code>soia-pkm-manage-vault-lifecycle</code>
-            <p>规划并安全执行 Markdown/Obsidian vault 的 Inbox、工作台、冻结证据、长期知识与历史归档分流</p>
+          <a class="catalog-row" data-catalog-card href="/open/pkm-vault/soia-pkm-maintain/">
+            <code>soia-pkm-maintain</code>
+            <p>维护 Obsidian vault 的健康状态、全库地图与 AI 会话日志</p>
             <span class="row-action">查看详情 →</span>
           </a>
           <a class="catalog-row" data-catalog-card href="/open/pkm-vault/soia-pkm-organize-article-moc/">
             <code>soia-pkm-organize-article-moc</code>
             <p>将 Obsidian 文章库按元数据、主题双链、月份和两级 MOC 规范化整理</p>
-            <span class="row-action">查看详情 →</span>
-          </a>
-          <a class="catalog-row" data-catalog-card href="/open/pkm-vault/soia-pkm-query-vault/">
-            <code>soia-pkm-query-vault</code>
-            <p>以只读方式检索 Markdown/Obsidian vault 的文件名、正文、frontmatter、标签、反向链接与分区清单，并按当前状态、稳定知识、冻结证据、历史归档排序</p>
             <span class="row-action">查看详情 →</span>
           </a>
           <a class="catalog-row" data-catalog-card href="/open/pkm-vault/soia-pkm-reading-plan/">

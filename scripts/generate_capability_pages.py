@@ -198,7 +198,10 @@ class Skill:
 
     @property
     def summary_en(self) -> str:
-        return FEATURED_EN[self.name]
+        return FEATURED_EN.get(
+            self.name,
+            f"Public capability for {self.title_en.lower()}, with documented inputs, outputs, and safety boundaries.",
+        )
 
 
 def source_commit(source_root: Path) -> tuple[str, str]:
@@ -357,7 +360,7 @@ def render_domain(
         if en
         else "本页镜像公开文档目录。发布过程中，插件市场的可安装版本可能暂时落后于文档；安装状态以公开 marketplace manifest 为准。"
     )
-    main = f"""      <section class="domain-hero">
+    main = f"""      <section class="domain-hero docs-hero">
         <div class="shell">
           <nav class="breadcrumb" aria-label="{breadcrumb_label}">
             <a href="{route(locale)}">SOIA</a><span aria-hidden="true">/</span>
@@ -383,7 +386,7 @@ def render_domain(
         </div>
       </section>
 
-      <section class="section">
+      <section class="section docs-domain-section">
         <div class="shell">
           <div class="section-header">
             <div><p class="kicker">SKILL INDEX</p><h2>{"Choose by outcome, not by memory." if en else "按结果选择，不必背名字。"}</h2></div>
@@ -521,7 +524,7 @@ def render_skill(
             </section>"""
 
     breadcrumb_label = "Breadcrumb" if en else "面包屑"
-    main = f"""      <section class="skill-hero">
+    main = f"""      <section class="skill-hero blog-post-hero">
         <div class="shell">
           <nav class="breadcrumb" aria-label="{breadcrumb_label}">
             <a href="{route(locale)}">SOIA</a><span aria-hidden="true">/</span>
@@ -547,12 +550,12 @@ def render_skill(
         </div>
       </section>
 
-      <section class="section">
-        <div class="shell detail-layout">
-          <div class="detail-prose">
+      <section class="section blog-post-section">
+        <div class="shell detail-layout blog-post-layout">
+          <div class="detail-prose blog-post-body">
 {sections}
           </div>
-          <aside class="side-panel">
+          <aside class="side-panel blog-post-aside">
             <p class="mono-label">PUBLIC EVIDENCE</p>
             <h2>{"Inspect before installing" if en else "安装前先审查"}</h2>
             <p>{"The catalog page is generated from public Skill documentation. Source instructions remain the authority." if en else "本站详情页由公开 Skill 文档生成；技能源码与公开指令始终是事实真源。"}</p>
@@ -788,8 +791,11 @@ def main() -> int:
     # Top-level pages are curated editorial surfaces. A catalog refresh must
     # not overwrite either the Chinese or English narrative.
     generated_paths = [
-        "/", "/open/", "/products/", "/course/", "/services/", "/about/",
-        "/en/", "/en/open/", "/en/products/", "/en/course/", "/en/services/", "/en/about/",
+        "/", "/open/", "/products/", "/pricing/", "/showcase/", "/docs/", "/spec/", "/course/", "/services/", "/about/",
+        "/en/", "/en/open/", "/en/products/", "/en/pricing/", "/en/showcase/", "/en/docs/", "/en/spec/", "/en/course/", "/en/services/", "/en/about/",
+        # Compatibility routes for five catalog entries renamed upstream.
+        "/open/pkm-vault/soia-pkm-extract-vault-knowledge/", "/open/pkm-vault/soia-pkm-log-agent-sessions/", "/open/pkm-vault/soia-pkm-maintain-vault-health/", "/open/pkm-vault/soia-pkm-manage-vault-lifecycle/", "/open/pkm-vault/soia-pkm-query-vault/",
+        "/en/open/pkm-vault/soia-pkm-extract-vault-knowledge/", "/en/open/pkm-vault/soia-pkm-log-agent-sessions/", "/en/open/pkm-vault/soia-pkm-maintain-vault-health/", "/en/open/pkm-vault/soia-pkm-manage-vault-lifecycle/", "/en/open/pkm-vault/soia-pkm-query-vault/",
     ]
     for public_path in generated_paths:
         page = ROOT / public_path.lstrip("/") / "index.html"

@@ -1,6 +1,9 @@
+document.documentElement.classList.add("js");
+
 const NAV_ITEMS = {
   zh: [
     ["products", "产品", "/products/"],
+    ["pricing", "价格", "/pricing/"],
     ["open", "开放生态", "/open/"],
     ["about", "关于 SOIA", "/about/"],
     ["course", "课程", "/course/"],
@@ -9,6 +12,7 @@ const NAV_ITEMS = {
   ],
   en: [
     ["products", "Products", "/en/products/"],
+    ["pricing", "Pricing", "/en/pricing/"],
     ["open", "Open ecosystem", "/en/open/"],
     ["about", "About SOIA", "/en/about/"],
     ["course", "Course", "/en/course/"],
@@ -90,8 +94,8 @@ function renderFooter() {
           </a>
           <p>System · Orchestration · Intelligence · Assurance</p>
         </div>
-        <div><strong>${en ? "Explore" : "探索"}</strong><a href="${en ? "/en/products/" : "/products/"}">${en ? "Products" : "产品"}</a><a href="${en ? "/en/open/" : "/open/"}">${en ? "Open ecosystem" : "开放生态"}</a><a href="${en ? "/en/course/" : "/course/"}">${en ? "Course" : "课程"}</a><a href="${en ? "/en/services/" : "/services/"}">${en ? "Services" : "服务与合作"}</a></div>
-        <div><strong>${en ? "More" : "更多"}</strong><a href="${en ? "/en/about/" : "/about/"}">${en ? "About SOIA" : "关于 SOIA"}</a><a href="${en ? "/en/#resources" : "/#resources"}">${en ? "Resources" : "资源"}</a><a href="https://github.com/soia-team" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+        <div><strong>${en ? "Explore" : "探索"}</strong><a href="${en ? "/en/products/" : "/products/"}">${en ? "Products" : "产品"}</a><a href="${en ? "/en/pricing/" : "/pricing/"}">${en ? "Pricing" : "价格"}</a><a href="${en ? "/en/open/" : "/open/"}">${en ? "Open ecosystem" : "开放生态"}</a><a href="${en ? "/en/course/" : "/course/"}">${en ? "Course" : "课程"}</a><a href="${en ? "/en/services/" : "/services/"}">${en ? "Services" : "服务与合作"}</a></div>
+        <div><strong>${en ? "More" : "更多"}</strong><a href="${en ? "/en/showcase/" : "/showcase/"}">${en ? "Skill showcase" : "技能成品"}</a><a href="${en ? "/en/docs/" : "/docs/"}">${en ? "Docs" : "文档"}</a><a href="${en ? "/en/spec/" : "/spec/"}">${en ? "Product spec" : "产品规格"}</a><a href="${en ? "/en/about/" : "/about/"}">${en ? "About SOIA" : "关于 SOIA"}</a><a href="${en ? "/en/#resources" : "/#resources"}">${en ? "Resources" : "资源"}</a><a href="https://github.com/soia-team" target="_blank" rel="noreferrer">GitHub ↗</a></div>
         <div><strong>${en ? "Boundaries" : "边界"}</strong><span>Local-first</span><span>Human-controlled</span><span>Evidence-backed</span></div>
       </div>
       <div class="shell footer-bottom">
@@ -195,6 +199,42 @@ function wireSkillIndex() {
   render();
 }
 
+function wireEditorialReveal() {
+  const nodes = [...document.querySelectorAll("[data-reveal]")];
+  if (!nodes.length) return;
+  if (!("IntersectionObserver" in window)) {
+    nodes.forEach((node) => node.classList.add("is-visible"));
+    return;
+  }
+  const observer = new IntersectionObserver((entries, current) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      current.unobserve(entry.target);
+    });
+  }, { threshold: 0.12 });
+  nodes.forEach((node) => observer.observe(node));
+}
+
+function wireShowcase() {
+  const root = document.querySelector("[data-showcase-carousel]");
+  if (!root) return;
+  const slides = [...root.querySelectorAll("[data-showcase-slide]")];
+  const status = root.querySelector("[data-showcase-status]");
+  const setSlide = (index) => {
+    const current = (index + slides.length) % slides.length;
+    slides.forEach((slide, item) => {
+      const active = item === current;
+      slide.hidden = !active;
+      slide.setAttribute("aria-hidden", String(!active));
+    });
+    if (status) status.textContent = `${String(current + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
+  };
+  root.querySelector("[data-carousel-prev]")?.addEventListener("click", () => setSlide(slides.findIndex((slide) => !slide.hidden) - 1));
+  root.querySelector("[data-carousel-next]")?.addEventListener("click", () => setSlide(slides.findIndex((slide) => !slide.hidden) + 1));
+  setSlide(0);
+}
+
 renderHeader();
 renderFooter();
 wireLinks();
@@ -202,3 +242,5 @@ wireCatalog();
 wireResponsiveTables();
 wireOpenTabs();
 wireSkillIndex();
+wireEditorialReveal();
+wireShowcase();
