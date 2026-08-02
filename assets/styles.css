@@ -657,8 +657,9 @@ body[data-page="course"] .page-hero { background: linear-gradient(180deg, rgba(2
 .product-catalog-grid .offer-card { min-height: 430px; }
 .product-catalog-grid .offer-price { font-size: 27px; line-height: 1.1; }
 .product-catalog-grid .offer-price small { display: block; margin-top: 8px; line-height: 1.45; }
-.compare--products { grid-template-columns: 1fr 28px 1fr 28px 1fr; }
+.compare--products { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .compare--products .compare-column { min-width: 0; }
+.compare--products .compare-arrow { display: none; }
 
 .course-outline { display: grid; gap: 0; border-top: 1px solid var(--line); }
 .course-outline article { display: grid; grid-template-columns: 58px minmax(0, 0.72fr) minmax(0, 1.28fr); gap: 20px; align-items: start; padding: 20px 0; border-bottom: 1px solid var(--line); }
@@ -669,6 +670,31 @@ body[data-page="course"] .page-hero { background: linear-gradient(180deg, rgba(2
 .course-price-block span { color: var(--muted); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
 .course-price-block strong { font-family: var(--font-display); font-size: 38px; letter-spacing: -0.04em; line-height: 1; }
 .course-price-block small { color: var(--muted); font-size: 13px; }
+
+/* Open Design type scale: keep catalogue and course pages compact and scannable. */
+body[data-page="products"], body[data-page="course"] { font-size: 15px; }
+body[data-page="products"] .page-hero h1,
+body[data-page="course"] .page-hero h1 { font-size: clamp(38px, 4.2vw, 56px); line-height: 1.04; }
+body[data-page="products"] .page-lead,
+body[data-page="course"] .page-lead { max-width: 680px; font-size: 16px; line-height: 1.65; }
+body[data-page="products"] .section-header h2,
+body[data-page="course"] .section-header h2 { font-size: clamp(30px, 3.2vw, 44px); }
+body[data-page="products"] .section-header > p,
+body[data-page="course"] .section-header > p { font-size: 15px; line-height: 1.65; }
+body[data-page="products"] .offer-card { padding: 22px; gap: 12px; }
+body[data-page="products"] .offer-card h2 { font-size: 22px; }
+body[data-page="products"] .offer-card p,
+body[data-page="products"] .offer-card li { font-size: 14px; line-height: 1.55; }
+body[data-page="products"] .product-catalog-grid .offer-card { min-height: 390px; }
+body[data-page="products"] .product-catalog-grid .offer-price { font-size: 23px; }
+body[data-page="products"] .compare-column { padding: 22px; }
+body[data-page="products"] .compare-column h3 { font-size: 21px; }
+body[data-page="products"] .compare-column li { font-size: 14px; }
+body[data-page="course"] .course-outline h3 { font-size: 17px; }
+body[data-page="course"] .course-outline p { font-size: 14px; line-height: 1.55; }
+body[data-page="course"] .course-price-block strong { font-size: 32px; }
+body[data-page="course"] .course-table th,
+body[data-page="course"] .course-table td { font-size: 14px; line-height: 1.55; }
 
 .page-meta span {
   padding: 7px 10px;
@@ -874,8 +900,8 @@ body[data-page="course"] .page-hero { background: linear-gradient(180deg, rgba(2
 .about-definition div:last-child { border-right: 0; }
 .about-definition strong { display: block; color: var(--orange); font-size: 35px; }
 .about-definition span { color: var(--muted); }
-.boundary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.boundary-grid article { min-height: 310px; padding: 30px; border-radius: var(--radius); }
+.boundary-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.boundary-grid article { min-width: 0; min-height: 310px; padding: 30px; border-radius: var(--radius); overflow-wrap: anywhere; }
 .boundary-grid .is-open { border: 1px solid var(--blue); background: var(--blue-soft); }
 .boundary-grid .is-private { border: 1px solid #2a3a49; background: var(--dark); color: white; }
 .boundary-grid .is-private p, .boundary-grid .is-private li { color: #c9b7ac; }
