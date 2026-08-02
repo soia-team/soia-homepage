@@ -339,20 +339,20 @@ def render_domain(
     cards = []
     for skill in skills:
         skill_summary = skill.summary_en if en else skill.summary_zh
-        action = "View detail" if en else "查看详情"
+        action = "Open detail" if en else "打开详情"
         cards.append(
-            f"""          <a class="catalog-row" data-catalog-card href="{skill_path(locale, skill)}">
-            <code>{escape(skill.name)}</code>
-            <p>{escape(skill_summary)}</p>
-            <span class="row-action">{action} →</span>
-          </a>"""
+            f"""            <a class="domain-directory-row" data-catalog-card href="{skill_path(locale, skill)}">
+              <code>{escape(skill.name)}</code>
+              <p>{escape(skill_summary)}</p>
+              <strong>{action} →</strong>
+            </a>"""
         )
     open_path = route(locale, "open/")
     services_path = route(locale, "services/")
     breadcrumb_label = "Breadcrumb" if en else "面包屑"
-    back = "Open capabilities" if en else "开源能力"
-    source_label = "CATALOG SNAPSHOT" if en else "公开目录快照"
-    count_label = "documented skills" if en else "个已记录 Skills"
+    back = "Open ecosystem" if en else "开放生态"
+    source_label = "PUBLIC CATALOG SNAPSHOT" if en else "公开目录快照"
+    count_label = "documented Skills" if en else "个已记录 Skills"
     search = "Search skills in this domain…" if en else "搜索这个能力域里的 Skills……"
     warning = (
         "This page mirrors the public documentation catalog. Installable marketplace "
@@ -360,58 +360,42 @@ def render_domain(
         if en
         else "本页镜像公开文档目录。发布过程中，插件市场的可安装版本可能暂时落后于文档；安装状态以公开 marketplace manifest 为准。"
     )
-    main = f"""      <section class="domain-hero docs-hero">
-        <div class="shell">
-          <nav class="breadcrumb" aria-label="{breadcrumb_label}">
-            <a href="{route(locale)}">SOIA</a><span aria-hidden="true">/</span>
-            <a href="{open_path}">{back}</a><span aria-hidden="true">/</span>
-            <span aria-current="page">{escape(title)}</span>
-          </nav>
-          <div class="domain-hero-grid">
-            <div>
-              <p class="eyebrow">PUBLIC CAPABILITY DOMAIN · {escape(domain.plugin)}</p>
-              <h1>{escape(title)}</h1>
-              <p class="page-lead">{escape(summary)}</p>
-              <div class="route-map" aria-label="{"Page level" if en else "页面层级"}">
-                <span>L1 · SOIA</span><span>L2 · Open</span><span>L3 · {escape(domain.code)}</span>
+    main = f"""      <div class="domain-directory-v3">
+        <section class="domain-directory-hero">
+          <div class="shell">
+            <nav class="breadcrumb" aria-label="{breadcrumb_label}">
+              <a href="{route(locale)}">SOIA</a><span aria-hidden="true">/</span>
+              <a href="{open_path}">{back}</a><span aria-hidden="true">/</span>
+              <span aria-current="page">{escape(title)}</span>
+            </nav>
+            <div class="domain-directory-head">
+              <div>
+                <p class="eyebrow">PUBLIC CAPABILITY DOMAIN · {escape(domain.plugin)}</p>
+                <h1>{escape(title)}</h1>
+                <p>{escape(summary)}</p>
               </div>
+              <aside class="domain-directory-stat"><span>{source_label}</span><strong>{len(skills)}</strong><span>{count_label}</span></aside>
             </div>
-            <aside class="domain-stat">
-              <span>{source_label}</span>
-              <strong>{len(skills)}</strong>
-              <span>{count_label}</span>
-            </aside>
           </div>
-          <p class="catalog-warning">{escape(warning)}</p>
-        </div>
-      </section>
-
-      <section class="section docs-domain-section">
-        <div class="shell">
-          <div class="section-header">
-            <div><p class="kicker">SKILL INDEX</p><h2>{"Choose by outcome, not by memory." if en else "按结果选择，不必背名字。"}</h2></div>
-            <p>{"Each detail page explains capability, delivery shape, safety boundary, install path, and public evidence." if en else "每个详情页都说明能力、交付形式、安全边界、安装入口与公开证据。"}</p>
-          </div>
-          <div class="catalog-toolbar">
-            <input class="search-field" type="search" placeholder="{search}" aria-label="{search}" data-catalog-search />
-            <span class="catalog-note">{escape(commit[:10])} · {escape(commit_date)}</span>
-          </div>
-          <div class="catalog-list">
+        </section>
+        <section class="domain-directory-main">
+          <div class="shell">
+            <div class="domain-directory-bar">
+              <div><p class="eyebrow">SKILL INDEX</p><h2>{"Choose by outcome, not by memory." if en else "按结果选择，不必背名字。"}</h2></div>
+              <input class="domain-directory-search" type="search" placeholder="{search}" aria-label="{search}" data-catalog-search />
+            </div>
+            <p class="catalog-warning">{escape(warning)} <span>{escape(commit[:10])} · {escape(commit_date)}</span></p>
+            <div class="domain-directory-list">
 {chr(10).join(cards)}
+            </div>
+            <p class="empty-state" hidden data-catalog-empty>{"No matching Skill. Try a task keyword instead." if en else "没有匹配的 Skill，可以换一个任务关键词。"}</p>
+            <div class="home-v3-manifesto">
+              <div><p class="eyebrow">SOURCE BEFORE CLAIMS</p><h2>{"Read the public instruction before you install." if en else "先看公开指令与边界，再决定安装。"}</h2></div>
+              <div><p>{"The catalog is a public documentation mirror. The source repository and its marketplace manifest remain the authority for installation and releases." if en else "这里是公开文档目录的镜像。技能源码和公开 marketplace manifest 才是安装与发布状态的事实真源。"}</p><div class="home-v3-actions"><a class="button button--ink" href="https://github.com/soia-team/{domain.repo}" target="_blank" rel="noreferrer">{"Open source repository" if en else "查看公开仓"} ↗</a><a class="button button--ghost" href="{services_path}">{"Need a private workflow?" if en else "需要私有流程？"}</a></div></div>
+            </div>
           </div>
-          <p class="empty-state" hidden data-catalog-empty>{"No matching skill." if en else "没有匹配的 Skill，可以换一个任务关键词。"}</p>
-        </div>
-      </section>
-
-      <section class="section section--compact">
-        <div class="shell cta-panel">
-          <div><p class="kicker">SOURCE BEFORE CLAIMS</p><h2>{"Read the public instructions before you install." if en else "先看公开指令与边界，再决定安装。"}</h2></div>
-          <div class="hero-actions">
-            <a class="button button--orange" href="https://github.com/soia-team/{domain.repo}" target="_blank" rel="noreferrer">{"Open source repository" if en else "查看公开仓"} ↗</a>
-            <a class="button button--ghost" href="{services_path}">{"Need a proprietary workflow?" if en else "需要专有流程？"}</a>
-          </div>
-        </div>
-      </section>"""
+        </section>
+      </div>"""
     return document(
         locale,
         "open",
@@ -524,53 +508,96 @@ def render_skill(
             </section>"""
 
     breadcrumb_label = "Breadcrumb" if en else "面包屑"
-    main = f"""      <section class="skill-hero blog-post-hero">
-        <div class="shell">
-          <nav class="breadcrumb" aria-label="{breadcrumb_label}">
-            <a href="{route(locale)}">SOIA</a><span aria-hidden="true">/</span>
-            <a href="{route(locale, "open/")}">Open</a><span aria-hidden="true">/</span>
-            <a href="{domain_path(locale, skill.domain)}">{escape(domain_title)}</a><span aria-hidden="true">/</span>
-            <span aria-current="page">{escape(skill.name)}</span>
-          </nav>
-          <div class="skill-hero-grid">
-            <div>
-              <p class="eyebrow">PUBLIC SKILL · {escape(skill.domain.plugin)}</p>
-              <h1>{escape(skill.name)}</h1>
-              <p class="page-lead">{escape(summary)}</p>
-              <div class="route-map" aria-label="{"Page level" if en else "页面层级"}">
-                <span>L1 · SOIA</span><span>L2 · Open</span><span>L3 · {escape(skill.domain.code)}</span><span>L4 · Skill</span>
-              </div>
-            </div>
-            <aside class="skill-receipt">
-              <div><span>{"Domain" if en else "领域"}</span><strong>{escape(skill.domain.plugin)}</strong></div>
-              <div><span>{"Catalog status" if en else "目录状态"}</span><strong>{"Public documentation" if en else "已进入公开文档目录"}</strong></div>
-              <div><span>{"Snapshot" if en else "快照"}</span><strong>{escape(commit[:10])} · {escape(commit_date)}</strong></div>
-            </aside>
+    back_label = "Back to public capability" if en else "返回公开能力目录"
+    category = "PUBLIC SKILL" if en else "公开 Skill"
+    receipt_label = "A visible path from authorised input to a reviewable receipt." if en else "从有权使用的输入，到可复核的交付回执。"
+    input_caption = "Authorised<br />starting point" if en else "有权使用的<br />输入"
+    process_caption = "Bounded<br />execution" if en else "受边界约束的<br />执行"
+    receipt_caption = "Reviewable<br />result" if en else "可复核的<br />结果"
+    main = f"""      <div class="skill-story-v3">
+        <section class="skill-story-hero">
+          <div class="shell"><div class="skill-story-head">
+            <a class="skill-story-back" href="{domain_path(locale, skill.domain)}">← {escape(domain_title)} · {back_label}</a>
+            <p class="skill-story-category">{category} · {escape(skill.domain.plugin)} · {escape(skill.domain.code)}</p>
+            <h1>{escape(skill.name)}</h1>
+            <p class="skill-story-summary">{escape(summary)}</p>
+            <p class="skill-story-byline">SOIA Public Catalog · {escape(commit[:10])} · {escape(commit_date)} · {receipt_label}</p>
           </div>
-        </div>
-      </section>
-
-      <section class="section blog-post-section">
-        <div class="shell detail-layout blog-post-layout">
-          <div class="detail-prose blog-post-body">
+          <div class="skill-story-figure" aria-label="{"Skill delivery contract" if en else "Skill 交付契约"}"><div class="skill-story-figure-grid">
+            <div><span>01 / INPUT</span><strong>{input_caption}</strong></div>
+            <div><span>02 / PROCESS</span><strong>{process_caption}</strong></div>
+            <div><span>03 / RECEIPT</span><strong>{receipt_caption}</strong></div>
+          </div></div>
+          </div>
+        </section>
+        <section><div class="shell skill-story-layout">
+          <article class="skill-story-body">
 {sections}
-          </div>
-          <aside class="side-panel blog-post-aside">
+          </article>
+          <aside class="skill-story-aside">
             <p class="mono-label">PUBLIC EVIDENCE</p>
-            <h2>{"Inspect before installing" if en else "安装前先审查"}</h2>
-            <p>{"The catalog page is generated from public Skill documentation. Source instructions remain the authority." if en else "本站详情页由公开 Skill 文档生成；技能源码与公开指令始终是事实真源。"}</p>
+            <p>{"This page is generated from public Skill documentation. The canonical instruction and source repository remain the authority." if en else "本页由公开 Skill 文档生成；规范指令和源码仓库始终是事实真源。"}</p>
             <a class="button button--ink" href="{docs_url}" target="_blank" rel="noreferrer">{"Read canonical docs" if en else "查看规范详情"} ↗</a>
             <a class="button button--ghost" href="{source_url}" target="_blank" rel="noreferrer">{"Inspect source" if en else "审查 Skill 源码"} ↗</a>
             <a class="button button--text" href="{domain_path(locale, skill.domain)}">← {"Back to domain" if en else "返回能力域"}</a>
           </aside>
-        </div>
-      </section>"""
+        </div></section>
+      </div>"""
     return document(
         locale,
         "open",
         f"{skill.title_en} — {skill.name} | SOIA Open" if en else f"{skill.name} | SOIA Open",
         summary,
         skill_path(locale, skill),
+        main,
+    )
+
+
+def render_legacy_skill_alias(
+    locale: str,
+    legacy_name: str,
+    replacement: Skill,
+    commit: str,
+    commit_date: str,
+) -> str:
+    """Keep one legacy public route explicit and visually consistent.
+
+    A legacy URL is not silently repurposed as a current catalog entry. It
+    remains a small compatibility page pointing to the current public Skill.
+    """
+    en = locale == "en"
+    path = route(locale, f"open/{replacement.domain.slug}/{legacy_name}/")
+    target = skill_path(locale, replacement)
+    summary = (
+        f"Compatibility route for the current public Skill: {replacement.name}."
+        if en
+        else f"保留的兼容路径，当前公开 Skill 为：{replacement.name}。"
+    )
+    headline = "This public path has moved." if en else "这个公开路径已更新。"
+    body_copy = (
+        "The earlier name is kept so old public links do not become a dead end. "
+        "Use the current Skill page for instructions, installation, evidence, and releases."
+        if en
+        else "旧名称被保留，避免已有公开链接变成死链。请使用当前 Skill 页面查看指令、安装、证据与发布状态。"
+    )
+    main = f"""      <div class="skill-story-v3">
+        <section class="skill-story-hero"><div class="shell"><div class="skill-story-head">
+          <a class="skill-story-back" href="{domain_path(locale, replacement.domain)}">← {"Back to domain" if en else "返回能力域"}</a>
+          <p class="skill-story-category">PUBLIC COMPATIBILITY ROUTE · {escape(replacement.domain.plugin)}</p>
+          <h1>{escape(legacy_name)}</h1>
+          <p class="skill-story-summary">{escape(summary)}</p>
+          <p class="skill-story-byline">SOIA Public Catalog · {escape(commit[:10])} · {escape(commit_date)}</p>
+        </div><div class="skill-story-figure" aria-label="{"Compatibility route" if en else "兼容路径"}"><div class="skill-story-figure-grid">
+          <div><span>LEGACY</span><strong>{escape(legacy_name)}</strong></div><div><span>STATUS</span><strong>{"Moved<br />with intent" if en else "已更新<br />保留入口"}</strong></div><div><span>CURRENT</span><strong>{escape(replacement.name)}</strong></div>
+        </div></div></div></section>
+        <section><div class="shell skill-story-layout"><article class="skill-story-body"><section><p class="kicker">COMPATIBILITY</p><h2>{headline}</h2><p>{body_copy}</p><p><a href="{target}">{"Open the current Skill →" if en else "打开当前 Skill →"}</a></p></section></article><aside class="skill-story-aside"><p class="mono-label">CURRENT PUBLIC SKILL</p><p>{escape(replacement.summary_en if en else replacement.summary_zh)}</p><a class="button button--ink" href="{target}">{"Open current Skill" if en else "打开当前 Skill"} →</a></aside></div></section>
+      </div>"""
+    return document(
+        locale,
+        "open",
+        f"{legacy_name} ({'moved' if en else '已更新'}) | SOIA Open",
+        summary,
+        path,
         main,
     )
 
@@ -821,6 +848,25 @@ def main() -> int:
                     render_skill(locale, skill, commit, commit_date),
                 )
                 generated_paths.append(path)
+
+    # A previous public route remains a compatibility page instead of an
+    # invisible stale file. The current Skill page remains the canonical place
+    # for instructions and installation.
+    skills_by_name = {skill.name: skill for skill in skills}
+    legacy_aliases = {
+        "soia-pkm-maintain": "soia-pkm-maintain-vault-health",
+    }
+    for legacy_name, replacement_name in legacy_aliases.items():
+        replacement = skills_by_name.get(replacement_name)
+        if replacement is None:
+            raise SystemExit(f"missing replacement Skill for legacy route: {replacement_name}")
+        for locale in ("zh", "en"):
+            path = route(locale, f"open/{replacement.domain.slug}/{legacy_name}/")
+            write_page(
+                ROOT / path.lstrip("/") / "index.html",
+                render_legacy_skill_alias(locale, legacy_name, replacement, commit, commit_date),
+            )
+            generated_paths.append(path)
 
     write_sitemap(generated_paths, max(commit_date, date.today().isoformat()))
     print(

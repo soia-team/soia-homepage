@@ -1,24 +1,33 @@
 <!doctype html>
 <html lang="zh-CN">
   <head>
-    <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="color-scheme" content="light" /><meta name="theme-color" content="#fbfaf7" />
-    <title>SOIA 文档｜安装、边界与证据</title><meta name="description" content="SOIA 公开文档：如何选择、安装、组合和验证公开 Skills，并理解公开能力与私有资料的边界。" />
-    <meta property="og:title" content="SOIA 文档｜安装、边界与证据" /><meta property="og:description" content="从第一个公开 Skill 开始，沿着安装、组合、验证和交接完成一次可复核运行。" /><meta property="og:type" content="website" /><meta property="og:url" content="https://soia-team.github.io/docs/" /><meta property="og:image" content="https://soia-team.github.io/assets/og.png" /><meta property="og:image:alt" content="SOIA 公开文档" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:image" content="https://soia-team.github.io/assets/og.png" />
+    <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="color-scheme" content="light" /><meta name="theme-color" content="#ffffff" />
+    <title>SOIA 文档｜安装、边界与证据</title><meta name="description" content="SOIA 公开文档：从发现一个 Skill、选择宿主、安装能力，到理解公开资料与私有资料的边界。" />
+    <meta property="og:title" content="SOIA 文档｜安装、边界与证据" /><meta property="og:description" content="从一个公开 Skill 开始，跑出一条可复核的使用路径。" /><meta property="og:type" content="website" /><meta property="og:url" content="https://soia-team.github.io/docs/" /><meta property="og:image" content="https://soia-team.github.io/assets/og.png" /><meta property="og:image:alt" content="SOIA 文档" /><meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://soia-team.github.io/docs/" /><link rel="alternate" hreflang="zh-CN" href="https://soia-team.github.io/docs/" /><link rel="alternate" hreflang="en" href="https://soia-team.github.io/en/docs/" /><link rel="alternate" hreflang="x-default" href="https://soia-team.github.io/docs/" /><link rel="stylesheet" href="/assets/styles.css" />
   </head>
-  <body data-page="docs"><a class="skip-link" href="#main">跳到正文</a><div data-site-header></div>
+  <body data-page="docs" class="docs-v3">
+    <a class="skip-link" href="#main">跳到正文</a><div data-site-header></div>
     <main id="main">
-      <section class="page-hero docs-hero"><div class="shell"><p class="eyebrow">DOCS / 文档</p><h1>从一个公开 Skill 开始，<br /><em>跑出一条可复核路径。</em></h1><p class="page-lead">这份文档讲清楚 SOIA 能力如何被发现、安装、组合和验收。它只说明公开能力，不要求你提交密码、Token、Cookie 或客户资料。</p></div></section>
-      <section class="section"><div class="shell docs-layout"><nav class="docs-nav" aria-label="文档章节"><a href="#start">01 · 从哪里开始</a><a href="#install">02 · 安装方式</a><a href="#boundary">03 · 四层边界</a><a href="#evidence">04 · 证据与交接</a></nav><article class="docs-article">
-        <section id="start"><p class="kicker">01 / START</p><h2>先按结果找能力，不必先背名字。</h2><p>进入<a href="/open/">开放生态</a>，按能力域或任务关键词浏览。每个 Skill 详情页都有一句话摘要、输入与输出、安装入口、安全边界和公共源码链接。</p><ol><li>写下一个重复任务的结果，而不是一个工具名。</li><li>在能力域目录中找到最小可用 Skill。</li><li>先看公开说明，再决定是否安装整个领域插件。</li></ol></section>
-        <section id="install"><p class="kicker">02 / INSTALL</p><h2>三种入口，对应三种使用深度。</h2><p>公开目录同时面向 Claude Code、Codex 和 WorkBuddy。命令以领域插件为单位，单 Skill 入口适合快速试用。</p><pre class="code-block">claude plugin marketplace add soia-team/soia-open-skills
+      <div class="docs-v3-bar"><span class="docs-v3-brand">SOIA docs</span><code>PUBLIC CAPABILITY REFERENCE / 01</code></div>
+      <div class="docs-v3-layout">
+        <nav class="docs-v3-nav" aria-label="文档导航"><div><strong>从这里开始</strong><a class="is-current" href="#start">快速开始</a><a href="#choose">选择能力</a><a href="#install">安装方式</a></div><div class="nav-group"><strong>使用与边界</strong><a href="#contract">能力契约</a><a href="#safety">安全与证据</a><a href="/open/">开放生态目录</a></div><div class="nav-group"><strong>产品资料</strong><a href="/products/">产品形态</a><a href="/spec/">产品规格</a><a href="/showcase/">成品展示</a></div></nav>
+        <article class="docs-v3-article">
+          <p class="docs-v3-breadcrumb">Docs › 使用入门 › 快速开始</p><h1>从一个公开 Skill 开始。</h1><p class="docs-v3-lead">SOIA 不是让你先背完整技能目录。先写下你希望重复完成的结果，找到最小的公开能力，在一个宿主里完成一次可检查的运行。</p>
+          <section id="start"><h2>01. 先选一个低风险任务</h2><p>优先选择输入清楚、输出可见、失败可撤回的任务，例如归档一篇公开网页、整理一份自己有权使用的资料，或生成一份需要人工确认的发布草稿。不要从付款、删除、权限变更或真实客户数据开始。</p><ol><li>写“我要得到什么结果”，不是“我要用哪个工具”。</li><li>用结果关键词在<a href="/open/">开放生态</a>里找到一个能力域与最小 Skill。</li><li>打开详情页，先读输入、输出、边界与公开证据。</li></ol></section>
+          <section id="choose"><h2>02. 看清它会交付什么</h2><p>每个公开 Skill 都应清楚说明它的起点、处理范围和回执。Skill 的说明公开，不等于你的资料要公开；使用时只给出你有权处理的输入。</p><div class="docs-v3-contract"><article><span>INPUT</span><h3>有权使用的起点</h3><p>文件、URL、仓库、工作区或一个明确结果目标。</p></article><article><span>PROCESS</span><h3>受限的执行</h3><p>最小可靠步骤，风险上升处保留预览与批准。</p></article><article><span>OUTPUT</span><h3>可见的结果</h3><p>文件、草稿、结构化资料或操作建议，而不是模糊状态。</p></article><article><span>RECEIPT</span><h3>可以交接的回执</h3><p>产物、检查、限制、阻塞和下一步都说清楚。</p></article></div></section>
+          <section id="install"><h2>03. 选择一个宿主并安装</h2><p>先选择你正在使用的一个工作环境。Claude Code、Codex 和 WorkBuddy 是宿主或 Agent 环境，不是模型；没有必要一开始把三个环境全部安装并配置。</p><pre class="docs-v3-code"># Claude Code：添加公开市场，再安装一个领域插件
+claude plugin marketplace add soia-team/soia-open-skills
 claude plugin install soia-meta@soia
 
+# Codex：添加公开市场，再启用一个领域插件
 codex plugin marketplace add soia-team/soia-open-skills
-codex plugin add soia-meta@soia</pre><p>安装后先运行一个低风险、可撤回的任务；涉及发布、付款、删除、权限或外部写入时，保留人工确认。</p></section>
-        <section id="boundary"><p class="kicker">03 / BOUNDARY</p><h2>四层模型，把能力和资料分开。</h2><div class="spec-grid"><article class="spec-card"><span class="spec-label">L1 · SOIA</span><h3>公共入口</h3><p>品牌、导航、文档和产品说明，告诉你从哪里开始。</p></article><article class="spec-card"><span class="spec-label">L2 · OPEN</span><h3>开放生态</h3><p>通用 Skills、公开插件、源码、许可证和版本证据。</p></article><article class="spec-card"><span class="spec-label">L3 · DOMAIN</span><h3>能力域</h3><p>知识、环境、工程、内容、设计、协作和教育等领域目录。</p></article><article class="spec-card"><span class="spec-label">L4 · DELIVERY</span><h3>交付形态</h3><p>Skill、Workflow、Plugin、Expert 或经授权的私有适配。</p></article></div></section>
-        <section id="evidence"><p class="kicker">04 / EVIDENCE</p><h2>每一次运行，都应该留下能交接的回执。</h2><p>公开能力的事实真源是对应 GitHub 仓库和规范文档。运行结束后至少记录输入、输出、文件变化、验证结果、已知限制和下一步。</p><ul><li><a href="https://github.com/soia-team/soia-open-skills" target="_blank" rel="noreferrer">公开 Skill 总仓 ↗</a>：插件、manifest 和索引。</li><li><a href="https://github.com/soia-team/soia-open-pkm-vault-skills" target="_blank" rel="noreferrer">知识与内容能力仓 ↗</a>：归档、提炼和内容转换。</li><li>涉及私有资料时，使用<a href="/services/">服务与合作</a>页面确认范围；公共仓库不承载授权资料。</li></ul></section>
-      </article><nav class="docs-toc" aria-label="本页目录"><a href="#start">从哪里开始</a><a href="#install">安装方式</a><a href="#boundary">四层边界</a><a href="#evidence">证据与交接</a></nav></div></section>
+codex plugin add soia-meta@soia</pre><p>安装之后，先运行一个低风险任务。插件市场的可安装版本可能在发布中暂时落后公开文档；需要精确版本时，以公开 marketplace manifest 和仓库版本为准。</p></section>
+          <section id="contract"><h2>04. 把公开能力和私有交付分开</h2><p>SOIA 的公共入口、开放生态、能力域与交付形态是四个不同层次。这样“免费能用什么”和“需要授权才能做什么”不会混淆。</p><div class="docs-v3-contract"><article><span>L1 · SOIA</span><h3>公共入口</h3><p>产品、价格、文档和导航，帮助你选择下一步。</p></article><article><span>L2 · OPEN</span><h3>开放生态</h3><p>通用 Skill、公开仓、许可证、manifest 与版本证据。</p></article><article><span>L3 · DOMAIN</span><h3>能力域</h3><p>按知识、内容、工程、环境、设计等真实任务分组。</p></article><article><span>L4 · DELIVERY</span><h3>交付形态</h3><p>Skill、Workflow、Plugin、Expert 或授权范围内的私有适配。</p></article></div></section>
+          <section id="safety"><h2>05. 每一次运行留下证据</h2><p>一次可交接的运行至少写清输入、输出、文件变化、检查、已知限制和下一步。密码、Token、Cookie、客户文件以及受限制的业务资料不应放进公开 Issue、公共仓库或示例页面。</p><p>公共事实以<a href="https://github.com/soia-team/soia-open-skills" target="_blank" rel="noreferrer">SOIA 开源总仓 ↗</a>与对应 Skill 的规范文档为准。需要把授权资料接入流程时，先在<a href="/services/">服务与合作</a>中用非敏感信息讨论范围。</p></section>
+        </article>
+        <nav class="docs-v3-toc" aria-label="本页目录"><strong>本页内容</strong><a href="#start">01. 低风险任务</a><a href="#choose">02. 交付结构</a><a href="#install">03. 安装一个宿主</a><a href="#contract">04. 公开与私有</a><a href="#safety">05. 证据与安全</a></nav>
+      </div>
     </main><div data-site-footer></div><script src="/assets/site.js" defer></script>
   </body>
 </html>

@@ -589,6 +589,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://soia-team.github.io/open/pkm-vault/soia-pkm-clip-x-profile/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://soia-team.github.io/open/pkm-vault/soia-pkm-clip-x/</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -1064,6 +1070,12 @@
   </url>
   <url>
     <loc>https://soia-team.github.io/en/open/pkm-vault/soia-pkm-clip-wechat-article/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://soia-team.github.io/en/open/pkm-vault/soia-pkm-clip-x-profile/</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
