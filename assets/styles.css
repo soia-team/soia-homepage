@@ -2270,3 +2270,53 @@ body[data-page="course"] .course-enroll-steps li::before { content: counter(step
   .od-home-v4-step + .od-home-v4-step { border-top: 1px solid #1b1a18; border-left: 0; }
   .od-home-v4-stats article + article { padding-left: 0; border-top: 1px solid #dedbd5; border-left: 0; }
 }
+
+/* Template mode: neutral content, compact type, and an original CSS-only fallback.
+   The visual system is intentionally kept separate from third-party brand assets. */
+.template-page .saas-v3-hero h1,
+.template-page .pricing-v3-hero h1,
+.template-page .showcase-v3-hero h1,
+.template-page .docs-v3-article h1,
+.template-page .spec-v3-title { font-size: clamp(38px, 4.45vw, 62px); }
+.template-page .saas-v3-titlebar h2,
+.template-page .pricing-v3-matrix-head h2,
+.template-page .spec-v3-section h2 { font-size: clamp(30px, 3.6vw, 47px); }
+.template-page .saas-v3-proof strong,
+.template-page .showcase-v3-note h3,
+.template-page .spec-v3-rule h3 { font-size: 22px; }
+.template-page .saas-v3-lead,
+.template-page .pricing-v3-hero p,
+.template-page .docs-v3-article p,
+.template-page .spec-v3-lead { font-size: 15px; }
+.template-home .od-home-v4-title-plate h1 { font-size: clamp(45px, 5.25vw, 70px); }
+.template-home .od-home-v4-title-plate h1 span { font-size: clamp(25px, 2.75vw, 38px); }
+.template-home .od-home-v4-intro { max-width: 700px; font-size: 15px; }
+.template-home .od-home-v4-flow-head h2 { font-size: clamp(35px, 4.45vw, 57px); }
+.template-home .od-home-v4-step h3 { font-size: 27px; }
+.template-page .pricing-v3-plan { min-height: 520px; }
+.template-page .pricing-v3-plan h2 { font-size: clamp(27px, 2.8vw, 38px); }
+
+.template-fallback { position: relative; display: grid; min-height: calc(100svh - 76px); overflow: hidden; place-items: center; background: #fafaf8; color: #171614; }
+.template-fallback::before { position: absolute; inset: 0; opacity: .72; background: linear-gradient(90deg, rgba(19,18,16,.035) 1px, transparent 1px), linear-gradient(rgba(19,18,16,.035) 1px, transparent 1px); background-size: 56px 56px; content: ""; }
+.template-fallback-grid { position: absolute; top: 50%; left: 50%; width: min(670px, 78vw); aspect-ratio: 1.55; border: 1px solid #d7d4ce; transform: translate(-50%, -50%) rotate(-4deg); }
+.template-fallback-grid::before { position: absolute; top: 12%; left: 14%; width: 48%; aspect-ratio: 1; border: 1px solid #d7d4ce; border-radius: 50%; box-shadow: inset 0 0 0 18px rgba(119, 227, 88, .12); content: ""; }
+.template-fallback-grid::after { position: absolute; right: 10%; bottom: 12%; width: 30%; height: 18%; border: 1px solid #c7c3bb; background: linear-gradient(145deg, #e7d6ff, #8abcf2); content: ""; transform: rotate(8deg); }
+.template-fallback-content { position: relative; z-index: 1; max-width: 790px; padding: 118px 0; text-align: center; }
+.template-fallback-content .eyebrow { margin: 0 0 26px; color: #4ca743; }
+.template-fallback-plate { display: inline-block; max-width: 700px; padding: 23px 35px; border: 1px solid #76df59; background: rgba(255,255,255,.68); }
+.template-fallback h1 { margin: 0; font-family: var(--v3-serif); font-size: clamp(39px, 5vw, 66px); font-weight: 600; letter-spacing: -.06em; line-height: .94; }
+.template-fallback-content > p:not(.eyebrow) { max-width: 600px; margin: 28px auto 0; color: #655f58; font-size: 15px; line-height: 1.72; }
+.template-fallback-content .button { min-height: 46px; margin-top: 26px; border-radius: 999px; font-size: 12px; }
+
+@media (max-width: 690px) {
+  .template-page .saas-v3-hero h1,
+  .template-page .pricing-v3-hero h1,
+  .template-page .showcase-v3-hero h1,
+  .template-page .docs-v3-article h1,
+  .template-page .spec-v3-title { font-size: clamp(37px, 11.4vw, 54px); }
+  .template-home .od-home-v4-title-plate h1 { font-size: clamp(43px, 13vw, 58px); }
+  .template-home .od-home-v4-title-plate h1 span { font-size: clamp(24px, 7.5vw, 32px); }
+  .template-fallback { min-height: calc(100svh - 60px); }
+  .template-fallback-content { padding: 88px 0; }
+  .template-fallback-plate { padding: 20px 16px; }
+}

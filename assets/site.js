@@ -3,28 +3,25 @@ document.documentElement.classList.add("js");
 const NAV_ITEMS = {
   zh: [
     ["products", "产品", "/products/"],
+    ["showcase", "展示", "/showcase/"],
     ["pricing", "价格", "/pricing/"],
-    ["open", "开放生态", "/open/"],
-    ["course", "课程", "/course/"],
-    ["services", "服务与合作", "/services/"],
     ["docs", "文档", "/docs/"],
-    ["about", "关于 SOIA", "/about/"],
+    ["spec", "规格", "/spec/"],
+    ["about", "关于", "/about/"],
   ],
   en: [
     ["products", "Products", "/en/products/"],
+    ["showcase", "Showcase", "/en/showcase/"],
     ["pricing", "Pricing", "/en/pricing/"],
-    ["open", "Open ecosystem", "/en/open/"],
-    ["course", "Course", "/en/course/"],
-    ["services", "Services & partnerships", "/en/services/"],
     ["docs", "Docs", "/en/docs/"],
-    ["about", "About SOIA", "/en/about/"],
+    ["spec", "Spec", "/en/spec/"],
+    ["about", "About", "/en/about/"],
   ],
 };
 
-const REQUEST_URL =
-  "https://github.com/soia-team/soia-open-skills/issues/new?title=%5BSOIA%20%E6%B5%81%E7%A8%8B%E8%AF%8A%E6%96%AD%5D&body=%E8%AF%B7%E5%8F%AA%E5%A1%AB%E5%86%99%E9%9D%9E%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%EF%BC%9A%0A-%20%E6%83%B3%E8%A6%81%E6%94%B9%E9%80%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%EF%BC%9A%0A-%20%E5%BD%93%E5%89%8D%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA%EF%BC%9A%0A-%20%E4%BD%BF%E7%94%A8%E7%9A%84%E5%AE%BF%E4%B8%BB%EF%BC%9A%0A-%20%E8%B5%84%E6%96%99%E6%95%8F%E6%84%9F%E5%BA%A6%EF%BC%9A";
-const COURSE_URL =
-  "https://github.com/soia-team/soia-open-skills/issues/new?title=%5BSOIA%20%E8%AF%BE%E7%A8%8B%E9%A6%96%E6%9C%9F%E7%94%B3%E8%AF%B7%5D&body=%E8%AF%B7%E5%8F%AA%E5%A1%AB%E5%86%99%E9%9D%9E%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%EF%BC%9A%0A-%20%E4%BD%A0%E6%83%B3%E5%B0%81%E8%A3%85%E7%9A%84%E9%87%8D%E5%A4%8D%E5%B7%A5%E4%BD%9C%EF%BC%9A%0A-%20%E7%9B%AE%E5%89%8D%E4%BD%BF%E7%94%A8%E7%9A%84%20AI%20%E5%B7%A5%E5%85%B7%EF%BC%9A%0A-%20%E6%98%AF%E5%90%A6%E6%9C%89%E5%8F%AF%E7%94%A8%E7%9A%84%20SOP%EF%BC%9A";
+const REQUEST_URL = "/";
+const COURSE_URL = "/";
+const TEMPLATE_PAGES = new Set(["home", "products", "pricing", "showcase", "docs", "spec"]);
 
 function getLocale() {
   return document.documentElement.lang.toLowerCase().startsWith("en") ? "en" : "zh";
@@ -45,8 +42,8 @@ function renderHeader() {
   const current = document.body.dataset.page || "home";
   const locale = getLocale();
   const copy = locale === "en"
-    ? { home: "SOIA home", menu: "Menu", nav: "Primary navigation", start: "Open ecosystem", language: "中文", languageLabel: "切换到中文" }
-    : { home: "SOIA 首页", menu: "菜单", nav: "主导航", start: "进入开放生态", language: "EN", languageLabel: "Switch to English" };
+    ? { home: "Studio home", menu: "Menu", nav: "Primary navigation", start: "View prototype", language: "中文", languageLabel: "切换到中文" }
+    : { home: "Studio 首页", menu: "菜单", nav: "主导航", start: "查看原型", language: "EN", languageLabel: "Switch to English" };
   const links = NAV_ITEMS[locale].map(
     ([id, label, href]) =>
       `<a href="${href}" ${id === current ? 'aria-current="page"' : ""}>${label}</a>`
@@ -57,7 +54,7 @@ function renderHeader() {
       <div class="shell header-inner">
         <a class="brand" href="${locale === "en" ? "/en/" : "/"}" aria-label="${copy.home}">
           <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span>SOIA</span>
+          <span>STUDIO</span>
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
           <span>${copy.menu}</span><i aria-hidden="true"></i>
@@ -65,7 +62,7 @@ function renderHeader() {
         <nav class="site-nav" id="site-nav" aria-label="${copy.nav}">${links}</nav>
         <div class="header-actions">
           <a class="language-switch" href="${languageTarget(locale)}" hreflang="${locale === "en" ? "zh-CN" : "en"}" aria-label="${copy.languageLabel}">${copy.language}</a>
-          <a class="button button--small button--ink header-action" href="${locale === "en" ? "/en/open/" : "/open/"}">${copy.start}</a>
+          <a class="button button--small button--ink header-action" href="${locale === "en" ? "/en/products/" : "/products/"}">${copy.start}</a>
         </div>
       </div>
     </header>`;
@@ -90,19 +87,41 @@ function renderFooter() {
         <div>
           <a class="brand brand--footer" href="${en ? "/en/" : "/"}">
             <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span>SOIA</span>
+            <span>STUDIO</span>
           </a>
-          <p>System · Orchestration · Intelligence · Assurance</p>
+          <p>${en ? "A neutral interface prototype" : "一个中性界面原型"}</p>
         </div>
-        <div><strong>${en ? "Explore" : "探索"}</strong><a href="${en ? "/en/products/" : "/products/"}">${en ? "Products" : "产品"}</a><a href="${en ? "/en/pricing/" : "/pricing/"}">${en ? "Pricing" : "价格"}</a><a href="${en ? "/en/open/" : "/open/"}">${en ? "Open ecosystem" : "开放生态"}</a><a href="${en ? "/en/course/" : "/course/"}">${en ? "Course" : "课程"}</a><a href="${en ? "/en/services/" : "/services/"}">${en ? "Services" : "服务与合作"}</a></div>
-        <div><strong>${en ? "More" : "更多"}</strong><a href="${en ? "/en/showcase/" : "/showcase/"}">${en ? "Skill showcase" : "技能成品"}</a><a href="${en ? "/en/docs/" : "/docs/"}">${en ? "Docs" : "文档"}</a><a href="${en ? "/en/spec/" : "/spec/"}">${en ? "Product spec" : "产品规格"}</a><a href="${en ? "/en/about/" : "/about/"}">${en ? "About SOIA" : "关于 SOIA"}</a><a href="https://github.com/soia-team" target="_blank" rel="noreferrer">GitHub ↗</a></div>
-        <div><strong>${en ? "Boundaries" : "边界"}</strong><span>Local-first</span><span>Human-controlled</span><span>Evidence-backed</span></div>
+        <div><strong>${en ? "Explore" : "浏览"}</strong><a href="${en ? "/en/products/" : "/products/"}">${en ? "Products" : "产品"}</a><a href="${en ? "/en/showcase/" : "/showcase/"}">${en ? "Showcase" : "展示"}</a><a href="${en ? "/en/pricing/" : "/pricing/"}">${en ? "Pricing" : "价格"}</a></div>
+        <div><strong>${en ? "Reference" : "参考"}</strong><a href="${en ? "/en/docs/" : "/docs/"}">${en ? "Docs" : "文档"}</a><a href="${en ? "/en/spec/" : "/spec/"}">${en ? "Spec" : "规格"}</a><a href="${en ? "/en/about/" : "/about/"}">${en ? "About" : "关于"}</a></div>
+        <div><strong>${en ? "Template status" : "模板状态"}</strong><span>${en ? "Content removed" : "业务内容已移除"}</span><span>${en ? "Ready for replacement" : "等待替换真实内容"}</span></div>
       </div>
       <div class="shell footer-bottom">
-        <span>© <span data-year></span> SOIA Team</span>
-        <span>${en ? "MIT licensed website · No passwords, tokens, or cookies collected" : "MIT licensed website · 不收集密码、Token 或 Cookie"}</span>
+        <span>© <span data-year></span> Studio prototype</span>
+        <span>${en ? "Temporary content-free presentation" : "临时无业务内容展示"}</span>
       </div>
     </footer>`;
+}
+
+function renderTemplateFallback() {
+  const current = document.body.dataset.page || "home";
+  if (TEMPLATE_PAGES.has(current)) return;
+  const locale = getLocale();
+  const en = locale === "en";
+  const main = document.querySelector("main");
+  if (!main) return;
+  document.body.classList.add("template-mode");
+  document.title = en ? "STUDIO | Interface prototype" : "STUDIO｜界面原型";
+  document.querySelector('meta[name="description"]')?.setAttribute("content", en ? "A content-free interface prototype." : "暂时移除业务内容的界面原型。 ");
+  main.innerHTML = `
+    <section class="template-fallback" aria-labelledby="template-fallback-title">
+      <div class="template-fallback-grid" aria-hidden="true"></div>
+      <div class="shell template-fallback-content">
+        <p class="eyebrow">${en ? "TEMPLATE MODE / CONTENT ON HOLD" : "模板状态 / 内容暂缓"}</p>
+        <div class="template-fallback-plate"><h1 id="template-fallback-title">${en ? "This page is a frame." : "这一页目前只保留框架。"}</h1></div>
+        <p>${en ? "The production copy, products, pricing, and case material are intentionally hidden while the site structure is being rebuilt." : "在站点结构重做期间，产品、价格、案例和业务说明均暂时隐藏；这里保留的是可继续替换的页面骨架。"}</p>
+        <a class="button button--ink" href="${en ? "/en/" : "/"}">${en ? "Back to the prototype" : "返回原型首页"}</a>
+      </div>
+    </section>`;
 }
 
 function wireLinks() {
@@ -235,6 +254,7 @@ function wireShowcase() {
   setSlide(0);
 }
 
+renderTemplateFallback();
 renderHeader();
 renderFooter();
 wireLinks();
