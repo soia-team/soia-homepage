@@ -81,6 +81,25 @@ const NAV_GROUPS = {
   ],
 };
 
+const FOOTER_GROUPS = {
+  zh: [
+    { title: "产品", items: [["产品体系", "/products/"], ["课程", "/course/"], ["价格", "/pricing/"], ["服务与合作", "/services/"]] },
+    { title: "能力形态", items: [["Skill", "/open/?tab=skill"], ["Workflow", "/products/#catalog"], ["Plugin", "/products/#catalog"], ["Expert", "/products/#catalog"]] },
+    { title: "开放生态", items: [["全部 Skills", "/open/?tab=skill"], ["知识库与内容", "/open/pkm-vault/"], ["内容生产", "/open/media-content/"], ["开发与设计", "/open/development-design/"]] },
+    { title: "运行宿主", items: [["Codex", "/open/environment/soia-env-codex-setup-support/"], ["Claude Code", "/open/environment/soia-env-claude-cli-install/"], ["WorkBuddy", "/open/environment/soia-env-workbuddy-install/"], ["GitHub", "https://github.com/soia-team"]] },
+    { title: "资源", items: [["博客", "/blog/"], ["文档", "/docs/"], ["成品展示", "/showcase/"], ["产品规格", "/spec/"]] },
+    { title: "SOIA", items: [["关于", "/about/"], ["公开方法", "/open/"], ["服务边界", "/services/"], ["公开仓库", "https://github.com/soia-team/soia-open-skills"]] },
+  ],
+  en: [
+    { title: "Products", items: [["Product system", "/en/products/"], ["Course", "/en/course/"], ["Pricing", "/en/pricing/"], ["Services", "/en/services/"]] },
+    { title: "Capability", items: [["Skill", "/en/open/?tab=skill"], ["Workflow", "/en/products/#catalog"], ["Plugin", "/en/products/#catalog"], ["Expert", "/en/products/#catalog"]] },
+    { title: "Open ecosystem", items: [["All Skills", "/en/open/?tab=skill"], ["Knowledge", "/en/open/pkm-vault/"], ["Media", "/en/open/media-content/"], ["Dev & design", "/en/open/development-design/"]] },
+    { title: "Hosts", items: [["Codex", "/en/open/environment/soia-env-codex-setup-support/"], ["Claude Code", "/en/open/environment/soia-env-claude-cli-install/"], ["WorkBuddy", "/en/open/environment/soia-env-workbuddy-install/"], ["GitHub", "https://github.com/soia-team"]] },
+    { title: "Resources", items: [["Blog", "/en/blog/"], ["Docs", "/en/docs/"], ["Showcase", "/en/showcase/"], ["Product spec", "/en/spec/"]] },
+    { title: "SOIA", items: [["About", "/en/about/"], ["Open methods", "/en/open/"], ["Service boundary", "/en/services/"], ["Repositories", "https://github.com/soia-team/soia-open-skills"]] },
+  ],
+};
+
 const REQUEST_URL = "https://github.com/soia-team/soia-open-skills/issues/new";
 const COURSE_URL = "https://github.com/soia-team/soia-open-skills/issues/new";
 
@@ -100,6 +119,7 @@ function languageTarget(locale) {
 function renderHeader() {
   const host = document.querySelector("[data-site-header]");
   if (!host) return;
+  host.classList.add("site-header-host");
   const current = document.body.dataset.page || "home";
   const locale = getLocale();
   const copy = locale === "en"
@@ -123,8 +143,8 @@ function renderHeader() {
   }).join("");
 
   host.innerHTML = `
-    <header class="site-header">
-      <div class="shell header-inner">
+    <header class="site-header site-header--floating">
+      <div class="header-inner header-inner--floating">
         <a class="brand" href="${locale === "en" ? "/en/" : "/"}" aria-label="${copy.home}">
           <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
           <span>SOIA</span>
@@ -208,16 +228,31 @@ function renderFooter() {
   if (!host) return;
   const locale = getLocale();
   const en = locale === "en";
+  host.classList.add("site-footer-host");
+  const groups = FOOTER_GROUPS[locale].map((group) => `
+    <section class="footer-directory-column">
+      <h2>${group.title}</h2>
+      <ul>${group.items.map(([label, href]) => {
+        const external = href.startsWith("http");
+        return `<li><a href="${href}"${external ? ' target="_blank" rel="noreferrer"' : ""}>${label}${external ? '<span aria-hidden="true">↗</span>' : ""}</a></li>`;
+      }).join("")}</ul>
+    </section>`).join("");
   host.innerHTML = `
-    <footer class="site-footer">
-      <div class="shell footer-signal">
-        <div class="footer-signal-title"><p class="eyebrow">SOIA / BUILD WITH CLARITY</p><h2>${en ? "One task can become a durable capability." : "从一个任务开始，做成可持续的能力。"}</h2></div>
-        <div class="footer-signal-actions"><a class="button button--light" href="${en ? "/en/open/" : "/open/"}">${en ? "Explore the ecosystem" : "浏览开放生态"}</a><a class="footer-text-link" href="${en ? "/en/docs/" : "/docs/"}">${en ? "Read the docs" : "阅读资源"} <span aria-hidden="true">↗</span></a></div>
-      </div>
-      <div class="shell footer-bottom footer-bottom--signal">
-        <a class="brand brand--footer" href="${en ? "/en/" : "/"}"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>SOIA</span></a>
-        <span>© <span data-year></span> SOIA Team</span>
-        <span>${en ? "Open methods · Scoped private delivery" : "公开方法 · 有边界的私有交付"}</span>
+    <footer class="site-footer site-footer--directory">
+      <div class="footer-directory-shell">
+        <div class="footer-directory-top">
+          <div class="footer-directory-brand">
+            <a class="brand" href="${en ? "/en/" : "/"}"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>SOIA</span></a>
+            <p>${en ? "Open capabilities for real work, with a clear boundary for private delivery." : "让公开能力先被看见、安装和验证，再把私有流程按边界落地。"}</p>
+          </div>
+          <nav class="footer-directory-grid" aria-label="${en ? "Footer navigation" : "页脚导航"}">${groups}</nav>
+        </div>
+        <div class="footer-directory-legal">
+          <span>© <span data-year></span> SOIA Team</span>
+          <span>${en ? "Open methods · Scoped private delivery" : "公开方法 · 有边界的私有交付"}</span>
+          <a href="https://github.com/soia-team" target="_blank" rel="noreferrer">GitHub ↗</a>
+        </div>
+        <p class="footer-directory-wordmark" aria-hidden="true">SOIA<span>.</span></p>
       </div>
     </footer>`;
 }
