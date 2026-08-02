@@ -5,15 +5,17 @@ const NAV_GROUPS = {
     {
       id: "products",
       label: "产品",
+      landing: "/products/",
       pages: ["products", "course"],
       columns: [
         { title: "产品", items: [["产品体系", "/products/", "Skill 到 Expert"], ["课程", "/course/", "亲手完成一个工作流"], ["产品规格", "/spec/", "交付与版本边界"]] },
-        { title: "交付形态", items: [["Skill", "/open/?tab=skill", "最小能力单元"], ["Workflow", "/products/#catalog", "可复跑的任务链"], ["Plugin", "/products/#catalog", "Codex / Claude Code 入口"], ["Expert", "/products/#catalog", "WorkBuddy 角色系统"]] },
+        { title: "交付形态", items: [["Skill", "/open/#skills", "最小能力单元"], ["Workflow", "/products/#catalog", "可复跑的任务链"], ["Plugin", "/products/#catalog", "Codex / Claude Code 入口"], ["Expert", "/open/experts/", "WorkBuddy 角色系统"]] },
       ],
     },
     {
       id: "solutions",
       label: "解决方案",
+      landing: "/services/",
       pages: ["services", "showcase", "spec"],
       columns: [
         { title: "从任务开始", items: [["内容与知识", "/open/pkm-vault/", "归档、提炼与发布"], ["设计与演示", "/open/development-design/", "原型、图表与演示"], ["工程与交付", "/open/development/", "编码、测试与发版"]] },
@@ -23,16 +25,18 @@ const NAV_GROUPS = {
     {
       id: "open",
       label: "开放生态",
+      landing: "/open/",
       pages: ["open"],
       columns: [
-        { title: "能力目录", items: [["全部 Skills", "/open/?tab=skill", "按结果与领域查找"], ["知识库与内容", "/open/pkm-vault/", "资料进入可复用系统"], ["内容生产", "/open/media-content/", "文章、配图与发布草稿"], ["开发与设计", "/open/development-design/", "产品与技术设计"]] },
-        { title: "宿主与生态", items: [["Codex", "/open/environment/soia-env-codex-setup-support/", "配置与运行支持"], ["Claude Code", "/open/environment/soia-env-claude-cli-install/", "安装与能力加载"], ["WorkBuddy", "/open/environment/soia-env-workbuddy-install/", "Expert 入口"], ["GitHub 源码", "https://github.com/soia-team/soia-open-skills", "审查公开能力"]] },
+        { title: "能力目录", items: [["全部 Skills", "/open/#skills", "按结果与领域查找"], ["全部 Experts", "/open/experts/", "按角色与领域查找"], ["知识库与内容", "/open/pkm-vault/", "资料进入可复用系统"], ["开发与设计", "/open/development-design/", "产品与技术设计"]] },
+        { title: "宿主与生态", items: [["Codex", "/open/environment/soia-env-codex-setup-support/", "配置与运行支持"], ["Claude Code", "/open/environment/soia-env-claude-cli-install/", "安装与能力加载"], ["WorkBuddy Experts", "/open/experts/", "角色化能力入口"], ["GitHub 源码", "https://github.com/soia-team/soia-open-skills", "审查公开能力"]] },
       ],
     },
     { id: "pricing", label: "价格", pages: ["pricing"], href: "/pricing/" },
     {
       id: "resources",
       label: "资源",
+      landing: "/docs/",
       pages: ["docs", "blog", "about"],
       columns: [
         { title: "阅读", items: [["博客", "/blog/", "方法、案例与更新"], ["Codex × Open Design", "/blog/codex-open-design/", "从截图到生产页面"], ["文档", "/docs/", "安装、使用与边界"], ["课程详情", "/course/", "课程结构与交付"]] },
@@ -44,15 +48,17 @@ const NAV_GROUPS = {
     {
       id: "products",
       label: "Products",
+      landing: "/en/products/",
       pages: ["products", "course"],
       columns: [
         { title: "Products", items: [["Product system", "/en/products/", "Skill to Expert"], ["Course", "/en/course/", "Build one real workflow"], ["Product spec", "/en/spec/", "Delivery and version boundaries"]] },
-        { title: "Delivery forms", items: [["Skill", "/en/open/?tab=skill", "Smallest capability"], ["Workflow", "/en/products/#catalog", "Repeatable task chain"], ["Plugin", "/en/products/#catalog", "Codex / Claude Code entry"], ["Expert", "/en/products/#catalog", "WorkBuddy role system"]] },
+        { title: "Delivery forms", items: [["Skill", "/en/open/#skills", "Smallest capability"], ["Workflow", "/en/products/#catalog", "Repeatable task chain"], ["Plugin", "/en/products/#catalog", "Codex / Claude Code entry"], ["Expert", "/en/open/experts/", "WorkBuddy role system"]] },
       ],
     },
     {
       id: "solutions",
       label: "Solutions",
+      landing: "/en/services/",
       pages: ["services", "showcase", "spec"],
       columns: [
         { title: "Start from work", items: [["Knowledge", "/en/open/pkm-vault/", "Capture, distill, publish"], ["Design", "/en/open/development-design/", "Prototypes and presentations"], ["Engineering", "/en/open/development/", "Code, test, release"]] },
@@ -62,16 +68,18 @@ const NAV_GROUPS = {
     {
       id: "open",
       label: "Open ecosystem",
+      landing: "/en/open/",
       pages: ["open"],
       columns: [
-        { title: "Capability catalog", items: [["All Skills", "/en/open/?tab=skill", "Browse by outcome"], ["Knowledge", "/en/open/pkm-vault/", "Turn material into a system"], ["Media", "/en/open/media-content/", "Articles and channel drafts"], ["Dev & design", "/en/open/development-design/", "Product and technical design"]] },
-        { title: "Hosts", items: [["Codex", "/en/open/environment/soia-env-codex-setup-support/", "Setup and runtime support"], ["Claude Code", "/en/open/environment/soia-env-claude-cli-install/", "Install and load capabilities"], ["WorkBuddy", "/en/open/environment/soia-env-workbuddy-install/", "Expert entry"], ["GitHub source", "https://github.com/soia-team/soia-open-skills", "Inspect public capability"]] },
+        { title: "Capability catalog", items: [["All Skills", "/en/open/#skills", "Browse by outcome"], ["All Experts", "/en/open/experts/", "Browse by role and domain"], ["Knowledge", "/en/open/pkm-vault/", "Turn material into a system"], ["Dev & design", "/en/open/development-design/", "Product and technical design"]] },
+        { title: "Hosts", items: [["Codex", "/en/open/environment/soia-env-codex-setup-support/", "Setup and runtime support"], ["Claude Code", "/en/open/environment/soia-env-claude-cli-install/", "Install and load capabilities"], ["WorkBuddy Experts", "/en/open/experts/", "Role-based capability entry"], ["GitHub source", "https://github.com/soia-team/soia-open-skills", "Inspect public capability"]] },
       ],
     },
     { id: "pricing", label: "Pricing", pages: ["pricing"], href: "/en/pricing/" },
     {
       id: "resources",
       label: "Resources",
+      landing: "/en/docs/",
       pages: ["docs", "blog", "about"],
       columns: [
         { title: "Learn", items: [["Blog", "/en/blog/", "Methods, cases, updates"], ["Codex × Open Design", "/en/blog/codex-open-design/", "Screenshot to production page"], ["Docs", "/en/docs/", "Install, use, boundaries"], ["Course", "/en/course/", "Structure and outcomes"]] },
@@ -84,16 +92,16 @@ const NAV_GROUPS = {
 const FOOTER_GROUPS = {
   zh: [
     { title: "产品", items: [["产品体系", "/products/"], ["课程", "/course/"], ["价格", "/pricing/"], ["服务与合作", "/services/"]] },
-    { title: "能力形态", items: [["Skill", "/open/?tab=skill"], ["Workflow", "/products/#catalog"], ["Plugin", "/products/#catalog"], ["Expert", "/products/#catalog"]] },
-    { title: "开放生态", items: [["全部 Skills", "/open/?tab=skill"], ["知识库与内容", "/open/pkm-vault/"], ["内容生产", "/open/media-content/"], ["开发与设计", "/open/development-design/"]] },
+    { title: "能力形态", items: [["Skill", "/open/#skills"], ["Workflow", "/products/#catalog"], ["Plugin", "/products/#catalog"], ["Expert", "/open/experts/"]] },
+    { title: "开放生态", items: [["全部 Skills", "/open/#skills"], ["全部 Experts", "/open/experts/"], ["知识库与内容", "/open/pkm-vault/"], ["开发与设计", "/open/development-design/"]] },
     { title: "运行宿主", items: [["Codex", "/open/environment/soia-env-codex-setup-support/"], ["Claude Code", "/open/environment/soia-env-claude-cli-install/"], ["WorkBuddy", "/open/environment/soia-env-workbuddy-install/"], ["GitHub", "https://github.com/soia-team"]] },
     { title: "资源", items: [["博客", "/blog/"], ["文档", "/docs/"], ["成品展示", "/showcase/"], ["产品规格", "/spec/"]] },
     { title: "SOIA", items: [["关于", "/about/"], ["公开方法", "/open/"], ["服务边界", "/services/"], ["公开仓库", "https://github.com/soia-team/soia-open-skills"]] },
   ],
   en: [
     { title: "Products", items: [["Product system", "/en/products/"], ["Course", "/en/course/"], ["Pricing", "/en/pricing/"], ["Services", "/en/services/"]] },
-    { title: "Capability", items: [["Skill", "/en/open/?tab=skill"], ["Workflow", "/en/products/#catalog"], ["Plugin", "/en/products/#catalog"], ["Expert", "/en/products/#catalog"]] },
-    { title: "Open ecosystem", items: [["All Skills", "/en/open/?tab=skill"], ["Knowledge", "/en/open/pkm-vault/"], ["Media", "/en/open/media-content/"], ["Dev & design", "/en/open/development-design/"]] },
+    { title: "Capability", items: [["Skill", "/en/open/#skills"], ["Workflow", "/en/products/#catalog"], ["Plugin", "/en/products/#catalog"], ["Expert", "/en/open/experts/"]] },
+    { title: "Open ecosystem", items: [["All Skills", "/en/open/#skills"], ["All Experts", "/en/open/experts/"], ["Knowledge", "/en/open/pkm-vault/"], ["Dev & design", "/en/open/development-design/"]] },
     { title: "Hosts", items: [["Codex", "/en/open/environment/soia-env-codex-setup-support/"], ["Claude Code", "/en/open/environment/soia-env-claude-cli-install/"], ["WorkBuddy", "/en/open/environment/soia-env-workbuddy-install/"], ["GitHub", "https://github.com/soia-team"]] },
     { title: "Resources", items: [["Blog", "/en/blog/"], ["Docs", "/en/docs/"], ["Showcase", "/en/showcase/"], ["Product spec", "/en/spec/"]] },
     { title: "SOIA", items: [["About", "/en/about/"], ["Open methods", "/en/open/"], ["Service boundary", "/en/services/"], ["Repositories", "https://github.com/soia-team/soia-open-skills"]] },
@@ -123,8 +131,8 @@ function renderHeader() {
   const current = document.body.dataset.page || "home";
   const locale = getLocale();
   const copy = locale === "en"
-    ? { home: "SOIA home", menu: "Menu", nav: "Primary navigation", start: "Explore ecosystem", language: "中文", languageLabel: "切换到中文" }
-    : { home: "SOIA 首页", menu: "菜单", nav: "主导航", start: "进入开放生态", language: "EN", languageLabel: "Switch to English" };
+    ? { home: "SOIA home", menu: "Menu", nav: "Primary navigation", start: "Explore ecosystem", language: "中文", languageLabel: "切换到中文", expand: "Open menu for" }
+    : { home: "SOIA 首页", menu: "菜单", nav: "主导航", start: "进入开放生态", language: "EN", languageLabel: "Switch to English", expand: "展开菜单：" };
   const links = NAV_GROUPS[locale].map((group) => {
     const active = group.pages?.includes(current);
     if (group.href) {
@@ -136,8 +144,14 @@ function renderHeader() {
         <p>${column.title}</p>
         ${column.items.map(([label, href, description]) => `<a class="mega-link" href="${href}"><span>${label}</span><small>${description}</small></a>`).join("")}
       </section>`).join("");
+    const expandLabel = locale === "en" ? `${copy.expand} ${group.label}` : `${copy.expand}${group.label}`;
     return `<div class="nav-item nav-item--menu${active ? " is-active" : ""}" data-nav-menu>
-      <button class="nav-menu-trigger" type="button" aria-expanded="false" aria-controls="${menuId}">${group.label}<span aria-hidden="true">⌄</span></button>
+      <div class="nav-menu-control">
+        <a class="nav-menu-link" href="${group.landing}" ${active ? 'aria-current="page"' : ""}>${group.label}</a>
+        <button class="nav-menu-toggle" type="button" aria-label="${expandLabel}" aria-expanded="false" aria-controls="${menuId}">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4" /></svg>
+        </button>
+      </div>
       <div class="mega-menu" id="${menuId}" hidden><div class="mega-menu-grid">${columns}</div></div>
     </div>`;
   }).join("");
@@ -165,7 +179,7 @@ function renderHeader() {
   const menuItems = [...host.querySelectorAll("[data-nav-menu]")];
   const desktop = () => window.matchMedia("(min-width: 861px)").matches;
   const setMenu = (item, open) => {
-    const trigger = item.querySelector(".nav-menu-trigger");
+    const trigger = item.querySelector(".nav-menu-toggle");
     const panel = item.querySelector(".mega-menu");
     trigger?.setAttribute("aria-expanded", String(open));
     item.classList.toggle("is-open", open);
@@ -176,7 +190,7 @@ function renderHeader() {
   });
 
   menuItems.forEach((item) => {
-    const trigger = item.querySelector(".nav-menu-trigger");
+    const trigger = item.querySelector(".nav-menu-toggle");
     trigger?.addEventListener("click", (event) => {
       event.stopPropagation();
       const open = trigger.getAttribute("aria-expanded") !== "true";

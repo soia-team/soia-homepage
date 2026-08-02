@@ -5,398 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
     <meta name="theme-color" content="#fbfaf7" />
-    <title>SOIA Open｜开放生态与 8 个能力域</title>
-    <meta
-      name="description"
-      content="浏览 SOIA 开放生态中的 75 个 Agent Skills、8 个能力域、安装入口、适配状态与公开验证证据。"
-    />
-    <meta property="og:title" content="SOIA Open｜开放生态" />
-    <meta
-      property="og:description"
-      content="浏览 SOIA 开放生态中的 Skills、能力域、安装入口与公开验证证据。"
-    />
+    <title>SOIA Open｜开放 Skills 与 Experts</title>
+    <meta name="description" content="按领域浏览 SOIA 公开 Skills 与 WorkBuddy Experts。" />
+    <meta property="og:title" content="SOIA Open｜开放 Skills 与 Experts" />
+    <meta property="og:description" content="按领域浏览 SOIA 公开 Skills 与 WorkBuddy Experts。" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://soia-team.github.io/open/" />
     <meta property="og:image" content="https://soia-team.github.io/assets/og.png" />
-    <meta property="og:image:alt" content="SOIA：让 AI 真正进入工作流" />
+    <meta property="og:image:alt" content="SOIA · Agent workflows for real-world delivery" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://soia-team.github.io/assets/og.png" />
     <link rel="canonical" href="https://soia-team.github.io/open/" />
     <link rel="alternate" hreflang="zh-CN" href="https://soia-team.github.io/open/" />
     <link rel="alternate" hreflang="en" href="https://soia-team.github.io/en/open/" />
     <link rel="alternate" hreflang="x-default" href="https://soia-team.github.io/open/" />
-    <link rel="stylesheet" href="/assets/styles.css?v=frame2-20260802" />
+    <link rel="stylesheet" href="/assets/styles.css?v=levels3-20260802" />
   </head>
   <body data-page="open">
     <a class="skip-link" href="#main">跳到正文</a>
     <div data-site-header></div>
-
     <main id="main">
-      <section class="open-tabbar-section" aria-label="开放生态导航"><div class="shell"><nav class="open-tabbar"><a data-open-tab="overview" class="is-active" href="/open/?tab=home#overview">开放首页</a><a data-open-tab="skills" href="/open/?tab=skill#skills">Skills 目录</a><a data-open-tab="workbench" href="/open/?tab=workbench#workbench">Workbench / 专家</a></nav></div></section>
-
-      <section class="page-hero page-hero--open" id="overview" data-open-section="overview">
-        <div class="shell">
-          <div class="page-hero-grid">
-            <div>
-              <p class="kicker">SOIA OPEN ECOSYSTEM</p>
-              <h1>八个公开域，<br /><em>一个可审查入口。</em></h1>
-              <p class="page-lead">
-                这里是 SOIA 的免费开放生态：按领域找到一个 Skill，阅读它的输入、输出、边界和证据，再按你的宿主完成安装。
-              </p>
-              <div class="hero-actions">
-                <a class="button button--orange" href="https://github.com/soia-team/soia-open-skills" target="_blank" rel="noreferrer">进入开放生态仓 ↗</a>
-                <a class="button button--ghost" href="/open/?tab=skill#skills">浏览 8 个领域</a>
-              </div>
-              <div class="page-meta" aria-label="开放生态概览">
-                <span>75 个生态 Skills</span>
-                <span>8 个领域插件</span>
-                <span>3 个宿主环境</span>
-                <span>MIT License</span>
-              </div>
-            </div>
-            <aside class="page-hero-rail open-hero-rail" aria-label="开放生态摘要">
-              <p>PUBLIC CATALOG / 当前入口</p>
-              <div class="rail-grid">
-                <div><strong>75</strong><small>Skills</small></div>
-                <div><strong>08</strong><small>Domains</small></div>
-                <div><strong>03</strong><small>Hosts</small></div>
-              </div>
-              <p>按任务或领域进入；详情页继续说明安装方式、适用范围和验证证据。</p>
-            </aside>
-          </div>
-          <p class="catalog-warning">目录文档在发布过程中可能先于插件市场版本；精确可安装数量以公开 marketplace manifest 为准。</p>
-        </div>
-      </section>
-
-      <section class="clarity-band" aria-label="开放生态与课程服务的区别" data-open-section="overview">
-        <div class="shell clarity-grid">
-          <div class="clarity-card is-open">
-            <p class="kicker">OPEN ECOSYSTEM / 免费入口</p>
-            <h2>你想找一个能直接使用的能力</h2>
-            <p>按领域浏览公开 Skills，查看说明、安装方式与证据。这里不负责替你做项目。</p>
-            <a href="/open/?tab=skill#skills">继续浏览能力域 →</a>
-          </div>
-          <div class="clarity-divider" aria-hidden="true">→</div>
-          <div class="clarity-card is-product">
-            <p class="kicker">COURSE + SERVICE / 学习与交付</p>
-            <h2>你想把能力变成稳定结果</h2>
-            <p>需要系统学习或私有落地时，进入课程和服务选择合适的下一步。</p>
-            <a href="/products/">查看开始方式 →</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section--compact" id="categories" data-open-section="overview">
-        <div class="shell">
-          <div class="section-header"><div><p class="kicker">TASK CATEGORIES / 任务分类</p><h2>先按结果找，<br />再进入能力域。</h2></div><p>这是面向使用者的导航分组，不新增技能、不改变仓库边界；每个分类都对应下面的真实 8 个能力域。</p></div>
-          <div class="grid-4"><article class="card"><span class="card-index">01 / CONTENT</span><h3>内容与知识</h3><p>知识库与内容资产、内容生产与发布、课程设计与教案。</p><a class="card-link" href="/open/?tab=skill#skills">查看相关能力域 →</a></article><article class="card"><span class="card-index">02 / DESIGN</span><h3>设计与演示</h3><p>产品与技术设计，覆盖 PRD、Open Design、图表和 Office 产线。</p><a class="card-link" href="/open/?tab=skill#skills">查看相关能力域 →</a></article><article class="card"><span class="card-index">03 / DELIVERY</span><h3>工程与环境</h3><p>软件开发与交付、AI 工具与运行环境，覆盖编码、测试和发版。</p><a class="card-link" href="/open/?tab=skill#skills">查看相关能力域 →</a></article><article class="card"><span class="card-index">04 / COLLABORATION</span><h3>协作与生态</h3><p>协作办公与同步、Skill 生态与规范，覆盖检索、安装和维护。</p><a class="card-link" href="/open/?tab=skill#skills">查看相关能力域 →</a></article></div>
-        </div>
-      </section>
-
-      <section class="section" id="skills" data-open-section="skills">
-        <div class="shell">
-          <div class="open-skill-index">
-            <div class="open-skill-index-head">
-              <div>
-                <p class="kicker">SKILL INDEX / 能力索引</p>
-                <h3>按结果选择，不必背名字。</h3>
-              </div>
-              <p>先从一个明确结果开始。公开能力可直接查看；需要组合成 Workflow、Plugin 或 Expert 时，再进入产品和服务。</p>
-            </div>
-            <div class="catalog-toolbar open-skill-toolbar">
-              <input class="search-field" type="search" placeholder="搜索归档、文章、开发、设计、环境……" aria-label="搜索公开 Skill" data-skill-search />
-              <div class="skill-filter-group" role="group" aria-label="公开能力类型筛选">
-                <button type="button" class="skill-filter is-active" data-skill-filter="all" aria-pressed="true">全部</button>
-                <button type="button" class="skill-filter" data-skill-filter="skill" aria-pressed="false">Skill</button>
-                <button type="button" class="skill-filter" data-skill-filter="workflow" aria-pressed="false">Workflow</button>
-                <button type="button" class="skill-filter" data-skill-filter="plugin" aria-pressed="false">Plugin</button>
-                <button type="button" class="skill-filter" data-skill-filter="expert" aria-pressed="false">Expert</button>
-              </div>
-            </div>
-            <div class="open-skill-summary"><span>当前显示 <strong data-skill-count>16</strong> 项</span><span>公共方法可复用；私有资料不进入开放仓。</span></div>
-            <div class="open-skill-grid">
-              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/pkm-vault/soia-pkm-clip-web/"><span class="skill-badges"><i>PKM</i><i>Available</i></span><h3>网页内容归档</h3><p>把网页和文章保存为带来源、时间和可复核正文的知识库记录。</p><span>soia-pkm-clip-web ↗</span></a>
-              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/pkm-vault/soia-pkm-distill-article-opinion/"><span class="skill-badges"><i>PKM</i><i>Skill</i></span><h3>文章观点提炼</h3><p>用一次一个问题的方式，把资料阅读转成用户自己的观点草稿。</p><span>soia-pkm-distill-article-opinion ↗</span></a>
-              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/media-content/soia-media-compose-article-draft/"><span class="skill-badges"><i>MEDIA</i><i>Available</i></span><h3>文章成文草稿</h3><p>将已确认的观点和资料组织成可继续编辑的文章，而不是自动发布。</p><span>soia-media-compose-article-draft ↗</span></a>
-              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/media-content/soia-media-publish-rednote-card/"><span class="skill-badges"><i>MEDIA</i><i>Skill</i></span><h3>小红书发布包</h3><p>把完成的文章改写成标题、短段落、标签和配图建议。</p><span>soia-media-publish-rednote-card ↗</span></a>
-              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/media-content/soia-media-publish-wechat-draft/"><span class="skill-badges"><i>MEDIA</i><i>Draft</i></span><h3>公众号草稿排版</h3><p>将成文稿整理为可检查的内联样式 HTML，并只保存到草稿箱。</p><span>soia-media-publish-wechat-draft ↗</span></a>
-              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/development-design/soia-dev-design-explorer/"><span class="skill-badges"><i>DESIGN</i><i>Open Design</i></span><h3>设计探索与评审</h3><p>通过 Open Design 做高保真原型、视觉方向和证据化评审。</p><span>soia-dev-design-explorer ↗</span></a>
-              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/development/soia-dev-task-execute/"><span class="skill-badges"><i>DEV</i><i>Available</i></span><h3>工程任务执行</h3><p>从边界、实现到验证、独立复核和交付回执，完成一个有证据的任务。</p><span>soia-dev-task-execute ↗</span></a>
-              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/development/soia-dev-fix-loop/"><span class="skill-badges"><i>DEV</i><i>Skill</i></span><h3>五步修复闭环</h3><p>复现问题、选择修复、回归测试并留下可审查的结果。</p><span>soia-dev-fix-loop ↗</span></a>
-              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/environment/soia-env-codex-setup-support/"><span class="skill-badges"><i>ENV</i><i>Available</i></span><h3>Codex 环境支持</h3><p>诊断安装、登录、性能和存储问题，区分事实、建议和授权动作。</p><span>soia-env-codex-setup-support ↗</span></a>
-              <a class="open-skill-card" data-skill-card data-skill-type="plugin" href="https://github.com/soia-team/soia-open-skills" target="_blank" rel="noreferrer"><span class="skill-badges"><i>PLUGIN</i><i>Public</i></span><h3>SOIA Open Skills Plugin</h3><p>将公开 Skills 按领域装载到 Claude Code、Codex 或 WorkBuddy。</p><span>查看公开仓库 ↗</span></a>
-              <a class="open-skill-card" data-skill-card data-skill-type="workflow" href="/products/#catalog"><span class="skill-badges"><i>WORKFLOW</i><i>Preview</i></span><h3>文章到发布草稿</h3><p>归档、观点提炼、成文、配图和公众号或小红书草稿的可复跑组合。</p><span>查看产品形态 ↗</span></a>
-              <a class="open-skill-card" data-skill-card data-skill-type="workflow" href="/products/#catalog"><span class="skill-badges"><i>WORKFLOW</i><i>Preview</i></span><h3>工程交付闭环</h3><p>任务执行、设计探索、测试、修复和发版检查连接成一条工作流。</p><span>查看产品形态 ↗</span></a>
-              <a class="open-skill-card" data-skill-card data-skill-type="expert" href="/products/#catalog"><span class="skill-badges"><i>EXPERT</i><i>Preview</i></span><h3>知识库 WorkBuddy Expert</h3><p>把知识库、归档、提炼和阅读计划组合成角色化专家入口。</p><span>查看 Expert 形态 ↗</span></a>
-              <a class="open-skill-card" data-skill-card data-skill-type="expert" href="/products/#catalog"><span class="skill-badges"><i>EXPERT</i><i>Roadmap</i></span><h3>内容发布 WorkBuddy Expert</h3><p>围绕文章、配图、渠道草稿和人工发布检查组织协作角色。</p><span>查看 Expert 形态 ↗</span></a>
-              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/meta/soia-meta-find-skill/"><span class="skill-badges"><i>META</i><i>Available</i></span><h3>按需检索 Skill</h3><p>从自然语言目标找到最小相关能力，并说明其所属领域与安装入口。</p><span>soia-meta-find-skill ↗</span></a>
-              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/education-course/soia-edu-design-course-outline/"><span class="skill-badges"><i>EDU</i><i>Available</i></span><h3>课程大纲设计</h3><p>根据主题、受众、目标、时长和交付约束设计课程骨架。</p><span>soia-edu-design-course-outline ↗</span></a>
-            </div>
-            <p class="open-skill-empty" hidden data-skill-empty>没有匹配的公开能力。可以换一个任务关键词，或进入服务页讨论私有流程。</p>
-          </div>
-
-          <div class="domain-directory-head">
-            <div>
-              <p class="kicker">ALL DOMAINS / 完整目录</p>
-              <h2>继续按领域，浏览全部公开能力。</h2>
-            </div>
-            <p>八个领域分别维护公开仓库、职责边界和安装说明；这里是完整目录，不重复包装成另一套产品。</p>
-          </div>
-
-          <div class="catalog-toolbar">
-            <input
-              class="search-field"
-              type="search"
-              placeholder="搜索知识库、开发、内容、环境……"
-              aria-label="搜索开放生态"
-              data-catalog-search
-            />
-            <span class="catalog-note">数量以开放生态当前清单为准</span>
-          </div>
-
-          <div class="plugin-grid">
-            <article class="plugin-card" data-catalog-card>
-              <div class="plugin-icon" aria-hidden="true">PKM</div>
-              <div>
-                <span class="status status--preview">Catalog · 30 Skills</span>
-                <h3>知识库与内容资产</h3>
-                <p>网页与内容采集、知识库整理、文章提炼、翻译、转换和个人书库工作流。</p>
-                <a href="/open/pkm-vault/">查看能力域 →</a>
-              </div>
-            </article>
-
-            <article class="plugin-card" data-catalog-card>
-              <div class="plugin-icon" aria-hidden="true">ENV</div>
-              <div>
-                <span class="status status--preview">Catalog · 16 Skills</span>
-                <h3>AI 工具与运行环境</h3>
-                <p>AI CLI 与运行时安装、网络诊断、环境检查和本机空间治理。</p>
-                <a href="/open/environment/">查看能力域 →</a>
-              </div>
-            </article>
-
-            <article class="plugin-card" data-catalog-card>
-              <div class="plugin-icon" aria-hidden="true">DEV</div>
-              <div>
-                <span class="status status--available">Available · 12 Skills</span>
-                <h3>软件开发与交付</h3>
-                <p>工程协议、任务执行、代码审查、缺陷修复、测试、发版、终端与 GitHub 运维。</p>
-                <a href="/open/development/">查看能力域 →</a>
-              </div>
-            </article>
-
-            <article class="plugin-card" data-catalog-card>
-              <div class="plugin-icon" aria-hidden="true">MEDIA</div>
-              <div>
-                <span class="status status--available">Available · 6 Skills</span>
-                <h3>内容生产与发布</h3>
-                <p>文章成文、配图与面向公众号、X、小红书等渠道的发布草稿转换。</p>
-                <a href="/open/media-content/">查看能力域 →</a>
-              </div>
-            </article>
-
-            <article class="plugin-card" data-catalog-card>
-              <div class="plugin-icon" aria-hidden="true">DESIGN</div>
-              <div>
-                <span class="status status--available">Available · 6 Skills</span>
-                <h3>产品与技术设计</h3>
-                <p>PRD、开放设计工作流、架构图、draw.io / Visio 与 Office 文档产线。</p>
-                <a href="/open/development-design/">查看能力域 →</a>
-              </div>
-            </article>
-
-            <article class="plugin-card" data-catalog-card>
-              <div class="plugin-icon" aria-hidden="true">META</div>
-              <div>
-                <span class="status status--available">Available · 4 Skills</span>
-                <h3>Skill 生态与规范</h3>
-                <p>按需求寻找技能、同步安装、发布更新和提示词规格化，是开放生态的导航层。</p>
-                <a href="/open/meta/">查看能力域 →</a>
-              </div>
-            </article>
-
-            <article class="plugin-card" data-catalog-card>
-              <div class="plugin-icon" aria-hidden="true">CWORK</div>
-              <div>
-                <span class="status status--available">Available · 3 Skills</span>
-                <h3>协作办公与同步</h3>
-                <p>飞书知识库与云文档同步，以及 ProcessOn 图表的授权导出与本地沉淀。</p>
-                <a href="/open/collaborative-office/">查看能力域 →</a>
-              </div>
-            </article>
-
-            <article class="plugin-card" data-catalog-card>
-              <div class="plugin-icon" aria-hidden="true">EDU</div>
-              <div>
-                <span class="status status--available">Available · 2 Skills</span>
-                <h3>课程设计与教案</h3>
-                <p>从主题、受众和课时设计课程大纲，并把大纲转成可执行教案。</p>
-                <a href="/open/education-course/">查看能力域 →</a>
-              </div>
-            </article>
-          </div>
-          <p class="empty-state" hidden data-catalog-empty>没有匹配的能力域。可以换一个任务关键词再试。</p>
-        </div>
-      </section>
-
-      <section class="section section--compact" id="workbench" data-open-section="workbench">
-        <div class="shell">
-          <div class="workbench-panel">
-            <div class="workbench-panel-copy">
-              <p class="kicker">WORKBENCH / 专家入口</p>
-              <h2>把公开能力，<br /><em>装进你的工作环境。</em></h2>
-              <p>SOIA 不把网页本身包装成云端执行器。Workbench、Plugin 和 Expert 负责把公开能力装进本地宿主；真实资料和高风险动作仍由你控制。</p>
-              <div class="hero-actions"><a class="button button--orange" href="/products/#catalog">查看产品形态</a><a class="button button--ghost" href="/services/">讨论私有落地</a></div>
-            </div>
-            <div class="workbench-diagram" role="img" aria-label="SOIA 工作台示意：任务、Skill、Workflow、Plugin、Expert 和验收">
-              <div class="diagram-top"><span>SOIA WORKBENCH</span><span class="diagram-live">LOCAL · HUMAN CONTROLLED</span></div>
-              <div class="diagram-canvas"><div class="diagram-node diagram-node--task"><small>INPUT</small><strong>一个真实任务</strong><span>资料 · 目标 · 边界</span></div><i class="diagram-line"></i><div class="diagram-node diagram-node--skill"><small>PUBLIC</small><strong>Skill</strong><span>按需加载</span></div><i class="diagram-line"></i><div class="diagram-node diagram-node--workflow"><small>COMPOSE</small><strong>Workflow</strong><span>交接 · 批准</span></div><i class="diagram-line"></i><div class="diagram-node diagram-node--expert"><small>HOST</small><strong>Plugin / Expert</strong><span>本地运行</span></div></div>
-              <div class="diagram-bottom"><span>01 证据</span><span>02 人工检查</span><span>03 可复跑回执</span></div>
-            </div>
-          </div>
-          <div class="grid-3 workbench-host-grid"><article class="card"><span class="card-index">01 / CLAUDE CODE</span><h3>按需加载 Skill</h3><p>从公开仓库安装，按任务触发，保留源码和版本证据。</p></article><article class="card"><span class="card-index">02 / CODEX</span><h3>组合多个能力</h3><p>把 Skills 连接成工作流，写清输入、交接、批准点和验收。</p></article><article class="card"><span class="card-index">03 / WORKBUDDY</span><h3>进入角色化 Expert</h3><p>将角色、知识、工具和推荐任务组织成可召唤的专家入口。</p></article></div>
-        </div>
-      </section>
-
-      <section class="section section--compact" id="layers" data-open-section="overview">
-        <div class="shell">
-          <div class="section-header">
-            <div>
-              <p class="kicker">START WITH THE CATALOG</p>
-              <h2>先找能力，<br />再决定要不要产品。</h2>
-            </div>
-            <p>开放生态负责让你找到、读懂并安装通用能力；如果你需要系统学习或私有落地，再去看课程和服务。</p>
-          </div>
-
-          <div class="layer-flow">
-            <article class="card layer-card">
-              <span class="layer-number">01 / SEARCH</span>
-              <span class="status status--available">Available</span>
-              <h3>按任务搜索</h3>
-              <p>从 8 个能力域开始，先按你要完成的工作寻找入口。</p>
-              <ul><li>知识与内容</li><li>开发与环境</li><li>设计与协作</li></ul>
-            </article>
-            <span class="flow-arrow" aria-hidden="true">→</span>
-            <article class="card layer-card">
-              <span class="layer-number">02 / READ</span>
-              <span class="status status--available">Available</span>
-              <h3>打开详情页</h3>
-              <p>每个 Skill 页面写清输入、输出、步骤、限制、安装入口和公开证据。</p>
-              <ul><li>先读边界</li><li>再看交付物</li><li>确认宿主</li></ul>
-            </article>
-            <span class="flow-arrow" aria-hidden="true">→</span>
-            <article class="card layer-card">
-              <span class="layer-number">03 / INSTALL</span>
-              <span class="status status--preview">Public Beta</span>
-              <h3>按宿主安装</h3>
-              <p>选择 Claude Code、Codex 或 WorkBuddy 的安装方式，完成一次可复查的使用。</p>
-              <ul><li>宿主入口明确</li><li>版本状态可查</li><li>问题可回到源码</li></ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="hosts" data-open-section="workbench">
-        <div class="shell">
-          <div class="section-header">
-            <div>
-              <p class="kicker">HOST MATRIX</p>
-              <h2>三种宿主，<br />三种清晰装载方式。</h2>
-            </div>
-            <p>Claude Code、Codex 与 WorkBuddy 是宿主环境，不是模型名称。每个宿主的安装和验证结果分别记录。</p>
-          </div>
-
-          <table class="host-table">
-            <thead>
-              <tr><th>宿主</th><th>装载单位</th><th>公开入口</th><th>使用边界</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Claude Code</td>
-                <td>领域 Plugin</td>
-                <td>Marketplace + plugin install</td>
-                <td>按领域启停；技能正文仅在命中时加载。</td>
-              </tr>
-              <tr>
-                <td>Codex</td>
-                <td>领域 Plugin</td>
-                <td>Marketplace + plugin add</td>
-                <td>从同一公开仓安装，兼容性按插件版本验证。</td>
-              </tr>
-              <tr>
-                <td>WorkBuddy</td>
-                <td>角色化 Expert</td>
-                <td>公开安装脚本</td>
-                <td>Skill 与 Expert 分开验证；桌面端入口由角色承载。</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="hero-actions">
-            <a class="button button--ghost" href="https://github.com/soia-team/soia-open-skills/tree/main/docs/install" target="_blank" rel="noreferrer">查看开放生态安装指南 ↗</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="supply-chain" data-open-section="workbench">
-        <div class="shell">
-          <div class="feature-split">
-            <div class="feature-copy">
-              <p class="kicker">OPEN SUPPLY CHAIN</p>
-              <h2>来源可追，<br />边界也可检查。</h2>
-              <p>开放生态把技能正文、路由目录、生成清单和验证脚本放在可审查仓库中。宿主适配只负责安装与装载，不改变能力的来源。</p>
-              <div class="hero-actions">
-                <a class="button button--ink" href="https://github.com/soia-team/soia-open-skills/blob/main/SKILL_SPEC.md" target="_blank" rel="noreferrer">查看 Skill 规范 ↗</a>
-                <a class="button button--ghost" href="https://github.com/soia-team/soia-open-skills/blob/main/routing/routing-manifest.json" target="_blank" rel="noreferrer">查看路由清单 ↗</a>
-              </div>
-            </div>
-            <div class="mini-roadmap" aria-label="公开供应链步骤">
-              <article><span>01</span><div><h3>Source</h3><p>领域仓保存 Skills、脚本、参考资料与公开许可证。</p></div></article>
-              <article><span>02</span><div><h3>Manifest</h3><p>机器可读目录连接技能、领域仓和宿主入口。</p></div></article>
-              <article><span>03</span><div><h3>Checks</h3><p>测试、严格审计与 Expert 清单校验阻止结构漂移。</p></div></article>
-              <article><span>04</span><div><h3>Distribution</h3><p>插件元数据和公开安装说明把同一来源带到三种宿主。</p></div></article>
-            </div>
-          </div>
-
-          <div class="boundary-grid">
-            <article class="is-open">
-              <p class="mono-label">IN PUBLIC REPOS</p>
-              <h3>公开、可复现的部分</h3>
-              <ul class="detail-list">
-                <li>Skill 指令、必要脚本与参考资料</li>
-                <li>安装说明、版本元数据与路由清单</li>
-                <li>测试、审计规则和公开贡献历史</li>
-              </ul>
-            </article>
-            <article class="is-private">
-              <p class="mono-label">STAYS WITH THE USER</p>
-              <h3>不进入公开仓的内容</h3>
-              <ul class="detail-list">
-                <li>密码、Token、Cookie 与平台登录态</li>
-                <li>用户文件、业务数据和未授权素材</li>
-                <li>公司内部流程与受限制的工作资料</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section--compact" id="contribute" data-open-section="workbench">
-        <div class="shell">
-          <div class="cta-panel">
-            <div>
-              <p class="kicker">CONTRIBUTE IN PUBLIC</p>
-              <h2>修正文档、补测试，或贡献一个边界清楚的 Skill。</h2>
-            </div>
-            <div class="hero-actions">
-              <a class="button button--orange" href="https://github.com/soia-team/soia-open-skills/blob/main/CONTRIBUTING.md" target="_blank" rel="noreferrer">阅读贡献指南 ↗</a>
-              <a class="button button--ghost" href="https://github.com/soia-team/soia-open-skills/issues" target="_blank" rel="noreferrer">查看公开 Issues ↗</a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div class="ecosystem-catalog-page">
+        <header class="ecosystem-catalog-head">
+          <p class="catalog-page-label">SOIA OPEN ECOSYSTEM</p>
+          <h1>开放 Skills 与 Experts<span>.</span></h1>
+          <p>按结果与领域浏览公开能力。每个 Skill 与 WorkBuddy Expert 都保留公开来源、安装入口和交付边界。</p>
+          <div class="catalog-page-actions"><a class="button button--ink" href="#skills">浏览 Skills →</a><a class="button button--ghost" href="#experts">浏览 Experts →</a></div>
+        </header>
+        <nav class="catalog-switch" aria-label="开放目录"><a href="#skills">Skills <span>80</span></a><a href="#experts">Experts <span>8</span></a><a href="https://github.com/soia-team/soia-open-skills" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
+        <section class="ecosystem-catalog-section" id="skills"><header><div><p class="catalog-page-label">01 / CAPABILITY DOMAINS</p><h2>先找到领域，再找到 Skill。</h2></div><p>八个公开能力域直接通向全部 Skill，不再重复包装成另一套产品。</p></header><ol class="ecosystem-row-list">
+            <li class="ecosystem-row"><a href="/open/pkm-vault/"><span class="catalog-row-index">01</span><span class="ecosystem-row-code">PKM</span><span class="ecosystem-row-body"><strong>个人知识与内容资产</strong><span>采集网页与平台内容，整理 Markdown / Obsidian 知识库，提炼观点，并转换为可复用的学习与表达产物。</span></span><span class="ecosystem-row-meta"><b>31</b><small>Skills</small></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>
+            <li class="ecosystem-row"><a href="/open/environment/"><span class="catalog-row-index">02</span><span class="ecosystem-row-code">ENV</span><span class="ecosystem-row-body"><strong>AI 工作环境</strong><span>面向新手安装、验证和诊断 AI CLI、本地运行时、网络与存储环境，危险动作保留人工确认。</span></span><span class="ecosystem-row-meta"><b>16</b><small>Skills</small></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>
+            <li class="ecosystem-row"><a href="/open/development/"><span class="catalog-row-index">03</span><span class="ecosystem-row-code">DEV</span><span class="ecosystem-row-body"><strong>软件工程交付</strong><span>把代码改动、测试、审查、修复、发版和仓库运维组织成证据完整的工程闭环。</span></span><span class="ecosystem-row-meta"><b>12</b><small>Skills</small></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>
+            <li class="ecosystem-row"><a href="/open/media-content/"><span class="catalog-row-index">04</span><span class="ecosystem-row-code">MEDIA</span><span class="ecosystem-row-body"><strong>内容生产与发布草稿</strong><span>把已有观点与资料转成文章、配图和多平台草稿；发布动作默认由用户最终确认。</span></span><span class="ecosystem-row-meta"><b>6</b><small>Skills</small></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>
+            <li class="ecosystem-row"><a href="/open/development-design/"><span class="catalog-row-index">05</span><span class="ecosystem-row-code">DESIGN</span><span class="ecosystem-row-body"><strong>产品与技术设计</strong><span>覆盖 PRD、设计探索、Open Design、架构图、draw.io / Visio 与 Office 文档工作流。</span></span><span class="ecosystem-row-meta"><b>6</b><small>Skills</small></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>
+            <li class="ecosystem-row"><a href="/open/meta/"><span class="catalog-row-index">06</span><span class="ecosystem-row-code">META</span><span class="ecosystem-row-body"><strong>技能生态管理</strong><span>按需求寻找能力、同步技能、完成版本发布，并把含糊请求整理成可执行提示词。</span></span><span class="ecosystem-row-meta"><b>4</b><small>Skills</small></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>
+            <li class="ecosystem-row"><a href="/open/collaborative-office/"><span class="catalog-row-index">07</span><span class="ecosystem-row-code">CWORK</span><span class="ecosystem-row-body"><strong>协作办公资料</strong><span>以最小权限处理飞书知识库、云文档和 ProcessOn 图表，将授权资料沉淀为本地可复核文件。</span></span><span class="ecosystem-row-meta"><b>3</b><small>Skills</small></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>
+            <li class="ecosystem-row"><a href="/open/education-course/"><span class="catalog-row-index">08</span><span class="ecosystem-row-code">EDU</span><span class="ecosystem-row-body"><strong>课程与教案</strong><span>从主题、受众和课时约束设计课程大纲，再落成可执行教案与讲义结构。</span></span><span class="ecosystem-row-meta"><b>2</b><small>Skills</small></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>
+        </ol></section>
+        <aside class="ecosystem-contribute"><div><p class="catalog-page-label">PUBLIC SOURCE</p><h2>先读源码，再相信能力说明。</h2><p>公开目录与 marketplace manifest 是安装版本的事实真源。</p></div><a class="button button--ghost" href="https://github.com/soia-team/soia-open-skills" target="_blank" rel="noreferrer">GitHub ↗</a></aside>
+        <section class="ecosystem-catalog-section" id="experts"><header><div><p class="catalog-page-label">02 / WORKBUDDY EXPERTS</p><h2>同一份公开能力，组织成角色入口。</h2></div><p>每个领域仓都能作为 WorkBuddy Expert 安装。Expert 增加角色上下文，但不隐藏它包含的 Skills。</p></header><ol class="ecosystem-row-list">
+            <li class="ecosystem-row ecosystem-row--expert"><a href="/open/experts/pkm-vault/"><span class="catalog-row-index">01</span><span class="ecosystem-row-code">PKM</span><span class="ecosystem-row-body"><strong>Soia · 知识库管家</strong><span>把网页、公众号与云盘资料收进本地知识库，按元数据与主题双链整理，再转换成解读、演示稿与长图。</span></span><span class="ecosystem-row-meta"><b>31</b><small>个领域 Skills</small></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>
+            <li class="ecosystem-row ecosystem-row--expert"><a href="/open/experts/environment/"><span class="catalog-row-index">02</span><span class="ecosystem-row-code">ENV</span><span class="ecosystem-row-body"><strong>Soia · 环境安装工程师</strong><span>面向新手安装并验证 Node、Python 与常用 AI CLI，只读诊断网络故障，并只在授权后清理空间。</span></span><span class="ecosystem-row-meta"><b>16</b><small>个领域 Skills</small></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>
+            <li class="ecosystem-row ecosystem-row--expert"><a href="/open/experts/development/"><span class="catalog-row-index">03</span><span class="ecosystem-row-code">DEV</span><span class="ecosystem-row-body"><strong>Soia · 研发工程师</strong><span>按工程契约改代码：先划边界再动手，改完验证，并配对抗复核、修复闭环、测试设计与发版清单。</span></span><span class="ecosystem-row-meta"><b>12</b><small>个领域 Skills</small></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>
+            <li class="ecosystem-row ecosystem-row--expert"><a href="/open/experts/media-content/"><span class="catalog-row-index">04</span><span class="ecosystem-row-code">MEDIA</span><span class="ecosystem-row-body"><strong>Soia · 新媒体运营</strong><span>把你的观点写成成文草稿并配图，再适配公众号、小红书与 X；只创建草稿，不自动发布。</span></span><span class="ecosystem-row-meta"><b>6</b><small>个领域 Skills</small></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>
+            <li class="ecosystem-row ecosystem-row--expert"><a href="/open/experts/development-design/"><span class="catalog-row-index">05</span><span class="ecosystem-row-code">DESIGN</span><span class="ecosystem-row-body"><strong>Soia · 产品设计与文档</strong><span>从一句话需求形成 PRD、高保真原型与架构图，并能在安全边界内处理 Office 文档。</span></span><span class="ecosystem-row-meta"><b>6</b><small>个领域 Skills</small></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>
+            <li class="ecosystem-row ecosystem-row--expert"><a href="/open/experts/meta/"><span class="catalog-row-index">06</span><span class="ecosystem-row-code">META</span><span class="ecosystem-row-body"><strong>Soia · 技能生态管家</strong><span>按需求检索全生态技能并载入，同步到用户选择的 AI 工具，执行发布收尾，并起草或诊断提示词。</span></span><span class="ecosystem-row-meta"><b>4</b><small>个领域 Skills</small></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>
+            <li class="ecosystem-row ecosystem-row--expert"><a href="/open/experts/collaborative-office/"><span class="catalog-row-index">07</span><span class="ecosystem-row-code">CWORK</span><span class="ecosystem-row-body"><strong>Soia · 办公资料助手</strong><span>以最小权限只读调研飞书知识库与云文档，同步为本地 Markdown，并按授权导出归档图表。</span></span><span class="ecosystem-row-meta"><b>3</b><small>个领域 Skills</small></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>
+            <li class="ecosystem-row ecosystem-row--expert"><a href="/open/experts/education-course/"><span class="catalog-row-index">08</span><span class="ecosystem-row-code">EDU</span><span class="ecosystem-row-body"><strong>Soia · 课程设计师</strong><span>根据主题、受众和课时约束设计课程大纲与目标，再形成可执行教案、讲义结构与课堂活动。</span></span><span class="ecosystem-row-meta"><b>2</b><small>个领域 Skills</small></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>
+        </ol></section>
+        <footer class="catalog-snapshot">SOIA Public Catalog · 75773eca76 · 2026-08-02 · 80 Skills · 8 Experts</footer>
+      </div>
     </main>
-
     <div data-site-footer></div>
-    <script src="/assets/site.js?v=frame2-20260802" defer></script>
+    <script src="/assets/site.js?v=levels3-20260802" defer></script>
   </body>
 </html>
