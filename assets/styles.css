@@ -589,6 +589,10 @@ img { display: block; max-width: 100%; }
 .open-hero-rail .rail-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
 .open-hero-rail .rail-grid div { padding: 12px 10px; border: 1px solid #cfe1db; border-radius: 9px; background: rgba(255, 255, 255, 0.66); }
 .open-hero-rail .rail-grid strong { font-size: 25px; color: var(--green); }
+.open-tabbar-section { border-bottom: 1px solid var(--line); background: rgba(255, 255, 255, 0.45); }
+.open-tabbar { display: flex; gap: 4px; align-items: center; min-height: 58px; overflow-x: auto; }
+.open-tabbar a { padding: 9px 16px; border: 1px solid transparent; border-radius: 999px; color: var(--muted); font-size: 14px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.open-tabbar a:hover, .open-tabbar a.is-active { border-color: var(--orange); color: var(--orange-deep); background: #fff7f1; }
 
 .product-hero-rail { border-color: #4b362d; background: var(--dark); color: var(--white); }
 .product-hero-rail p, .product-hero-rail small { color: #cdbcb3; }
@@ -649,6 +653,12 @@ body[data-page="course"] .page-hero { background: linear-gradient(180deg, rgba(2
 .offer-card ul { display: grid; gap: 8px; margin: 0; padding: 0 0 0 18px; color: var(--ink-soft); }
 .offer-card .button { margin-top: auto; align-self: flex-start; }
 .offer-note { margin: 24px 0 0; color: var(--muted); font-size: 13px; }
+.product-catalog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.product-catalog-grid .offer-card { min-height: 430px; }
+.product-catalog-grid .offer-price { font-size: 27px; line-height: 1.1; }
+.product-catalog-grid .offer-price small { display: block; margin-top: 8px; line-height: 1.45; }
+.compare--products { grid-template-columns: 1fr 28px 1fr 28px 1fr; }
+.compare--products .compare-column { min-width: 0; }
 
 .course-outline { display: grid; gap: 0; border-top: 1px solid var(--line); }
 .course-outline article { display: grid; grid-template-columns: 58px minmax(0, 0.72fr) minmax(0, 1.28fr); gap: 20px; align-items: start; padding: 20px 0; border-bottom: 1px solid var(--line); }
@@ -1108,6 +1118,7 @@ body[data-page="course"] .page-hero { background: linear-gradient(180deg, rgba(2
   .hero-grid, .page-hero-grid { gap: 40px; }
   .evidence-card { max-width: 720px; }
   .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .product-catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .product-row { grid-template-columns: 90px 1fr 1fr; }
   .product-action { grid-column: 2 / -1; justify-content: flex-start; }
   .process-line { grid-template-columns: repeat(3, 1fr); }
@@ -1172,10 +1183,15 @@ body[data-page="course"] .page-hero { background: linear-gradient(180deg, rgba(2
 
   .page-hero-grid { grid-template-columns: 1fr; gap: 28px; }
   .page-hero-rail { max-width: 620px; }
+  .open-tabbar { min-height: 52px; }
+  .open-tabbar a { padding-inline: 12px; font-size: 13px; }
   .clarity-grid { grid-template-columns: 1fr; gap: 10px; }
   .clarity-divider { min-height: 20px; transform: rotate(90deg); }
-  .offer-grid { grid-template-columns: 1fr; }
+  .offer-grid, .product-catalog-grid { grid-template-columns: 1fr; }
   .offer-card { min-height: 0; padding: 24px 20px; }
+  .product-catalog-grid .offer-card { min-height: 0; }
+  .compare--products { grid-template-columns: 1fr; gap: 14px; }
+  .compare--products .compare-arrow { min-height: 24px; transform: rotate(90deg); }
   .course-outline article { grid-template-columns: 44px 1fr; gap: 10px 14px; }
   .course-outline article p { grid-column: 2; }
 

@@ -32,7 +32,9 @@
     <div data-site-header></div>
 
     <main id="main">
-      <section class="page-hero page-hero--open">
+      <section class="open-tabbar-section" aria-label="开放生态导航"><div class="shell"><nav class="open-tabbar"><a class="is-active" href="#overview">开放首页</a><a href="#skills">Skills 目录</a><a href="#workbench">Workbench / 专家</a></nav></div></section>
+
+      <section class="page-hero page-hero--open" id="overview">
         <div class="shell">
           <div class="page-hero-grid">
             <div>
@@ -43,7 +45,7 @@
               </p>
               <div class="hero-actions">
                 <a class="button button--orange" href="https://github.com/soia-team/soia-open-skills" target="_blank" rel="noreferrer">进入开放生态仓 ↗</a>
-                <a class="button button--ghost" href="#domains">浏览 8 个领域</a>
+                <a class="button button--ghost" href="#skills">浏览 8 个领域</a>
               </div>
               <div class="page-meta" aria-label="开放生态概览">
                 <span>79 个生态 Skills</span>
@@ -72,7 +74,7 @@
             <p class="kicker">OPEN ECOSYSTEM / 免费入口</p>
             <h2>你想找一个能直接使用的能力</h2>
             <p>按领域浏览公开 Skills，查看说明、安装方式与证据。这里不负责替你做项目。</p>
-            <a href="#domains">继续浏览能力域 →</a>
+            <a href="#skills">继续浏览能力域 →</a>
           </div>
           <div class="clarity-divider" aria-hidden="true">→</div>
           <div class="clarity-card is-product">
@@ -84,7 +86,7 @@
         </div>
       </section>
 
-      <section class="section" id="domains">
+      <section class="section" id="skills">
         <div class="shell">
           <div class="section-header">
             <div>
@@ -187,6 +189,13 @@
             </article>
           </div>
           <p class="empty-state" hidden data-catalog-empty>没有匹配的能力域。可以换一个任务关键词再试。</p>
+        </div>
+      </section>
+
+      <section class="section section--compact" id="workbench">
+        <div class="shell">
+          <div class="section-header"><div><p class="kicker">WORKBENCH / 专家入口</p><h2>把公开能力，<br />装进你的工作环境。</h2></div><p>SOIA 不把网页本身包装成云端执行器。Workbench、Plugin 和 Expert 负责把公开能力装进本地宿主；真实资料和高风险动作仍由你控制。</p></div>
+          <div class="grid-3"><article class="card"><span class="card-index">01 / CLAUDE CODE</span><h3>按需加载 Skill</h3><p>从公开仓库安装，按任务触发，保留源码和版本证据。</p></article><article class="card"><span class="card-index">02 / CODEX</span><h3>组合多个能力</h3><p>把 Skills 连接成工作流，写清输入、交接、批准点和验收。</p></article><article class="card"><span class="card-index">03 / WORKBUDDY</span><h3>进入角色化 Expert</h3><p>将角色、知识、工具和推荐任务组织成可召唤的专家入口。</p></article></div>
         </div>
       </section>
 

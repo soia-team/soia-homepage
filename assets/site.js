@@ -1,17 +1,19 @@
 const NAV_ITEMS = {
   zh: [
-    ["home", "首页", "/"],
+    ["products", "产品", "/products/"],
     ["open", "开放生态", "/open/"],
+    ["about", "关于 SOIA", "/about/"],
     ["course", "课程", "/course/"],
-    ["services", "服务", "/services/"],
-    ["about", "关于", "/about/"],
+    ["services", "服务与合作", "/services/"],
+    ["resources", "资源", "/#resources"],
   ],
   en: [
-    ["home", "Home", "/en/"],
+    ["products", "Products", "/en/products/"],
     ["open", "Open ecosystem", "/en/open/"],
+    ["about", "About SOIA", "/en/about/"],
     ["course", "Course", "/en/course/"],
-    ["services", "Services", "/en/services/"],
-    ["about", "About", "/en/about/"],
+    ["services", "Services & partnerships", "/en/services/"],
+    ["resources", "Resources", "/en/#resources"],
   ],
 };
 
@@ -39,8 +41,8 @@ function renderHeader() {
   const current = document.body.dataset.page || "home";
   const locale = getLocale();
   const copy = locale === "en"
-    ? { home: "SOIA home", menu: "Menu", nav: "Primary navigation", start: "Start with open ecosystem", language: "中文", languageLabel: "切换到中文" }
-    : { home: "SOIA 首页", menu: "菜单", nav: "主导航", start: "从开放生态开始", language: "EN", languageLabel: "Switch to English" };
+    ? { home: "SOIA home", menu: "Menu", nav: "Primary navigation", start: "Open ecosystem", language: "中文", languageLabel: "切换到中文" }
+    : { home: "SOIA 首页", menu: "菜单", nav: "主导航", start: "进入开放生态", language: "EN", languageLabel: "Switch to English" };
   const links = NAV_ITEMS[locale].map(
     ([id, label, href]) =>
       `<a href="${href}" ${id === current ? 'aria-current="page"' : ""}>${label}</a>`
@@ -88,8 +90,8 @@ function renderFooter() {
           </a>
           <p>System · Orchestration · Intelligence · Assurance</p>
         </div>
-        <div><strong>${en ? "Explore" : "探索"}</strong><a href="${en ? "/en/open/" : "/open/"}">${en ? "Open ecosystem" : "开放生态"}</a><a href="${en ? "/en/course/" : "/course/"}">${en ? "Course" : "课程"}</a><a href="${en ? "/en/services/" : "/services/"}">${en ? "Private services" : "私有服务"}</a></div>
-        <div><strong>${en ? "Work with us" : "合作"}</strong><a href="${en ? "/en/services/" : "/services/"}">Services</a><a href="${en ? "/en/about/" : "/about/"}">About</a><a href="https://github.com/soia-team" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+        <div><strong>${en ? "Explore" : "探索"}</strong><a href="${en ? "/en/products/" : "/products/"}">${en ? "Products" : "产品"}</a><a href="${en ? "/en/open/" : "/open/"}">${en ? "Open ecosystem" : "开放生态"}</a><a href="${en ? "/en/course/" : "/course/"}">${en ? "Course" : "课程"}</a><a href="${en ? "/en/services/" : "/services/"}">${en ? "Services" : "服务与合作"}</a></div>
+        <div><strong>${en ? "More" : "更多"}</strong><a href="${en ? "/en/about/" : "/about/"}">${en ? "About SOIA" : "关于 SOIA"}</a><a href="${en ? "/en/#resources" : "/#resources"}">${en ? "Resources" : "资源"}</a><a href="https://github.com/soia-team" target="_blank" rel="noreferrer">GitHub ↗</a></div>
         <div><strong>${en ? "Boundaries" : "边界"}</strong><span>Local-first</span><span>Human-controlled</span><span>Evidence-backed</span></div>
       </div>
       <div class="shell footer-bottom">
