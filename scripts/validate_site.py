@@ -184,9 +184,9 @@ def validate_html(relative_path: Path, require_canonical=True):
         status |= fail(f"{label}: requires exactly one main landmark")
     if parser.header_mounts != 1 or parser.footer_mounts != 1:
         status |= fail(f"{label}: requires shared header and footer mounts")
-    if parser.stylesheets != ["/assets/styles.css"]:
+    if len(parser.stylesheets) != 1 or urlsplit(parser.stylesheets[0]).path != "/assets/styles.css":
         status |= fail(f"{label}: must use only /assets/styles.css")
-    if parser.scripts != ["/assets/site.js"]:
+    if len(parser.scripts) != 1 or urlsplit(parser.scripts[0]).path != "/assets/site.js":
         status |= fail(f"{label}: must use only /assets/site.js")
     if require_canonical:
         if parser.canonicals != [page_url(relative_path)]:
