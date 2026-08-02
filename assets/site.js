@@ -1,16 +1,16 @@
 const NAV_ITEMS = {
   zh: [
     ["home", "首页", "/"],
-    ["open", "开源能力", "/open/"],
-    ["products", "产品", "/products/"],
+    ["open", "能力目录", "/open/"],
+    ["products", "产品线", "/products/"],
     ["course", "课程", "/course/"],
     ["services", "服务", "/services/"],
     ["about", "关于", "/about/"],
   ],
   en: [
     ["home", "Home", "/en/"],
-    ["open", "Open", "/en/open/"],
-    ["products", "Products", "/en/products/"],
+    ["open", "Open catalog", "/en/open/"],
+    ["products", "Product line", "/en/products/"],
     ["course", "Course", "/en/course/"],
     ["services", "Services", "/en/services/"],
     ["about", "About", "/en/about/"],
@@ -41,8 +41,8 @@ function renderHeader() {
   const current = document.body.dataset.page || "home";
   const locale = getLocale();
   const copy = locale === "en"
-    ? { home: "SOIA home", menu: "Menu", nav: "Primary navigation", start: "Start with Open", language: "中文", languageLabel: "切换到中文" }
-    : { home: "SOIA 首页", menu: "菜单", nav: "主导航", start: "从 Open 开始", language: "EN", languageLabel: "Switch to English" };
+    ? { home: "SOIA home", menu: "Menu", nav: "Primary navigation", start: "Start with catalog", language: "中文", languageLabel: "切换到中文" }
+    : { home: "SOIA 首页", menu: "菜单", nav: "主导航", start: "从能力目录开始", language: "EN", languageLabel: "Switch to English" };
   const links = NAV_ITEMS[locale].map(
     ([id, label, href]) =>
       `<a href="${href}" ${id === current ? 'aria-current="page"' : ""}>${label}</a>`
@@ -90,7 +90,7 @@ function renderFooter() {
           </a>
           <p>System · Orchestration · Intelligence · Assurance</p>
         </div>
-        <div><strong>${en ? "Explore" : "探索"}</strong><a href="${en ? "/en/open/" : "/open/"}">Open</a><a href="${en ? "/en/products/" : "/products/"}">Products</a><a href="${en ? "/en/course/" : "/course/"}">Course</a></div>
+        <div><strong>${en ? "Explore" : "探索"}</strong><a href="${en ? "/en/open/" : "/open/"}">${en ? "Open catalog" : "能力目录"}</a><a href="${en ? "/en/products/" : "/products/"}">${en ? "Product line" : "产品线"}</a><a href="${en ? "/en/course/" : "/course/"}">${en ? "Course" : "课程"}</a></div>
         <div><strong>${en ? "Work with us" : "合作"}</strong><a href="${en ? "/en/services/" : "/services/"}">Services</a><a href="${en ? "/en/about/" : "/about/"}">About</a><a href="https://github.com/soia-team" target="_blank" rel="noreferrer">GitHub ↗</a></div>
         <div><strong>${en ? "Boundaries" : "边界"}</strong><span>Local-first</span><span>Human-controlled</span><span>Evidence-backed</span></div>
       </div>

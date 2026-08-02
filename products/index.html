@@ -39,7 +39,7 @@
               <p class="kicker">SOIA PRODUCTS</p>
               <h1>状态先讲清，<br /><em>产品只写公开证据。</em></h1>
               <p class="page-lead">
-                这里列出的每项能力都有公开仓库、公开页面、公开安装入口或明确的公开服务说明。成熟度不同，但边界不会用模糊措辞隐藏。
+                Open 是免费能力目录；Products 不再重复列出目录，而是回答：当一个 Skill 不够时，应该选择工作流、插件、Expert、课程还是人工实施。
               </p>
               <div class="hero-actions">
                 <a class="button button--orange" href="#product-list">查看产品</a>
@@ -53,12 +53,30 @@
               </div>
             </div>
             <aside class="page-hero-rail product-hero-rail" aria-label="产品选择路径">
-              <p>CHOOSE THE SMALLEST USEFUL LAYER</p>
-              <div class="rail-step"><b>01</b><strong>先用一个 Skill 解决单一任务</strong></div>
-              <div class="rail-step"><b>02</b><strong>重复发生，再组合成 Workflow</strong></div>
-              <div class="rail-step"><b>03</b><strong>需要分发，再进入 Plugin / Expert</strong></div>
+              <p>PRODUCT LINE / NOT A SKILL CATALOG</p>
+              <div class="rail-step"><b>01</b><strong>一个任务：选择 Single Skill</strong></div>
+              <div class="rail-step"><b>02</b><strong>重复发生：组合 Multi-Skill Workflow</strong></div>
+              <div class="rail-step"><b>03</b><strong>需要分发或落地：选择 Plugin / Expert / Service</strong></div>
               <small>每一层都保留来源、状态与边界。</small>
             </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="clarity-band" aria-label="能力目录与产品线的区别">
+        <div class="shell clarity-grid">
+          <div class="clarity-card is-open">
+            <p class="kicker">OPEN / 免费能力目录</p>
+            <h2>找一个现成能力</h2>
+            <p>想知道“有没有一个 Skill 能完成这件事”，先去 Open 按领域、任务和宿主检索。</p>
+            <a href="/open/">去能力目录 →</a>
+          </div>
+          <div class="clarity-divider" aria-hidden="true">→</div>
+          <div class="clarity-card is-product">
+            <p class="kicker">PRODUCTS / 组合与交付</p>
+            <h2>把能力变成工作结果</h2>
+            <p>当你要组合、分发、培训或落地一个重复流程，再从这里选择交付层。</p>
+            <a href="#product-list">留在产品线 →</a>
           </div>
         </div>
       </section>
@@ -70,36 +88,53 @@
               <p class="kicker">PUBLIC PRODUCT LINE</p>
               <h2>从可复用能力，<br />走向可执行结果。</h2>
             </div>
-            <p>产品名称描述装载与交付方式，状态描述今天能够验证到哪一步；没有公开入口或证据的能力不会出现在本页。</p>
+              <p>这里列的是交付层，不是 79 个公开 Skill 的重复目录。状态说明今天能否公开使用、测试或申请。</p>
           </div>
 
           <div class="product-stack">
             <article class="product-row">
-              <div class="product-index">01 / OPEN</div>
+              <div class="product-index">01 / SKILL</div>
               <div>
                 <span class="status status--available">Available</span>
-                <h2>SOIA Open Skills</h2>
-                <p>79 个公开 Skills，覆盖知识库、环境、开发、内容、设计、协作、课程与生态管理。</p>
+                <h2>Single Skill</h2>
+                <p>为一个边界清楚的重复任务提供输入、步骤、输出和验收说明。</p>
               </div>
               <div class="product-meta">
-                <div><span>交付形态</span><strong>SKILL.md + scripts / references / assets</strong></div>
-                <div><span>公开证据</span><strong>8 个能力域与机器可读目录</strong></div>
-                <div><span>适合</span><strong>查找、审查、安装一个聚焦能力</strong></div>
+                <div><span>交付形态</span><strong>一个可读、可安装的 Skill 包</strong></div>
+                <div><span>适合</span><strong>先验证一个任务是否值得封装</strong></div>
+                <div><span>入口</span><strong>从 Open 能力目录挑选</strong></div>
               </div>
               <div class="product-action">
-                <a class="button button--ink" href="/open/">浏览 Open</a>
+                <a class="button button--ghost" href="/open/">先看能力目录</a>
               </div>
             </article>
 
             <article class="product-row">
-              <div class="product-index">02 / PLUGIN</div>
+              <div class="product-index">02 / WORKFLOW</div>
+              <div>
+                <span class="status status--service">Service</span>
+                <h2>Multi-Skill Workflow</h2>
+                <p>把多个 Skills 串成有交接、人工检查点和失败处理的完整流程。</p>
+              </div>
+              <div class="product-meta">
+                <div><span>交付形态</span><strong>流程图、依赖关系与验收点</strong></div>
+                <div><span>适合</span><strong>同一任务需要多步协作</strong></div>
+                <div><span>边界</span><strong>保留人工批准与回退路径</strong></div>
+              </div>
+              <div class="product-action">
+                <a class="button button--ghost" href="/services/">评估一个流程</a>
+              </div>
+            </article>
+
+            <article class="product-row">
+              <div class="product-index">03 / PLUGIN</div>
               <div>
                 <span class="status status--available">Available</span>
-                <h2>SOIA Domain Plugins</h2>
+                <h2>Domain Plugin</h2>
                 <p>把同一领域的 Skills 组成可安装、可启停、可更新的插件，源码仍落在独立公开仓。</p>
               </div>
               <div class="product-meta">
-                <div><span>公开数量</span><strong>8 个领域 Plugins</strong></div>
+                <div><span>交付形态</span><strong>版本化 manifest 与安装入口</strong></div>
                 <div><span>宿主</span><strong>Claude Code · Codex</strong></div>
                 <div><span>适合</span><strong>一次装好某个工作领域</strong></div>
               </div>
@@ -109,7 +144,7 @@
             </article>
 
             <article class="product-row">
-              <div class="product-index">03 / EXPERT</div>
+              <div class="product-index">04 / EXPERT</div>
               <div>
                 <span class="status status--preview">Public Beta</span>
                 <h2>SOIA WorkBuddy Experts</h2>
@@ -126,7 +161,7 @@
             </article>
 
             <article class="product-row">
-              <div class="product-index">04 / COURSE</div>
+              <div class="product-index">05 / COURSE</div>
               <div>
                 <span class="status status--preview">Developer Preview</span>
                 <h2>SOIA Agent Workflow Course</h2>
@@ -143,7 +178,7 @@
             </article>
 
             <article class="product-row">
-              <div class="product-index">05 / SERVICE</div>
+              <div class="product-index">06 / SERVICE</div>
               <div>
                 <span class="status status--service">Service</span>
                 <h2>Workflow Implementation</h2>
