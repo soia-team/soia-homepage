@@ -34,7 +34,7 @@
     <main id="main">
       <section class="open-tabbar-section" aria-label="开放生态导航"><div class="shell"><nav class="open-tabbar"><a data-open-tab="overview" class="is-active" href="/open/?tab=home#overview">开放首页</a><a data-open-tab="skills" href="/open/?tab=skill#skills">Skills 目录</a><a data-open-tab="workbench" href="/open/?tab=workbench#workbench">Workbench / 专家</a></nav></div></section>
 
-      <section class="page-hero page-hero--open" id="overview">
+      <section class="page-hero page-hero--open" id="overview" data-open-section="overview">
         <div class="shell">
           <div class="page-hero-grid">
             <div>
@@ -45,7 +45,7 @@
               </p>
               <div class="hero-actions">
                 <a class="button button--orange" href="https://github.com/soia-team/soia-open-skills" target="_blank" rel="noreferrer">进入开放生态仓 ↗</a>
-                <a class="button button--ghost" href="#skills">浏览 8 个领域</a>
+                <a class="button button--ghost" href="/open/?tab=skill#skills">浏览 8 个领域</a>
               </div>
               <div class="page-meta" aria-label="开放生态概览">
                 <span>79 个生态 Skills</span>
@@ -68,13 +68,13 @@
         </div>
       </section>
 
-      <section class="clarity-band" aria-label="开放生态与课程服务的区别">
+      <section class="clarity-band" aria-label="开放生态与课程服务的区别" data-open-section="overview">
         <div class="shell clarity-grid">
           <div class="clarity-card is-open">
             <p class="kicker">OPEN ECOSYSTEM / 免费入口</p>
             <h2>你想找一个能直接使用的能力</h2>
             <p>按领域浏览公开 Skills，查看说明、安装方式与证据。这里不负责替你做项目。</p>
-            <a href="#skills">继续浏览能力域 →</a>
+            <a href="/open/?tab=skill#skills">继续浏览能力域 →</a>
           </div>
           <div class="clarity-divider" aria-hidden="true">→</div>
           <div class="clarity-card is-product">
@@ -86,14 +86,14 @@
         </div>
       </section>
 
-      <section class="section section--compact" id="categories">
+      <section class="section section--compact" id="categories" data-open-section="overview">
         <div class="shell">
           <div class="section-header"><div><p class="kicker">TASK CATEGORIES / 任务分类</p><h2>先按结果找，<br />再进入能力域。</h2></div><p>这是面向使用者的导航分组，不新增技能、不改变仓库边界；每个分类都对应下面的真实 8 个能力域。</p></div>
-          <div class="grid-4"><article class="card"><span class="card-index">01 / CONTENT</span><h3>内容与知识</h3><p>知识库与内容资产、内容生产与发布、课程设计与教案。</p><a class="card-link" href="#skills">查看相关能力域 →</a></article><article class="card"><span class="card-index">02 / DESIGN</span><h3>设计与演示</h3><p>产品与技术设计，覆盖 PRD、Open Design、图表和 Office 产线。</p><a class="card-link" href="#skills">查看相关能力域 →</a></article><article class="card"><span class="card-index">03 / DELIVERY</span><h3>工程与环境</h3><p>软件开发与交付、AI 工具与运行环境，覆盖编码、测试和发版。</p><a class="card-link" href="#skills">查看相关能力域 →</a></article><article class="card"><span class="card-index">04 / COLLABORATION</span><h3>协作与生态</h3><p>协作办公与同步、Skill 生态与规范，覆盖检索、安装和维护。</p><a class="card-link" href="#skills">查看相关能力域 →</a></article></div>
+          <div class="grid-4"><article class="card"><span class="card-index">01 / CONTENT</span><h3>内容与知识</h3><p>知识库与内容资产、内容生产与发布、课程设计与教案。</p><a class="card-link" href="/open/?tab=skill#skills">查看相关能力域 →</a></article><article class="card"><span class="card-index">02 / DESIGN</span><h3>设计与演示</h3><p>产品与技术设计，覆盖 PRD、Open Design、图表和 Office 产线。</p><a class="card-link" href="/open/?tab=skill#skills">查看相关能力域 →</a></article><article class="card"><span class="card-index">03 / DELIVERY</span><h3>工程与环境</h3><p>软件开发与交付、AI 工具与运行环境，覆盖编码、测试和发版。</p><a class="card-link" href="/open/?tab=skill#skills">查看相关能力域 →</a></article><article class="card"><span class="card-index">04 / COLLABORATION</span><h3>协作与生态</h3><p>协作办公与同步、Skill 生态与规范，覆盖检索、安装和维护。</p><a class="card-link" href="/open/?tab=skill#skills">查看相关能力域 →</a></article></div>
         </div>
       </section>
 
-      <section class="section" id="skills">
+      <section class="section" id="skills" data-open-section="skills">
         <div class="shell">
           <div class="section-header">
             <div>
@@ -101,6 +101,46 @@
               <h2>按工作领域进入，<br />不必背完整目录。</h2>
             </div>
             <p>每个领域都有独立公开仓库、清晰职责和按需载入的技能正文。输入关键词可以筛选下面的能力域。</p>
+          </div>
+
+          <div class="open-skill-index">
+            <div class="open-skill-index-head">
+              <div>
+                <p class="kicker">SKILL INDEX / 能力索引</p>
+                <h3>按结果选择，不必背名字。</h3>
+              </div>
+              <p>公开能力先按单个 Skill 提供；需要组合成 Workflow、Plugin 或 Expert 时，再进入产品和服务。</p>
+            </div>
+            <div class="catalog-toolbar open-skill-toolbar">
+              <input class="search-field" type="search" placeholder="搜索归档、文章、开发、设计、环境……" aria-label="搜索公开 Skill" data-skill-search />
+              <div class="skill-filter-group" role="group" aria-label="公开能力类型筛选">
+                <button type="button" class="skill-filter is-active" data-skill-filter="all" aria-pressed="true">全部</button>
+                <button type="button" class="skill-filter" data-skill-filter="skill" aria-pressed="false">Skill</button>
+                <button type="button" class="skill-filter" data-skill-filter="workflow" aria-pressed="false">Workflow</button>
+                <button type="button" class="skill-filter" data-skill-filter="plugin" aria-pressed="false">Plugin</button>
+                <button type="button" class="skill-filter" data-skill-filter="expert" aria-pressed="false">Expert</button>
+              </div>
+            </div>
+            <div class="open-skill-summary"><span>当前显示 <strong data-skill-count>16</strong> 项</span><span>公共方法可复用；私有资料不进入开放仓。</span></div>
+            <div class="open-skill-grid">
+              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/pkm-vault/soia-pkm-clip-web/"><span class="skill-badges"><i>PKM</i><i>Available</i></span><h3>网页内容归档</h3><p>把网页和文章保存为带来源、时间和可复核正文的知识库记录。</p><span>soia-pkm-clip-web ↗</span></a>
+              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/pkm-vault/soia-pkm-distill-article-opinion/"><span class="skill-badges"><i>PKM</i><i>Skill</i></span><h3>文章观点提炼</h3><p>用一次一个问题的方式，把资料阅读转成用户自己的观点草稿。</p><span>soia-pkm-distill-article-opinion ↗</span></a>
+              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/media-content/soia-media-compose-article-draft/"><span class="skill-badges"><i>MEDIA</i><i>Available</i></span><h3>文章成文草稿</h3><p>将已确认的观点和资料组织成可继续编辑的文章，而不是自动发布。</p><span>soia-media-compose-article-draft ↗</span></a>
+              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/media-content/soia-media-publish-rednote-card/"><span class="skill-badges"><i>MEDIA</i><i>Skill</i></span><h3>小红书发布包</h3><p>把完成的文章改写成标题、短段落、标签和配图建议。</p><span>soia-media-publish-rednote-card ↗</span></a>
+              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/media-content/soia-media-publish-wechat-draft/"><span class="skill-badges"><i>MEDIA</i><i>Draft</i></span><h3>公众号草稿排版</h3><p>将成文稿整理为可检查的内联样式 HTML，并只保存到草稿箱。</p><span>soia-media-publish-wechat-draft ↗</span></a>
+              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/development-design/soia-dev-design-explorer/"><span class="skill-badges"><i>DESIGN</i><i>Open Design</i></span><h3>设计探索与评审</h3><p>通过 Open Design 做高保真原型、视觉方向和证据化评审。</p><span>soia-dev-design-explorer ↗</span></a>
+              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/development/soia-dev-task-execute/"><span class="skill-badges"><i>DEV</i><i>Available</i></span><h3>工程任务执行</h3><p>从边界、实现到验证、独立复核和交付回执，完成一个有证据的任务。</p><span>soia-dev-task-execute ↗</span></a>
+              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/development/soia-dev-fix-loop/"><span class="skill-badges"><i>DEV</i><i>Skill</i></span><h3>五步修复闭环</h3><p>复现问题、选择修复、回归测试并留下可审查的结果。</p><span>soia-dev-fix-loop ↗</span></a>
+              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/environment/soia-env-codex-setup-support/"><span class="skill-badges"><i>ENV</i><i>Available</i></span><h3>Codex 环境支持</h3><p>诊断安装、登录、性能和存储问题，区分事实、建议和授权动作。</p><span>soia-env-codex-setup-support ↗</span></a>
+              <a class="open-skill-card" data-skill-card data-skill-type="plugin" href="https://github.com/soia-team/soia-open-skills" target="_blank" rel="noreferrer"><span class="skill-badges"><i>PLUGIN</i><i>Public</i></span><h3>SOIA Open Skills Plugin</h3><p>将公开 Skills 按领域装载到 Claude Code、Codex 或 WorkBuddy。</p><span>查看公开仓库 ↗</span></a>
+              <a class="open-skill-card" data-skill-card data-skill-type="workflow" href="/products/#catalog"><span class="skill-badges"><i>WORKFLOW</i><i>Preview</i></span><h3>文章到发布草稿</h3><p>归档、观点提炼、成文、配图和公众号或小红书草稿的可复跑组合。</p><span>查看产品形态 ↗</span></a>
+              <a class="open-skill-card" data-skill-card data-skill-type="workflow" href="/products/#catalog"><span class="skill-badges"><i>WORKFLOW</i><i>Preview</i></span><h3>工程交付闭环</h3><p>任务执行、设计探索、测试、修复和发版检查连接成一条工作流。</p><span>查看产品形态 ↗</span></a>
+              <a class="open-skill-card" data-skill-card data-skill-type="expert" href="/products/#catalog"><span class="skill-badges"><i>EXPERT</i><i>Preview</i></span><h3>知识库 WorkBuddy Expert</h3><p>把知识库、归档、提炼和阅读计划组合成角色化专家入口。</p><span>查看 Expert 形态 ↗</span></a>
+              <a class="open-skill-card" data-skill-card data-skill-type="expert" href="/products/#catalog"><span class="skill-badges"><i>EXPERT</i><i>Roadmap</i></span><h3>内容发布 WorkBuddy Expert</h3><p>围绕文章、配图、渠道草稿和人工发布检查组织协作角色。</p><span>查看 Expert 形态 ↗</span></a>
+              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/meta/soia-meta-find-skill/"><span class="skill-badges"><i>META</i><i>Available</i></span><h3>按需检索 Skill</h3><p>从自然语言目标找到最小相关能力，并说明其所属领域与安装入口。</p><span>soia-meta-find-skill ↗</span></a>
+              <a class="open-skill-card" data-skill-card data-skill-type="skill" href="/open/education-course/soia-edu-design-course-outline/"><span class="skill-badges"><i>EDU</i><i>Available</i></span><h3>课程大纲设计</h3><p>根据主题、受众、目标、时长和交付约束设计课程骨架。</p><span>soia-edu-design-course-outline ↗</span></a>
+            </div>
+            <p class="open-skill-empty" hidden data-skill-empty>没有匹配的公开能力。可以换一个任务关键词，或进入服务页讨论私有流程。</p>
           </div>
 
           <div class="catalog-toolbar">
@@ -199,14 +239,26 @@
         </div>
       </section>
 
-      <section class="section section--compact" id="workbench">
+      <section class="section section--compact" id="workbench" data-open-section="workbench">
         <div class="shell">
-          <div class="section-header"><div><p class="kicker">WORKBENCH / 专家入口</p><h2>把公开能力，<br />装进你的工作环境。</h2></div><p>SOIA 不把网页本身包装成云端执行器。Workbench、Plugin 和 Expert 负责把公开能力装进本地宿主；真实资料和高风险动作仍由你控制。</p></div>
-          <div class="grid-3"><article class="card"><span class="card-index">01 / CLAUDE CODE</span><h3>按需加载 Skill</h3><p>从公开仓库安装，按任务触发，保留源码和版本证据。</p></article><article class="card"><span class="card-index">02 / CODEX</span><h3>组合多个能力</h3><p>把 Skills 连接成工作流，写清输入、交接、批准点和验收。</p></article><article class="card"><span class="card-index">03 / WORKBUDDY</span><h3>进入角色化 Expert</h3><p>将角色、知识、工具和推荐任务组织成可召唤的专家入口。</p></article></div>
+          <div class="workbench-panel">
+            <div class="workbench-panel-copy">
+              <p class="kicker">WORKBENCH / 专家入口</p>
+              <h2>把公开能力，<br /><em>装进你的工作环境。</em></h2>
+              <p>SOIA 不把网页本身包装成云端执行器。Workbench、Plugin 和 Expert 负责把公开能力装进本地宿主；真实资料和高风险动作仍由你控制。</p>
+              <div class="hero-actions"><a class="button button--orange" href="/products/#catalog">查看产品形态</a><a class="button button--ghost" href="/services/">讨论私有落地</a></div>
+            </div>
+            <div class="workbench-diagram" role="img" aria-label="SOIA 工作台示意：任务、Skill、Workflow、Plugin、Expert 和验收">
+              <div class="diagram-top"><span>SOIA WORKBENCH</span><span class="diagram-live">LOCAL · HUMAN CONTROLLED</span></div>
+              <div class="diagram-canvas"><div class="diagram-node diagram-node--task"><small>INPUT</small><strong>一个真实任务</strong><span>资料 · 目标 · 边界</span></div><i class="diagram-line"></i><div class="diagram-node diagram-node--skill"><small>PUBLIC</small><strong>Skill</strong><span>按需加载</span></div><i class="diagram-line"></i><div class="diagram-node diagram-node--workflow"><small>COMPOSE</small><strong>Workflow</strong><span>交接 · 批准</span></div><i class="diagram-line"></i><div class="diagram-node diagram-node--expert"><small>HOST</small><strong>Plugin / Expert</strong><span>本地运行</span></div></div>
+              <div class="diagram-bottom"><span>01 证据</span><span>02 人工检查</span><span>03 可复跑回执</span></div>
+            </div>
+          </div>
+          <div class="grid-3 workbench-host-grid"><article class="card"><span class="card-index">01 / CLAUDE CODE</span><h3>按需加载 Skill</h3><p>从公开仓库安装，按任务触发，保留源码和版本证据。</p></article><article class="card"><span class="card-index">02 / CODEX</span><h3>组合多个能力</h3><p>把 Skills 连接成工作流，写清输入、交接、批准点和验收。</p></article><article class="card"><span class="card-index">03 / WORKBUDDY</span><h3>进入角色化 Expert</h3><p>将角色、知识、工具和推荐任务组织成可召唤的专家入口。</p></article></div>
         </div>
       </section>
 
-      <section class="section section--compact" id="layers">
+      <section class="section section--compact" id="layers" data-open-section="overview">
         <div class="shell">
           <div class="section-header">
             <div>
@@ -244,7 +296,7 @@
         </div>
       </section>
 
-      <section class="section" id="hosts">
+      <section class="section" id="hosts" data-open-section="workbench">
         <div class="shell">
           <div class="section-header">
             <div>
@@ -285,7 +337,7 @@
         </div>
       </section>
 
-      <section class="section" id="supply-chain">
+      <section class="section" id="supply-chain" data-open-section="workbench">
         <div class="shell">
           <div class="feature-split">
             <div class="feature-copy">
@@ -328,7 +380,7 @@
         </div>
       </section>
 
-      <section class="section section--compact" id="contribute">
+      <section class="section section--compact" id="contribute" data-open-section="workbench">
         <div class="shell">
           <div class="cta-panel">
             <div>

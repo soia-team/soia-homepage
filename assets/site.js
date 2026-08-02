@@ -149,10 +149,50 @@ function wireOpenTabs() {
   if (!tabs.length) return;
   const param = new URLSearchParams(window.location.search).get("tab");
   const target = param === "skill" || param === "skills" ? "skills" : param === "workbench" || param === "expert" ? "workbench" : "overview";
+  document.body.dataset.openView = target;
   tabs.forEach((tab) => tab.classList.toggle("is-active", tab.dataset.openTab === target));
-  if (target !== "overview") {
-    window.requestAnimationFrame(() => document.getElementById(target)?.scrollIntoView({ block: "start" }));
+  const sections = [...document.querySelectorAll("[data-open-section]")];
+  sections.forEach((section) => {
+    const allowed = (section.dataset.openSection || "").split(/\s+/).filter(Boolean);
+    section.hidden = allowed.length > 0 && !allowed.includes(target);
+  });
+  const firstVisible = document.getElementById(target)?.hidden ? null : document.getElementById(target) || sections.find((section) => !section.hidden);
+  if (firstVisible && target !== "overview") {
+    window.requestAnimationFrame(() => firstVisible.scrollIntoView({ block: "start" }));
   }
+}
+
+function wireSkillIndex() {
+  const input = document.querySelector("[data-skill-search]");
+  const cards = [...document.querySelectorAll("[data-skill-card]")];
+  const filters = [...document.querySelectorAll("[data-skill-filter]")];
+  const empty = document.querySelector("[data-skill-empty]");
+  const count = document.querySelector("[data-skill-count]");
+  if (!cards.length) return;
+  let activeFilter = "all";
+  const render = () => {
+    const query = (input?.value || "").trim().toLowerCase();
+    let shown = 0;
+    cards.forEach((card) => {
+      const matchesQuery = !query || card.textContent.toLowerCase().includes(query);
+      const matchesFilter = activeFilter === "all" || card.dataset.skillType === activeFilter;
+      card.hidden = !(matchesQuery && matchesFilter);
+      if (!card.hidden) shown += 1;
+    });
+    if (count) count.textContent = String(shown);
+    if (empty) empty.hidden = shown !== 0;
+  };
+  input?.addEventListener("input", render);
+  filters.forEach((filter) => filter.addEventListener("click", () => {
+    activeFilter = filter.dataset.skillFilter || "all";
+    filters.forEach((item) => {
+      const active = item === filter;
+      item.classList.toggle("is-active", active);
+      item.setAttribute("aria-pressed", String(active));
+    });
+    render();
+  }));
+  render();
 }
 
 renderHeader();
@@ -161,3 +201,4 @@ wireLinks();
 wireCatalog();
 wireResponsiveTables();
 wireOpenTabs();
+wireSkillIndex();
