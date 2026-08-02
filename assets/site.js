@@ -1,14 +1,14 @@
 const NAV_ITEMS = {
   zh: [
     ["home", "首页", "/"],
-    ["open", "公开能力", "/open/"],
+    ["open", "开放生态", "/open/"],
     ["course", "课程", "/course/"],
     ["services", "服务", "/services/"],
     ["about", "关于", "/about/"],
   ],
   en: [
     ["home", "Home", "/en/"],
-    ["open", "Open skills", "/en/open/"],
+    ["open", "Open ecosystem", "/en/open/"],
     ["course", "Course", "/en/course/"],
     ["services", "Services", "/en/services/"],
     ["about", "About", "/en/about/"],
@@ -39,8 +39,8 @@ function renderHeader() {
   const current = document.body.dataset.page || "home";
   const locale = getLocale();
   const copy = locale === "en"
-    ? { home: "SOIA home", menu: "Menu", nav: "Primary navigation", start: "Start with open skills", language: "中文", languageLabel: "切换到中文" }
-    : { home: "SOIA 首页", menu: "菜单", nav: "主导航", start: "从公开能力开始", language: "EN", languageLabel: "Switch to English" };
+    ? { home: "SOIA home", menu: "Menu", nav: "Primary navigation", start: "Start with open ecosystem", language: "中文", languageLabel: "切换到中文" }
+    : { home: "SOIA 首页", menu: "菜单", nav: "主导航", start: "从开放生态开始", language: "EN", languageLabel: "Switch to English" };
   const links = NAV_ITEMS[locale].map(
     ([id, label, href]) =>
       `<a href="${href}" ${id === current ? 'aria-current="page"' : ""}>${label}</a>`
@@ -88,7 +88,7 @@ function renderFooter() {
           </a>
           <p>System · Orchestration · Intelligence · Assurance</p>
         </div>
-        <div><strong>${en ? "Explore" : "探索"}</strong><a href="${en ? "/en/open/" : "/open/"}">${en ? "Open skills" : "公开能力"}</a><a href="${en ? "/en/course/" : "/course/"}">${en ? "Course" : "课程"}</a><a href="${en ? "/en/services/" : "/services/"}">${en ? "Private services" : "私有服务"}</a></div>
+        <div><strong>${en ? "Explore" : "探索"}</strong><a href="${en ? "/en/open/" : "/open/"}">${en ? "Open ecosystem" : "开放生态"}</a><a href="${en ? "/en/course/" : "/course/"}">${en ? "Course" : "课程"}</a><a href="${en ? "/en/services/" : "/services/"}">${en ? "Private services" : "私有服务"}</a></div>
         <div><strong>${en ? "Work with us" : "合作"}</strong><a href="${en ? "/en/services/" : "/services/"}">Services</a><a href="${en ? "/en/about/" : "/about/"}">About</a><a href="https://github.com/soia-team" target="_blank" rel="noreferrer">GitHub ↗</a></div>
         <div><strong>${en ? "Boundaries" : "边界"}</strong><span>Local-first</span><span>Human-controlled</span><span>Evidence-backed</span></div>
       </div>

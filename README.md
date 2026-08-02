@@ -16,7 +16,7 @@ plugins, and role-based experts for Codex, Claude Code, and WorkBuddy.
 - `/open/` — eight public capability domains
 - `/open/<domain>/` — level-3 capability-domain page
 - `/open/<domain>/<skill>/` — level-4 Skill detail page
-- `/products/` — three clear entry points: open skills, course, and private services
+- `/products/` — three clear entry points: open ecosystem, course, and private services
 - `/course/` — SOIA Agent workflow course
 - `/services/` — workflow and private expert delivery
 - `/about/` — principles, boundaries, and public evidence
