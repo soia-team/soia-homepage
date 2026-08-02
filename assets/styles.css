@@ -1211,7 +1211,9 @@ body[data-page="course"] .course-table td { font-size: 14px; line-height: 1.55; 
   .section { padding: 54px 0; }
   .section--compact { padding-block: 42px; }
 
-  .page-hero-grid { grid-template-columns: 1fr; gap: 28px; }
+  .page-hero-grid,
+  body[data-page="products"] .page-hero-grid,
+  body[data-page="course"] .page-hero-grid { grid-template-columns: 1fr; gap: 28px; }
   .page-hero-rail { max-width: 620px; }
   .open-tabbar { min-height: 52px; }
   .open-tabbar a { padding-inline: 12px; font-size: 13px; }
@@ -1222,8 +1224,10 @@ body[data-page="course"] .course-table td { font-size: 14px; line-height: 1.55; 
   .product-catalog-grid .offer-card { min-height: 0; }
   .compare--products { grid-template-columns: 1fr; gap: 14px; }
   .compare--products .compare-arrow { min-height: 24px; transform: rotate(90deg); }
-  .course-outline article { grid-template-columns: 44px 1fr; gap: 10px 14px; }
-  .course-outline article p { grid-column: 2; }
+  .course-outline article,
+  body[data-page="course"] .course-outline article { grid-template-columns: 44px 1fr; gap: 10px 14px; padding: 14px 0; }
+  .course-outline article p,
+  body[data-page="course"] .course-outline article p { grid-column: 2; }
 
   .section-header {
     grid-template-columns: 1fr;
