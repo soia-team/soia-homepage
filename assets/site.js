@@ -1,21 +1,83 @@
 document.documentElement.classList.add("js");
 
-const NAV_ITEMS = {
+const NAV_GROUPS = {
   zh: [
-    ["products", "产品体系", "/products/"],
-    ["open", "开放生态", "/open/"],
-    ["course", "课程", "/course/"],
-    ["services", "服务与合作", "/services/"],
-    ["docs", "资源", "/docs/"],
-    ["about", "关于", "/about/"],
+    {
+      id: "products",
+      label: "产品",
+      pages: ["products", "course"],
+      columns: [
+        { title: "产品", items: [["产品体系", "/products/", "Skill 到 Expert"], ["课程", "/course/", "亲手完成一个工作流"], ["产品规格", "/spec/", "交付与版本边界"]] },
+        { title: "交付形态", items: [["Skill", "/open/?tab=skill", "最小能力单元"], ["Workflow", "/products/#catalog", "可复跑的任务链"], ["Plugin", "/products/#catalog", "Codex / Claude Code 入口"], ["Expert", "/products/#catalog", "WorkBuddy 角色系统"]] },
+      ],
+    },
+    {
+      id: "solutions",
+      label: "解决方案",
+      pages: ["services", "showcase", "spec"],
+      columns: [
+        { title: "从任务开始", items: [["内容与知识", "/open/pkm-vault/", "归档、提炼与发布"], ["设计与演示", "/open/development-design/", "原型、图表与演示"], ["工程与交付", "/open/development/", "编码、测试与发版"]] },
+        { title: "落地方式", items: [["免费验证", "/open/", "先运行公开能力"], ["自己构建", "/course/", "学习完整方法"], ["共同落地", "/services/", "私有 Pilot 与交接"], ["查看成品", "/showcase/", "了解交付结果"]] },
+      ],
+    },
+    {
+      id: "open",
+      label: "开放生态",
+      pages: ["open"],
+      columns: [
+        { title: "能力目录", items: [["全部 Skills", "/open/?tab=skill", "按结果与领域查找"], ["知识库与内容", "/open/pkm-vault/", "资料进入可复用系统"], ["内容生产", "/open/media-content/", "文章、配图与发布草稿"], ["开发与设计", "/open/development-design/", "产品与技术设计"]] },
+        { title: "宿主与生态", items: [["Codex", "/open/environment/soia-env-codex-setup-support/", "配置与运行支持"], ["Claude Code", "/open/environment/soia-env-claude-cli-install/", "安装与能力加载"], ["WorkBuddy", "/open/environment/soia-env-workbuddy-install/", "Expert 入口"], ["GitHub 源码", "https://github.com/soia-team/soia-open-skills", "审查公开能力"]] },
+      ],
+    },
+    { id: "pricing", label: "价格", pages: ["pricing"], href: "/pricing/" },
+    {
+      id: "resources",
+      label: "资源",
+      pages: ["docs", "blog", "about"],
+      columns: [
+        { title: "阅读", items: [["博客", "/blog/", "方法、案例与更新"], ["Codex × Open Design", "/blog/codex-open-design/", "从截图到生产页面"], ["文档", "/docs/", "安装、使用与边界"], ["课程详情", "/course/", "课程结构与交付"]] },
+        { title: "了解 SOIA", items: [["服务与合作", "/services/", "私有流程落地"], ["成品展示", "/showcase/", "交付形态与结果"], ["关于", "/about/", "原则与团队"], ["GitHub", "https://github.com/soia-team", "公开组织与仓库"]] },
+      ],
+    },
   ],
   en: [
-    ["products", "Products", "/en/products/"],
-    ["open", "Open ecosystem", "/en/open/"],
-    ["course", "Course", "/en/course/"],
-    ["services", "Services", "/en/services/"],
-    ["docs", "Resources", "/en/docs/"],
-    ["about", "About", "/en/about/"],
+    {
+      id: "products",
+      label: "Products",
+      pages: ["products", "course"],
+      columns: [
+        { title: "Products", items: [["Product system", "/en/products/", "Skill to Expert"], ["Course", "/en/course/", "Build one real workflow"], ["Product spec", "/en/spec/", "Delivery and version boundaries"]] },
+        { title: "Delivery forms", items: [["Skill", "/en/open/?tab=skill", "Smallest capability"], ["Workflow", "/en/products/#catalog", "Repeatable task chain"], ["Plugin", "/en/products/#catalog", "Codex / Claude Code entry"], ["Expert", "/en/products/#catalog", "WorkBuddy role system"]] },
+      ],
+    },
+    {
+      id: "solutions",
+      label: "Solutions",
+      pages: ["services", "showcase", "spec"],
+      columns: [
+        { title: "Start from work", items: [["Knowledge", "/en/open/pkm-vault/", "Capture, distill, publish"], ["Design", "/en/open/development-design/", "Prototypes and presentations"], ["Engineering", "/en/open/development/", "Code, test, release"]] },
+        { title: "Ways to begin", items: [["Validate free", "/en/open/", "Run public capabilities"], ["Build it", "/en/course/", "Learn the full method"], ["Deliver together", "/en/services/", "Private pilot and handoff"], ["View outcomes", "/en/showcase/", "See delivery examples"]] },
+      ],
+    },
+    {
+      id: "open",
+      label: "Open ecosystem",
+      pages: ["open"],
+      columns: [
+        { title: "Capability catalog", items: [["All Skills", "/en/open/?tab=skill", "Browse by outcome"], ["Knowledge", "/en/open/pkm-vault/", "Turn material into a system"], ["Media", "/en/open/media-content/", "Articles and channel drafts"], ["Dev & design", "/en/open/development-design/", "Product and technical design"]] },
+        { title: "Hosts", items: [["Codex", "/en/open/environment/soia-env-codex-setup-support/", "Setup and runtime support"], ["Claude Code", "/en/open/environment/soia-env-claude-cli-install/", "Install and load capabilities"], ["WorkBuddy", "/en/open/environment/soia-env-workbuddy-install/", "Expert entry"], ["GitHub source", "https://github.com/soia-team/soia-open-skills", "Inspect public capability"]] },
+      ],
+    },
+    { id: "pricing", label: "Pricing", pages: ["pricing"], href: "/en/pricing/" },
+    {
+      id: "resources",
+      label: "Resources",
+      pages: ["docs", "blog", "about"],
+      columns: [
+        { title: "Learn", items: [["Blog", "/en/blog/", "Methods, cases, updates"], ["Codex × Open Design", "/en/blog/codex-open-design/", "Screenshot to production page"], ["Docs", "/en/docs/", "Install, use, boundaries"], ["Course", "/en/course/", "Structure and outcomes"]] },
+        { title: "About SOIA", items: [["Services", "/en/services/", "Private workflow delivery"], ["Showcase", "/en/showcase/", "Delivery forms and results"], ["About", "/en/about/", "Principles and team"], ["GitHub", "https://github.com/soia-team", "Public repositories"]] },
+      ],
+    },
   ],
 };
 
@@ -43,10 +105,22 @@ function renderHeader() {
   const copy = locale === "en"
     ? { home: "SOIA home", menu: "Menu", nav: "Primary navigation", start: "Explore ecosystem", language: "中文", languageLabel: "切换到中文" }
     : { home: "SOIA 首页", menu: "菜单", nav: "主导航", start: "进入开放生态", language: "EN", languageLabel: "Switch to English" };
-  const links = NAV_ITEMS[locale].map(
-    ([id, label, href]) =>
-      `<a href="${href}" ${id === current ? 'aria-current="page"' : ""}>${label}</a>`
-  ).join("");
+  const links = NAV_GROUPS[locale].map((group) => {
+    const active = group.pages?.includes(current);
+    if (group.href) {
+      return `<a class="nav-direct${active ? " is-active" : ""}" href="${group.href}" ${active ? 'aria-current="page"' : ""}>${group.label}</a>`;
+    }
+    const menuId = `nav-menu-${group.id}`;
+    const columns = group.columns.map((column) => `
+      <section class="mega-column">
+        <p>${column.title}</p>
+        ${column.items.map(([label, href, description]) => `<a class="mega-link" href="${href}"><span>${label}</span><small>${description}</small></a>`).join("")}
+      </section>`).join("");
+    return `<div class="nav-item nav-item--menu${active ? " is-active" : ""}" data-nav-menu>
+      <button class="nav-menu-trigger" type="button" aria-expanded="false" aria-controls="${menuId}">${group.label}<span aria-hidden="true">⌄</span></button>
+      <div class="mega-menu" id="${menuId}" hidden><div class="mega-menu-grid">${columns}</div></div>
+    </div>`;
+  }).join("");
 
   host.innerHTML = `
     <header class="site-header">
@@ -68,11 +142,65 @@ function renderHeader() {
 
   const button = host.querySelector(".nav-toggle");
   const nav = host.querySelector(".site-nav");
+  const menuItems = [...host.querySelectorAll("[data-nav-menu]")];
+  const desktop = () => window.matchMedia("(min-width: 861px)").matches;
+  const setMenu = (item, open) => {
+    const trigger = item.querySelector(".nav-menu-trigger");
+    const panel = item.querySelector(".mega-menu");
+    trigger?.setAttribute("aria-expanded", String(open));
+    item.classList.toggle("is-open", open);
+    if (panel) panel.hidden = !open;
+  };
+  const closeMenus = (except = null) => menuItems.forEach((item) => {
+    if (item !== except) setMenu(item, false);
+  });
+
+  menuItems.forEach((item) => {
+    const trigger = item.querySelector(".nav-menu-trigger");
+    trigger?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const open = trigger.getAttribute("aria-expanded") !== "true";
+      closeMenus(item);
+      setMenu(item, open);
+    });
+    item.addEventListener("mouseenter", () => {
+      if (!desktop()) return;
+      closeMenus(item);
+      setMenu(item, true);
+    });
+    item.addEventListener("mouseleave", () => {
+      if (desktop()) setMenu(item, false);
+    });
+    item.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowDown" && event.target === trigger) {
+        event.preventDefault();
+        closeMenus(item);
+        setMenu(item, true);
+        window.requestAnimationFrame(() => item.querySelector(".mega-link")?.focus());
+      }
+      if (event.key === "Escape") {
+        setMenu(item, false);
+        trigger?.focus();
+      }
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!host.contains(event.target)) closeMenus();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeMenus();
+  });
   button?.addEventListener("click", () => {
     const open = button.getAttribute("aria-expanded") === "true";
     button.setAttribute("aria-expanded", String(!open));
     nav?.classList.toggle("is-open", !open);
+    document.body.classList.toggle("menu-locked", !open);
+    if (open) closeMenus();
   });
+  const updateHeader = () => host.querySelector(".site-header")?.classList.toggle("is-scrolled", window.scrollY > 8);
+  updateHeader();
+  window.addEventListener("scroll", updateHeader, { passive: true });
 }
 
 function renderFooter() {
@@ -149,10 +277,6 @@ function wireOpenTabs() {
     const allowed = (section.dataset.openSection || "").split(/\s+/).filter(Boolean);
     section.hidden = allowed.length > 0 && !allowed.includes(target);
   });
-  const firstVisible = document.getElementById(target)?.hidden ? null : document.getElementById(target) || sections.find((section) => !section.hidden);
-  if (firstVisible && target !== "overview") {
-    window.requestAnimationFrame(() => firstVisible.scrollIntoView({ block: "start" }));
-  }
 }
 
 function wireSkillIndex() {
