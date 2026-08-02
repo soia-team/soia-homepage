@@ -143,8 +143,21 @@ function wireResponsiveTables() {
   });
 }
 
+function wireOpenTabs() {
+  if (document.body.dataset.page !== "open") return;
+  const tabs = [...document.querySelectorAll("[data-open-tab]")];
+  if (!tabs.length) return;
+  const param = new URLSearchParams(window.location.search).get("tab");
+  const target = param === "skill" || param === "skills" ? "skills" : param === "workbench" || param === "expert" ? "workbench" : "overview";
+  tabs.forEach((tab) => tab.classList.toggle("is-active", tab.dataset.openTab === target));
+  if (target !== "overview") {
+    window.requestAnimationFrame(() => document.getElementById(target)?.scrollIntoView({ block: "start" }));
+  }
+}
+
 renderHeader();
 renderFooter();
 wireLinks();
 wireCatalog();
 wireResponsiveTables();
+wireOpenTabs();
