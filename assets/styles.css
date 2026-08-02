@@ -637,6 +637,29 @@ body[data-page="course"] .page-hero { background: linear-gradient(180deg, rgba(2
 .clarity-card .kicker { font-size: 11px; }
 .clarity-divider { display: grid; place-items: center; color: var(--orange); font-family: var(--font-mono); font-size: 18px; }
 
+.offer-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.offer-card { display: flex; min-height: 390px; flex-direction: column; gap: 16px; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.offer-card.is-open { border-top: 4px solid var(--green); }
+.offer-card.is-course { border-top: 4px solid var(--orange); }
+.offer-card.is-private { border-top: 4px solid var(--ink); }
+.offer-card h2 { margin: 0; font-size: 27px; letter-spacing: -0.03em; line-height: 1.15; }
+.offer-card p { margin: 0; color: var(--muted); }
+.offer-card .offer-price { margin: 4px 0 0; color: var(--ink); font-family: var(--font-display); font-size: 34px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; }
+.offer-card .offer-price small { color: var(--muted); font-family: var(--font-sans); font-size: 13px; font-weight: 500; letter-spacing: 0; }
+.offer-card ul { display: grid; gap: 8px; margin: 0; padding: 0 0 0 18px; color: var(--ink-soft); }
+.offer-card .button { margin-top: auto; align-self: flex-start; }
+.offer-note { margin: 24px 0 0; color: var(--muted); font-size: 13px; }
+
+.course-outline { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.course-outline article { display: grid; grid-template-columns: 58px minmax(0, 0.72fr) minmax(0, 1.28fr); gap: 20px; align-items: start; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.course-outline article > span:first-child { color: var(--green); font-family: var(--font-mono); font-size: 12px; font-weight: 750; }
+.course-outline h3 { margin: 0; font-size: 20px; }
+.course-outline p { margin: 0; color: var(--muted); }
+.course-price-block { display: grid; gap: 6px; margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); }
+.course-price-block span { color: var(--muted); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+.course-price-block strong { font-family: var(--font-display); font-size: 38px; letter-spacing: -0.04em; line-height: 1; }
+.course-price-block small { color: var(--muted); font-size: 13px; }
+
 .page-meta span {
   padding: 7px 10px;
   border: 1px solid var(--line);
@@ -1151,6 +1174,10 @@ body[data-page="course"] .page-hero { background: linear-gradient(180deg, rgba(2
   .page-hero-rail { max-width: 620px; }
   .clarity-grid { grid-template-columns: 1fr; gap: 10px; }
   .clarity-divider { min-height: 20px; transform: rotate(90deg); }
+  .offer-grid { grid-template-columns: 1fr; }
+  .offer-card { min-height: 0; padding: 24px 20px; }
+  .course-outline article { grid-template-columns: 44px 1fr; gap: 10px 14px; }
+  .course-outline article p { grid-column: 2; }
 
   .section-header {
     grid-template-columns: 1fr;
