@@ -359,7 +359,7 @@ def head(locale: str, title: str, description: str, path: str) -> str:
     <link rel="alternate" hreflang="zh-CN" href="{BASE_URL}{zh_path}" />
     <link rel="alternate" hreflang="en" href="{BASE_URL}{en_path}" />
     <link rel="alternate" hreflang="x-default" href="{BASE_URL}{zh_path}" />
-    <link rel="stylesheet" href="/assets/styles.css?v=levels3-20260802" />
+    <link rel="stylesheet" href="/assets/styles.css?v=open-design-20260803" />
   </head>"""
 
 
@@ -369,14 +369,14 @@ def document(locale: str, page: str, title: str, description: str, path: str, ma
     return f"""<!doctype html>
 <html lang="{lang}">
 {head(locale, title, description, path)}
-  <body data-page="{page}">
+  <body class="odx-document" data-page="{page}">
     <a class="skip-link" href="#main">{skip}</a>
     <div data-site-header></div>
     <main id="main">
 {main}
     </main>
     <div data-site-footer></div>
-    <script src="/assets/site.js?v=levels3-20260802" defer></script>
+    <script src="/assets/site.js?v=open-design-20260803" defer></script>
   </body>
 </html>
 """
@@ -430,13 +430,13 @@ def render_domain(
     for index, skill in enumerate(skills, start=1):
         skill_summary = skill.summary_en if en else skill.summary_zh
         rows.append(
-            f"""              <li class="catalog-row" data-catalog-card>
+            f"""              <li class="odx-list-item" data-catalog-card>
                 <a href="{skill_path(locale, skill)}">
-                  <span class="catalog-row-index">{index:03d}</span>
-                  <span class="catalog-row-thumb" aria-hidden="true">{escape(domain.code)}</span>
-                  <span class="catalog-row-body"><strong>{escape(skill.name)}</strong><span>{escape(skill_summary)}</span></span>
-                  <span class="catalog-row-meta"><i>{"Skill" if en else "公开 Skill"}</i><i>{escape(domain.code)}</i></span>
-                  <span class="catalog-row-arrow" aria-hidden="true">→</span>
+                  <span class="odx-list-index">{index:03d}</span>
+                  <span class="odx-list-thumb" aria-hidden="true">{escape(domain.code)}</span>
+                  <span class="odx-list-body"><strong>{escape(skill.name)}</strong><span>{escape(skill_summary)}</span></span>
+                  <span class="odx-list-meta"><i>{"Skill" if en else "公开 Skill"}</i><i>{escape(domain.code)}</i></span>
+                  <span class="odx-list-arrow" aria-hidden="true">→</span>
                 </a>
               </li>"""
         )
@@ -446,35 +446,35 @@ def render_domain(
     search = "Search skills in this domain…" if en else "搜索这个能力域里的 Skills……"
     profession = expert.profession_en if en else expert.profession_zh
     expert_description = expert.description_en if en else expert.description_zh
-    main = f"""      <div class="catalog-level-page capability-domain-page">
-        <section class="catalog-page-hero">
-          <div class="catalog-page-narrow">
-            <nav class="catalog-breadcrumb" aria-label="{breadcrumb_label}">
+    main = f"""      <div class="odx-page odx-domain">
+        <section class="odx-hero">
+          <div class="odx-container odx-container--narrow">
+            <nav class="odx-breadcrumb" aria-label="{breadcrumb_label}">
               <a href="{open_path}">{back}</a><span aria-hidden="true">·</span><span aria-current="page">{escape(title)}</span>
             </nav>
-            <p class="catalog-page-label">{escape(domain.code)} · {escape(domain.plugin)}</p>
+            <p class="odx-kicker">{escape(domain.code)} · {escape(domain.plugin)}</p>
             <h1>{escape(title)}<span>.</span></h1>
-            <p class="catalog-page-lead">{escape(summary)}</p>
-            <div class="catalog-page-actions">
+            <p class="odx-lead">{escape(summary)}</p>
+            <div class="odx-actions">
               <a class="button button--ink" href="#skills">{"Browse Skills" if en else "浏览 Skills"} →</a>
               <a class="button button--ghost" href="https://github.com/soia-team/{domain.repo}" target="_blank" rel="noreferrer">GitHub ↗</a>
             </div>
           </div>
         </section>
-        <section class="catalog-page-meta"><div class="catalog-page-wide">
+        <section class="odx-statbar"><div class="odx-container">
           <dl><div><dt>{"Type" if en else "类型"}</dt><dd>{"Public domain" if en else "公开能力域"}</dd></div><div><dt>Skills</dt><dd>{len(skills)}</dd></div><div><dt>Expert</dt><dd>{escape(profession)}</dd></div><div><dt>{"Snapshot" if en else "目录快照"}</dt><dd>{escape(commit[:10])} · {escape(commit_date)}</dd></div></dl>
         </div></section>
-        <section class="catalog-list-section" id="skills"><div class="catalog-page-wide" data-catalog>
-          <header class="catalog-list-head"><div><p class="catalog-page-label">SKILL CATALOG</p><h2>{"Choose by outcome." if en else "按结果选择。"}</h2></div><p>{"Every row opens a dedicated page with purpose, installation, boundaries, and public evidence." if en else "每一行都进入独立详情页，说明用途、安装方式、边界与公开证据。"}</p></header>
-          <label class="catalog-search"><span class="sr-only">{search}</span><input type="search" placeholder="{search}" aria-label="{search}" data-catalog-search /></label>
-          <ol class="catalog-row-list">
+        <section class="odx-catalog" id="skills"><div class="odx-container" data-catalog>
+          <header class="odx-section-head"><div><p class="odx-kicker">SKILL CATALOG</p><h2>{"Choose by outcome." if en else "按结果选择。"}</h2></div><p>{"Every row opens a dedicated page with purpose, installation, boundaries, and public evidence." if en else "每一行都进入独立详情页，说明用途、安装方式、边界与公开证据。"}</p></header>
+          <label class="odx-search"><span class="sr-only">{search}</span><input type="search" placeholder="{search}" aria-label="{search}" data-catalog-search /></label>
+          <ol class="odx-list">
 {chr(10).join(rows)}
           </ol>
           <p class="empty-state" hidden data-catalog-empty>{"No matching Skill. Try a task keyword instead." if en else "没有匹配的 Skill，可以换一个任务关键词。"}</p>
         </div></section>
-        <section class="domain-expert-section"><div class="catalog-page-wide">
-          <a class="domain-expert-card" href="{expert_path(locale, expert)}">
-            <span class="domain-expert-code">EXPERT · {escape(domain.code)}</span>
+        <section class="odx-expert-cta-section"><div class="odx-container">
+          <a class="odx-expert-cta" href="{expert_path(locale, expert)}">
+            <span class="odx-expert-code">EXPERT · {escape(domain.code)}</span>
             <span><strong>{escape(profession)}</strong><small>{escape(expert_description)}</small></span>
             <span aria-hidden="true">→</span>
           </a>
@@ -530,38 +530,38 @@ def render_skill(
         f"https://github.com/soia-team/{skill.domain.repo}/tree/main/skills/{skill.name}"
     )
     breadcrumb_label = "Breadcrumb" if en else "面包屑"
-    main = f"""      <article class="capability-detail-page capability-detail-page--skill">
-        <header class="capability-detail-head">
-          <nav class="catalog-breadcrumb" aria-label="{breadcrumb_label}"><a href="{route(locale, 'open/')}">{"Open ecosystem" if en else "开放生态"}</a><span aria-hidden="true">·</span><a href="{domain_path(locale, skill.domain)}">{escape(domain_title)}</a><span aria-hidden="true">·</span><span aria-current="page">Skill</span></nav>
-          <p class="catalog-page-label">PUBLIC SKILL · {escape(skill.domain.code)}</p>
+    main = f"""      <article class="odx-page odx-detail odx-detail--skill">
+        <header class="odx-detail-head">
+          <nav class="odx-breadcrumb" aria-label="{breadcrumb_label}"><a href="{route(locale, 'open/')}">{"Open ecosystem" if en else "开放生态"}</a><span aria-hidden="true">·</span><a href="{domain_path(locale, skill.domain)}">{escape(domain_title)}</a><span aria-hidden="true">·</span><span aria-current="page">Skill</span></nav>
+          <p class="odx-kicker">PUBLIC SKILL · {escape(skill.domain.code)}</p>
           <h1>{escape(skill.name)}<span>.</span></h1>
-          <p class="capability-detail-lead">{escape(summary)}</p>
-          <div class="capability-detail-actions"><a class="button button--ink" href="#install">{"Install this Skill" if en else "安装这个 Skill"} →</a><a class="button button--ghost" href="{source_url}" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+          <p class="odx-lead">{escape(summary)}</p>
+          <div class="odx-actions"><a class="button button--ink" href="#install">{"Install this Skill" if en else "安装这个 Skill"} →</a><a class="button button--ghost" href="{source_url}" target="_blank" rel="noreferrer">GitHub ↗</a></div>
         </header>
 
-        <figure class="capability-preview capability-preview--skill">
-          <div class="capability-preview-top"><span>SOIA / {escape(skill.domain.code)}</span><span>AVAILABLE · PUBLIC</span></div>
-          <div class="capability-preview-main"><div><small>SKILL</small><strong>{escape(skill.name)}</strong><p>{escape(summary)}</p></div><div class="capability-preview-flow"><span><i>01</i>{"Input" if en else "输入"}</span><span><i>02</i>{"Run" if en else "执行"}</span><span><i>03</i>{"Receipt" if en else "回执"}</span></div></div>
+        <figure class="odx-preview odx-preview--skill">
+          <div class="odx-preview-bar"><span>SOIA / {escape(skill.domain.code)}</span><span>AVAILABLE · PUBLIC</span></div>
+          <div class="odx-preview-main"><div><small>SKILL</small><strong>{escape(skill.name)}</strong><p>{escape(summary)}</p></div><div class="odx-preview-flow"><span><i>01</i>{"Input" if en else "输入"}</span><span><i>02</i>{"Run" if en else "执行"}</span><span><i>03</i>{"Receipt" if en else "回执"}</span></div></div>
           <figcaption>{"A public capability with a visible source and bounded delivery contract." if en else "公开能力、公开来源，以及边界清楚的交付契约。"}</figcaption>
         </figure>
 
-        <dl class="capability-meta">
+        <dl class="odx-detail-meta">
           <div><dt>{"Type" if en else "类型"}</dt><dd>Skill</dd></div>
           <div><dt>{"Domain" if en else "能力域"}</dt><dd>{escape(skill.domain.plugin)}</dd></div>
           <div><dt>{"Status" if en else "状态"}</dt><dd>Available</dd></div>
           <div><dt>{"Snapshot" if en else "目录快照"}</dt><dd>{escape(commit[:10])} · {escape(commit_date)}</dd></div>
         </dl>
 
-        <section class="capability-tags" aria-label="Tags"><span>Skill</span><span>{escape(skill.domain.code)}</span><span>Public source</span><span>Human controlled</span></section>
+        <section class="odx-tags" aria-label="Tags"><span>Skill</span><span>{escape(skill.domain.code)}</span><span>Public source</span><span>Human controlled</span></section>
 
-        <div class="capability-detail-copy">
-          <section class="capability-copy-block"><div><p class="catalog-page-label">01 / {"PURPOSE" if en else "用途"}</p><h2>{"One focused responsibility." if en else "一个聚焦的职责。"}</h2></div><div><p>{escape(summary)}</p><aside class="capability-trigger"><span>{"NATURAL-LANGUAGE TRIGGER" if en else "自然语言触发"}</span><strong>{escape(trigger)}</strong></aside><ul><li>{"Start from a natural-language outcome and the minimum authorised input." if en else "从自然语言结果与最小必要的授权输入开始。"}</li><li>{"Load the canonical instruction only when the intent matches." if en else "只有意图命中时，才加载规范 Skill 指令。"}</li><li>{"Finish with artifacts, checks, blockers, and decisions that still belong to the user." if en else "以产物、检查、阻塞项和仍归用户决定的事项收尾。"}</li></ul></div></section>
+        <div class="odx-detail-copy">
+          <section class="odx-split"><div><p class="odx-kicker">01 / {"PURPOSE" if en else "用途"}</p><h2>{"One focused responsibility." if en else "一个聚焦的职责。"}</h2></div><div><p>{escape(summary)}</p><aside class="odx-trigger"><span>{"NATURAL-LANGUAGE TRIGGER" if en else "自然语言触发"}</span><strong>{escape(trigger)}</strong></aside><ul><li>{"Start from a natural-language outcome and the minimum authorised input." if en else "从自然语言结果与最小必要的授权输入开始。"}</li><li>{"Load the canonical instruction only when the intent matches." if en else "只有意图命中时，才加载规范 Skill 指令。"}</li><li>{"Finish with artifacts, checks, blockers, and decisions that still belong to the user." if en else "以产物、检查、阻塞项和仍归用户决定的事项收尾。"}</li></ul></div></section>
 
-          <section class="capability-contract-section"><p class="catalog-page-label">02 / {"DELIVERY CONTRACT" if en else "交付契约"}</p><h2>{"What a complete run should contain." if en else "一次完整运行应该包含什么。"}</h2><div class="capability-contract-grid"><article><span>01</span><h3>{"Clear input" if en else "清楚输入"}</h3><p>{"An authorised file, URL, repository, workspace, or concrete goal." if en else "有权使用的文件、URL、仓库、工作区或明确目标。"}</p></article><article><span>02</span><h3>{"Bounded run" if en else "有界执行"}</h3><p>{"Small reliable steps, previews, and approval gates where risk increases." if en else "最小可靠步骤、必要预览，以及风险上升处的批准门。"}</p></article><article><span>03</span><h3>{"Reviewable receipt" if en else "可复核回执"}</h3><p>{"Changed files, generated artifacts, validation, limitations, and next actions." if en else "文件变化、生成产物、验证结果、已知限制和下一步。"}</p></article></div></section>
+          <section class="odx-contract"><p class="odx-kicker">02 / {"DELIVERY CONTRACT" if en else "交付契约"}</p><h2>{"What a complete run should contain." if en else "一次完整运行应该包含什么。"}</h2><div class="odx-card-grid"><article><span>01</span><h3>{"Clear input" if en else "清楚输入"}</h3><p>{"An authorised file, URL, repository, workspace, or concrete goal." if en else "有权使用的文件、URL、仓库、工作区或明确目标。"}</p></article><article><span>02</span><h3>{"Bounded run" if en else "有界执行"}</h3><p>{"Small reliable steps, previews, and approval gates where risk increases." if en else "最小可靠步骤、必要预览，以及风险上升处的批准门。"}</p></article><article><span>03</span><h3>{"Reviewable receipt" if en else "可复核回执"}</h3><p>{"Changed files, generated artifacts, validation, limitations, and next actions." if en else "文件变化、生成产物、验证结果、已知限制和下一步。"}</p></article></div></section>
 
-          <section class="capability-install-section" id="install"><div class="capability-install-head"><p class="catalog-page-label">03 / INSTALL</p><h2>{"Install one Skill or its domain plugin." if en else "安装单个 Skill，或安装整个领域。"}</h2><p>{"Choose the smallest package that matches the task." if en else "只选择与当前任务匹配的最小能力包。"}</p></div><div class="capability-install-list"><article><div><span>Claude Code</span><small>{"Domain plugin" if en else "领域插件"}</small></div><pre><code>{escape(claude)}</code></pre></article><article><div><span>Codex</span><small>{"Domain plugin" if en else "领域插件"}</small></div><pre><code>{escape(codex)}</code></pre></article><article><div><span>npx</span><small>{"Individual Skill" if en else "单个 Skill"}</small></div><pre><code>{escape(single)}</code></pre></article></div></section>
+          <section class="odx-install" id="install"><div class="odx-install-head"><p class="odx-kicker">03 / INSTALL</p><h2>{"Install one Skill or its domain plugin." if en else "安装单个 Skill，或安装整个领域。"}</h2><p>{"Choose the smallest package that matches the task." if en else "只选择与当前任务匹配的最小能力包。"}</p></div><div class="odx-install-list"><article><div><span>Claude Code</span><small>{"Domain plugin" if en else "领域插件"}</small></div><pre><code>{escape(claude)}</code></pre></article><article><div><span>Codex</span><small>{"Domain plugin" if en else "领域插件"}</small></div><pre><code>{escape(codex)}</code></pre></article><article><div><span>npx</span><small>{"Individual Skill" if en else "单个 Skill"}</small></div><pre><code>{escape(single)}</code></pre></article></div></section>
 
-          <section class="capability-copy-block"><div><p class="catalog-page-label">04 / {"BOUNDARY" if en else "边界"}</p><h2>{"Public instructions do not make private data public." if en else "指令公开，不等于数据公开。"}</h2></div><div><p>{"Keep passwords, tokens, cookies, customer files, and restricted material out of public issues and repositories. Deletion, publishing, payment, external writes, and permission changes require explicit authorization." if en else "密码、Token、Cookie、客户文件和受限制资料不得进入公共 Issue 或仓库。删除、发布、付款、外部写入和权限变更必须获得明确授权。"}</p><div class="capability-evidence-links"><a href="{docs_url}" target="_blank" rel="noreferrer">{"Canonical documentation" if en else "规范文档"} ↗</a><a href="{source_url}" target="_blank" rel="noreferrer">{"Skill source" if en else "Skill 源码"} ↗</a><a href="{domain_path(locale, skill.domain)}">{"Back to domain" if en else "返回能力域"} →</a></div></div></section>
+          <section class="odx-split"><div><p class="odx-kicker">04 / {"BOUNDARY" if en else "边界"}</p><h2>{"Public instructions do not make private data public." if en else "指令公开，不等于数据公开。"}</h2></div><div><p>{"Keep passwords, tokens, cookies, customer files, and restricted material out of public issues and repositories. Deletion, publishing, payment, external writes, and permission changes require explicit authorization." if en else "密码、Token、Cookie、客户文件和受限制资料不得进入公共 Issue 或仓库。删除、发布、付款、外部写入和权限变更必须获得明确授权。"}</p><div class="odx-links"><a href="{docs_url}" target="_blank" rel="noreferrer">{"Canonical documentation" if en else "规范文档"} ↗</a><a href="{source_url}" target="_blank" rel="noreferrer">{"Skill source" if en else "Skill 源码"} ↗</a><a href="{domain_path(locale, skill.domain)}">{"Back to domain" if en else "返回能力域"} →</a></div></div></section>
         </div>
       </article>"""
     return document(
@@ -591,27 +591,27 @@ def render_open(
         profession = expert.profession_en if en else expert.profession_zh
         expert_description = expert.description_en if en else expert.description_zh
         domain_rows.append(
-            f"""            <li class="ecosystem-row"><a href="{domain_path(locale, domain)}"><span class="catalog-row-index">{index:02d}</span><span class="ecosystem-row-code">{escape(domain.code)}</span><span class="ecosystem-row-body"><strong>{escape(domain_title)}</strong><span>{escape(domain_summary)}</span></span><span class="ecosystem-row-meta"><b>{len(domains[plugin])}</b><small>Skills</small></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>"""
+            f"""            <li class="odx-list-item"><a href="{domain_path(locale, domain)}"><span class="odx-list-index">{index:02d}</span><span class="odx-list-thumb">{escape(domain.code)}</span><span class="odx-list-body"><strong>{escape(domain_title)}</strong><span>{escape(domain_summary)}</span></span><span class="odx-list-meta"><b>{len(domains[plugin])}</b><small>Skills</small></span><span class="odx-list-arrow" aria-hidden="true">→</span></a></li>"""
         )
         expert_rows.append(
-            f"""            <li class="ecosystem-row ecosystem-row--expert"><a href="{expert_path(locale, expert)}"><span class="catalog-row-index">{index:02d}</span><span class="ecosystem-row-code">{escape(domain.code)}</span><span class="ecosystem-row-body"><strong>{escape(profession)}</strong><span>{escape(expert_description)}</span></span><span class="ecosystem-row-meta"><b>{len(domains[plugin])}</b><small>{"included Skills" if en else "个领域 Skills"}</small></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>"""
+            f"""            <li class="odx-list-item odx-list-item--expert"><a href="{expert_path(locale, expert)}"><span class="odx-list-index">{index:02d}</span><span class="odx-list-thumb">{escape(domain.code)}</span><span class="odx-list-body"><strong>{escape(profession)}</strong><span>{escape(expert_description)}</span></span><span class="odx-list-meta"><b>{len(domains[plugin])}</b><small>{"included Skills" if en else "个领域 Skills"}</small></span><span class="odx-list-arrow" aria-hidden="true">→</span></a></li>"""
         )
-    main = f"""      <div class="ecosystem-catalog-page">
-        <header class="ecosystem-catalog-head">
-          <p class="catalog-page-label">SOIA OPEN ECOSYSTEM</p>
+    main = f"""      <div class="odx-page odx-index">
+        <header class="odx-hero odx-hero--index">
+          <p class="odx-kicker">SOIA OPEN ECOSYSTEM</p>
           <h1>{"Open Skills and Experts" if en else "开放 Skills 与 Experts"}<span>.</span></h1>
           <p>{"Browse public capability by outcome and domain. Every Skill and WorkBuddy Expert keeps a visible source, install path, and delivery boundary." if en else "按结果与领域浏览公开能力。每个 Skill 与 WorkBuddy Expert 都保留公开来源、安装入口和交付边界。"}</p>
-          <div class="catalog-page-actions"><a class="button button--ink" href="#skills">{"Browse Skills" if en else "浏览 Skills"} →</a><a class="button button--ghost" href="#experts">{"Browse Experts" if en else "浏览 Experts"} →</a></div>
+          <div class="odx-actions"><a class="button button--ink" href="#skills">{"Browse Skills" if en else "浏览 Skills"} →</a><a class="button button--ghost" href="#experts">{"Browse Experts" if en else "浏览 Experts"} →</a></div>
         </header>
-        <nav class="catalog-switch" aria-label="{"Open catalog" if en else "开放目录"}"><a href="#skills">Skills <span>{total}</span></a><a href="#experts">Experts <span>{len(EXPERTS)}</span></a><a href="https://github.com/soia-team/soia-open-skills" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
-        <section class="ecosystem-catalog-section" id="skills"><header><div><p class="catalog-page-label">01 / CAPABILITY DOMAINS</p><h2>{"Find the domain, then the Skill." if en else "先找到领域，再找到 Skill。"}</h2></div><p>{"Eight public domains lead to every documented Skill without inventing another product layer." if en else "八个公开能力域直接通向全部 Skill，不再重复包装成另一套产品。"}</p></header><ol class="ecosystem-row-list">
+        <nav class="odx-subnav" aria-label="{"Open catalog" if en else "开放目录"}"><a href="#skills">Skills <span>{total}</span></a><a href="#experts">Experts <span>{len(EXPERTS)}</span></a><a href="https://github.com/soia-team/soia-open-skills" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
+        <section class="odx-catalog" id="skills"><header class="odx-section-head"><div><p class="odx-kicker">01 / CAPABILITY DOMAINS</p><h2>{"Find the domain, then the Skill." if en else "先找到领域，再找到 Skill。"}</h2></div><p>{"Eight public domains lead to every documented Skill without inventing another product layer." if en else "八个公开能力域直接通向全部 Skill，不再重复包装成另一套产品。"}</p></header><ol class="odx-list">
 {chr(10).join(domain_rows)}
         </ol></section>
-        <aside class="ecosystem-contribute"><div><p class="catalog-page-label">PUBLIC SOURCE</p><h2>{"Read the source before relying on the claim." if en else "先读源码，再相信能力说明。"}</h2><p>{"The public catalog and marketplace manifest remain the authority for installable versions." if en else "公开目录与 marketplace manifest 是安装版本的事实真源。"}</p></div><a class="button button--ghost" href="https://github.com/soia-team/soia-open-skills" target="_blank" rel="noreferrer">GitHub ↗</a></aside>
-        <section class="ecosystem-catalog-section" id="experts"><header><div><p class="catalog-page-label">02 / WORKBUDDY EXPERTS</p><h2>{"The same public source, organized as a role." if en else "同一份公开能力，组织成角色入口。"}</h2></div><p>{"Each domain repository can be installed as a WorkBuddy Expert. The Expert adds role context; it does not hide its Skills." if en else "每个领域仓都能作为 WorkBuddy Expert 安装。Expert 增加角色上下文，但不隐藏它包含的 Skills。"}</p></header><ol class="ecosystem-row-list">
+        <aside class="odx-source-callout"><div><p class="odx-kicker">PUBLIC SOURCE</p><h2>{"Read the source before relying on the claim." if en else "先读源码，再相信能力说明。"}</h2><p>{"The public catalog and marketplace manifest remain the authority for installable versions." if en else "公开目录与 marketplace manifest 是安装版本的事实真源。"}</p></div><a class="button button--ghost" href="https://github.com/soia-team/soia-open-skills" target="_blank" rel="noreferrer">GitHub ↗</a></aside>
+        <section class="odx-catalog" id="experts"><header class="odx-section-head"><div><p class="odx-kicker">02 / WORKBUDDY EXPERTS</p><h2>{"The same public source, organized as a role." if en else "同一份公开能力，组织成角色入口。"}</h2></div><p>{"Each domain repository can be installed as a WorkBuddy Expert. The Expert adds role context; it does not hide its Skills." if en else "每个领域仓都能作为 WorkBuddy Expert 安装。Expert 增加角色上下文，但不隐藏它包含的 Skills。"}</p></header><ol class="odx-list">
 {chr(10).join(expert_rows)}
         </ol></section>
-        <footer class="catalog-snapshot">SOIA Public Catalog · {escape(commit[:10])} · {escape(commit_date)} · {total} Skills · {len(EXPERTS)} Experts</footer>
+        <footer class="odx-snapshot">SOIA Public Catalog · {escape(commit[:10])} · {escape(commit_date)} · {total} Skills · {len(EXPERTS)} Experts</footer>
       </div>"""
     return document(
         locale, "open",
@@ -633,12 +633,12 @@ def render_experts_index(
         domain = DOMAINS[plugin]
         profession = expert.profession_en if en else expert.profession_zh
         description = expert.description_en if en else expert.description_zh
-        rows.append(f"""              <li class="catalog-row"><a href="{expert_path(locale, expert)}"><span class="catalog-row-index">{index:03d}</span><span class="catalog-row-thumb" aria-hidden="true">{escape(domain.code)}</span><span class="catalog-row-body"><strong>{escape(profession)}</strong><span>{escape(description)}</span></span><span class="catalog-row-meta"><i>WorkBuddy</i><i>{len(domains[plugin])} Skills</i></span><span class="catalog-row-arrow" aria-hidden="true">→</span></a></li>""")
-    main = f"""      <div class="catalog-level-page expert-directory-page">
-        <section class="catalog-page-hero"><div class="catalog-page-narrow"><nav class="catalog-breadcrumb" aria-label="{"Breadcrumb" if en else "面包屑"}"><a href="{route(locale, 'open/')}">{"Open ecosystem" if en else "开放生态"}</a><span aria-hidden="true">·</span><span aria-current="page">Experts</span></nav><p class="catalog-page-label">WORKBUDDY EXPERT CATALOG</p><h1>{"Role-based public capability" if en else "角色化公开能力"}<span>.</span></h1><p class="catalog-page-lead">{"Eight domain packages organize public Skills as WorkBuddy role entries while preserving the source and boundaries." if en else "八个领域包将公开 Skills 组织为 WorkBuddy 角色入口，同时保留来源和边界。"}</p></div></section>
-        <section class="catalog-list-section"><div class="catalog-page-wide"><header class="catalog-list-head"><div><p class="catalog-page-label">EXPERT INDEX</p><h2>{"Choose the role that matches the work." if en else "按工作选择角色。"}</h2></div><p>{"Open an Expert to see its included domain, example tasks, install route, and evidence." if en else "打开 Expert 查看所属领域、典型任务、安装入口与公开证据。"}</p></header><ol class="catalog-row-list">
+        rows.append(f"""              <li class="odx-list-item"><a href="{expert_path(locale, expert)}"><span class="odx-list-index">{index:03d}</span><span class="odx-list-thumb">{escape(domain.code)}</span><span class="odx-list-body"><strong>{escape(profession)}</strong><span>{escape(description)}</span></span><span class="odx-list-meta"><i>WorkBuddy</i><i>{len(domains[plugin])} Skills</i></span><span class="odx-list-arrow" aria-hidden="true">→</span></a></li>""")
+    main = f"""      <div class="odx-page odx-directory">
+        <section class="odx-hero"><div class="odx-container odx-container--narrow"><nav class="odx-breadcrumb" aria-label="{"Breadcrumb" if en else "面包屑"}"><a href="{route(locale, 'open/')}">{"Open ecosystem" if en else "开放生态"}</a><span aria-hidden="true">·</span><span aria-current="page">Experts</span></nav><p class="odx-kicker">WORKBUDDY EXPERT CATALOG</p><h1>{"Role-based public capability" if en else "角色化公开能力"}<span>.</span></h1><p class="odx-lead">{"Eight domain packages organize public Skills as WorkBuddy role entries while preserving the source and boundaries." if en else "八个领域包将公开 Skills 组织为 WorkBuddy 角色入口，同时保留来源和边界。"}</p></div></section>
+        <section class="odx-catalog"><div class="odx-container"><header class="odx-section-head"><div><p class="odx-kicker">EXPERT INDEX</p><h2>{"Choose the role that matches the work." if en else "按工作选择角色。"}</h2></div><p>{"Open an Expert to see its included domain, example tasks, install route, and evidence." if en else "打开 Expert 查看所属领域、典型任务、安装入口与公开证据。"}</p></header><ol class="odx-list">
 {chr(10).join(rows)}
-        </ol><footer class="catalog-snapshot">SOIA Public Catalog · {escape(commit[:10])} · {escape(commit_date)}</footer></div></section>
+        </ol><footer class="odx-snapshot">SOIA Public Catalog · {escape(commit[:10])} · {escape(commit_date)}</footer></div></section>
       </div>"""
     return document(locale, "open", "WorkBuddy Experts | SOIA Open" if en else "WorkBuddy Experts｜SOIA Open", "Public WorkBuddy Experts backed by SOIA domain Skills." if en else "由 SOIA 领域 Skills 支撑的公开 WorkBuddy Experts。", route(locale, "open/experts/"), main)
 
@@ -662,19 +662,19 @@ def render_expert(
     if len(skills) > 6:
         visible_skills += f"<span>+{len(skills) - 6}</span>"
     prompt_cards = "".join(f"<article><span>{index:02d}</span><p>{escape(prompt)}</p></article>" for index, prompt in enumerate(prompts, start=1))
-    main = f"""      <article class="capability-detail-page capability-detail-page--expert">
-        <header class="capability-detail-head"><nav class="catalog-breadcrumb" aria-label="{"Breadcrumb" if en else "面包屑"}"><a href="{route(locale, 'open/')}">{"Open ecosystem" if en else "开放生态"}</a><span aria-hidden="true">·</span><a href="{route(locale, 'open/experts/')}">Experts</a><span aria-hidden="true">·</span><span aria-current="page">{escape(domain.code)}</span></nav><p class="catalog-page-label">WORKBUDDY EXPERT · {escape(domain.code)}</p><h1>{escape(profession)}<span>.</span></h1><p class="capability-detail-lead">{escape(description)}</p><div class="capability-detail-actions"><a class="button button--ink" href="#install">{"Install this Expert" if en else "安装这个 Expert"} →</a><a class="button button--ghost" href="{repo_url}" target="_blank" rel="noreferrer">GitHub ↗</a></div></header>
+    main = f"""      <article class="odx-page odx-detail odx-detail--expert">
+        <header class="odx-detail-head"><nav class="odx-breadcrumb" aria-label="{"Breadcrumb" if en else "面包屑"}"><a href="{route(locale, 'open/')}">{"Open ecosystem" if en else "开放生态"}</a><span aria-hidden="true">·</span><a href="{route(locale, 'open/experts/')}">Experts</a><span aria-hidden="true">·</span><span aria-current="page">{escape(domain.code)}</span></nav><p class="odx-kicker">WORKBUDDY EXPERT · {escape(domain.code)}</p><h1>{escape(profession)}<span>.</span></h1><p class="odx-lead">{escape(description)}</p><div class="odx-actions"><a class="button button--ink" href="#install">{"Install this Expert" if en else "安装这个 Expert"} →</a><a class="button button--ghost" href="{repo_url}" target="_blank" rel="noreferrer">GitHub ↗</a></div></header>
 
-        <figure class="capability-preview capability-preview--expert"><div class="capability-preview-top"><span>SOIA / WORKBUDDY</span><span>PUBLIC EXPERT · {escape(domain.code)}</span></div><div class="capability-preview-main"><div><small>EXPERT</small><strong>{escape(profession)}</strong><p>{escape(description)}</p></div><div class="capability-preview-flow"><span><i>01</i>{"Role" if en else "角色"}</span><span><i>02</i>Skills</span><span><i>03</i>{"Tasks" if en else "任务"}</span></div></div><figcaption>{"A role entry backed by a public domain package, not a hidden cloud workflow." if en else "由公开领域包支撑的角色入口，不是隐藏在云端的黑盒流程。"}</figcaption></figure>
+        <figure class="odx-preview odx-preview--expert"><div class="odx-preview-bar"><span>SOIA / WORKBUDDY</span><span>PUBLIC EXPERT · {escape(domain.code)}</span></div><div class="odx-preview-main"><div><small>EXPERT</small><strong>{escape(profession)}</strong><p>{escape(description)}</p></div><div class="odx-preview-flow"><span><i>01</i>{"Role" if en else "角色"}</span><span><i>02</i>Skills</span><span><i>03</i>{"Tasks" if en else "任务"}</span></div></div><figcaption>{"A role entry backed by a public domain package, not a hidden cloud workflow." if en else "由公开领域包支撑的角色入口，不是隐藏在云端的黑盒流程。"}</figcaption></figure>
 
-        <dl class="capability-meta"><div><dt>{"Type" if en else "类型"}</dt><dd>WorkBuddy Expert</dd></div><div><dt>{"Domain" if en else "能力域"}</dt><dd>{escape(domain.plugin)}</dd></div><div><dt>{"Included" if en else "包含"}</dt><dd>{len(skills)} Skills</dd></div><div><dt>{"Snapshot" if en else "目录快照"}</dt><dd>{escape(commit[:10])} · {escape(commit_date)}</dd></div></dl>
-        <section class="capability-tags" aria-label="Tags"><span>Expert</span><span>WorkBuddy</span><span>{escape(domain.code)}</span><span>Public package</span></section>
+        <dl class="odx-detail-meta"><div><dt>{"Type" if en else "类型"}</dt><dd>WorkBuddy Expert</dd></div><div><dt>{"Domain" if en else "能力域"}</dt><dd>{escape(domain.plugin)}</dd></div><div><dt>{"Included" if en else "包含"}</dt><dd>{len(skills)} Skills</dd></div><div><dt>{"Snapshot" if en else "目录快照"}</dt><dd>{escape(commit[:10])} · {escape(commit_date)}</dd></div></dl>
+        <section class="odx-tags" aria-label="Tags"><span>Expert</span><span>WorkBuddy</span><span>{escape(domain.code)}</span><span>Public package</span></section>
 
-        <div class="capability-detail-copy">
-          <section class="capability-copy-block"><div><p class="catalog-page-label">01 / {"ROLE" if en else "角色"}</p><h2>{"A domain entry for repeated work." if en else "面向重复工作的领域入口。"}</h2></div><div><p>{escape(description)}</p><p>{"The Expert adds a role, recommended tasks, and a selected Skill set. The canonical Skills remain individually inspectable." if en else "Expert 增加角色、推荐任务与一组 Skills；每个规范 Skill 仍然可以单独审查。"}</p><div class="expert-skill-chips">{visible_skills}</div></div></section>
-          <section class="expert-prompts-section"><p class="catalog-page-label">02 / {"EXAMPLE TASKS" if en else "典型任务"}</p><h2>{"Start with a real request." if en else "从一个真实请求开始。"}</h2><div class="expert-prompt-grid">{prompt_cards}</div></section>
-          <section class="capability-install-section" id="install"><div class="capability-install-head"><p class="catalog-page-label">03 / INSTALL</p><h2>{"Install the public domain as a WorkBuddy Expert." if en else "把公开领域安装为 WorkBuddy Expert。"}</h2><p>{"WorkBuddy has no plugin CLI. Use the public installer, then restart the desktop client and verify the Expert under My Experts." if en else "WorkBuddy 没有插件 CLI。使用公开安装器后重启桌面客户端，再到“我的专家”验证可见性。"}</p></div><div class="capability-install-list"><article><div><span>{"Natural language" if en else "自然语言"}</span><small>{"Recommended" if en else "推荐"}</small></div><pre><code>{escape(f'Install {expert.plugin} into WorkBuddy' if en else f'帮我把 {expert.plugin} 安装到 WorkBuddy')}</code></pre></article><article><div><span>{"Public installer" if en else "公开安装器"}</span><small>{"Advanced" if en else "高级"}</small></div><pre><code>{escape(f"python3 <soia-open-skills>/skills/soia-meta-skill-release/scripts/install_workbuddy_experts.py {expert.plugin}")}</code></pre></article></div></section>
-          <section class="capability-copy-block"><div><p class="catalog-page-label">04 / {"EVIDENCE" if en else "证据"}</p><h2>{"Role context without hiding the source." if en else "增加角色上下文，但不隐藏来源。"}</h2></div><div><p>{"The repository manifest, Agent file, and included Skill paths are public. Local user data, credentials, and restricted material remain outside the public package." if en else "仓库清单、Agent 文件和所含 Skill 路径均公开；本地用户数据、凭据与受限制资料不进入公共包。"}</p><div class="capability-evidence-links"><a href="{source_url}" target="_blank" rel="noreferrer">{"Expert manifest" if en else "Expert 清单"} ↗</a><a href="{install_docs}" target="_blank" rel="noreferrer">{"Install guide" if en else "安装指南"} ↗</a><a href="{domain_path(locale, domain)}">{"Browse included Skills" if en else "浏览所含 Skills"} →</a></div></div></section>
+        <div class="odx-detail-copy">
+          <section class="odx-split"><div><p class="odx-kicker">01 / {"ROLE" if en else "角色"}</p><h2>{"A domain entry for repeated work." if en else "面向重复工作的领域入口。"}</h2></div><div><p>{escape(description)}</p><p>{"The Expert adds a role, recommended tasks, and a selected Skill set. The canonical Skills remain individually inspectable." if en else "Expert 增加角色、推荐任务与一组 Skills；每个规范 Skill 仍然可以单独审查。"}</p><div class="odx-chips">{visible_skills}</div></div></section>
+          <section class="odx-prompts"><p class="odx-kicker">02 / {"EXAMPLE TASKS" if en else "典型任务"}</p><h2>{"Start with a real request." if en else "从一个真实请求开始。"}</h2><div class="odx-prompt-grid">{prompt_cards}</div></section>
+          <section class="odx-install" id="install"><div class="odx-install-head"><p class="odx-kicker">03 / INSTALL</p><h2>{"Install the public domain as a WorkBuddy Expert." if en else "把公开领域安装为 WorkBuddy Expert。"}</h2><p>{"WorkBuddy has no plugin CLI. Use the public installer, then restart the desktop client and verify the Expert under My Experts." if en else "WorkBuddy 没有插件 CLI。使用公开安装器后重启桌面客户端，再到“我的专家”验证可见性。"}</p></div><div class="odx-install-list"><article><div><span>{"Natural language" if en else "自然语言"}</span><small>{"Recommended" if en else "推荐"}</small></div><pre><code>{escape(f'Install {expert.plugin} into WorkBuddy' if en else f'帮我把 {expert.plugin} 安装到 WorkBuddy')}</code></pre></article><article><div><span>{"Public installer" if en else "公开安装器"}</span><small>{"Advanced" if en else "高级"}</small></div><pre><code>{escape(f"python3 <soia-open-skills>/skills/soia-meta-skill-release/scripts/install_workbuddy_experts.py {expert.plugin}")}</code></pre></article></div></section>
+          <section class="odx-split"><div><p class="odx-kicker">04 / {"EVIDENCE" if en else "证据"}</p><h2>{"Role context without hiding the source." if en else "增加角色上下文，但不隐藏来源。"}</h2></div><div><p>{"The repository manifest, Agent file, and included Skill paths are public. Local user data, credentials, and restricted material remain outside the public package." if en else "仓库清单、Agent 文件和所含 Skill 路径均公开；本地用户数据、凭据与受限制资料不进入公共包。"}</p><div class="odx-links"><a href="{source_url}" target="_blank" rel="noreferrer">{"Expert manifest" if en else "Expert 清单"} ↗</a><a href="{install_docs}" target="_blank" rel="noreferrer">{"Install guide" if en else "安装指南"} ↗</a><a href="{domain_path(locale, domain)}">{"Browse included Skills" if en else "浏览所含 Skills"} →</a></div></div></section>
         </div>
       </article>"""
     return document(locale, "open", f"{profession} | SOIA Open", description, expert_path(locale, expert), main)
@@ -707,18 +707,17 @@ def render_legacy_skill_alias(
         if en
         else "旧名称被保留，避免已有公开链接变成死链。请使用当前 Skill 页面查看指令、安装、证据与发布状态。"
     )
-    main = f"""      <div class="skill-story-v3">
-        <section class="skill-story-hero"><div class="shell"><div class="skill-story-head">
-          <a class="skill-story-back" href="{domain_path(locale, replacement.domain)}">← {"Back to domain" if en else "返回能力域"}</a>
-          <p class="skill-story-category">PUBLIC COMPATIBILITY ROUTE · {escape(replacement.domain.plugin)}</p>
-          <h1>{escape(legacy_name)}</h1>
-          <p class="skill-story-summary">{escape(summary)}</p>
-          <p class="skill-story-byline">SOIA Public Catalog · {escape(commit[:10])} · {escape(commit_date)}</p>
-        </div><div class="skill-story-figure" aria-label="{"Compatibility route" if en else "兼容路径"}"><div class="skill-story-figure-grid">
-          <div><span>LEGACY</span><strong>{escape(legacy_name)}</strong></div><div><span>STATUS</span><strong>{"Moved<br />with intent" if en else "已更新<br />保留入口"}</strong></div><div><span>CURRENT</span><strong>{escape(replacement.name)}</strong></div>
-        </div></div></div></section>
-        <section><div class="shell skill-story-layout"><article class="skill-story-body"><section><p class="kicker">COMPATIBILITY</p><h2>{headline}</h2><p>{body_copy}</p><p><a href="{target}">{"Open the current Skill →" if en else "打开当前 Skill →"}</a></p></section></article><aside class="skill-story-aside"><p class="mono-label">CURRENT PUBLIC SKILL</p><p>{escape(replacement.summary_en if en else replacement.summary_zh)}</p><a class="button button--ink" href="{target}">{"Open current Skill" if en else "打开当前 Skill"} →</a></aside></div></section>
-      </div>"""
+    main = f"""      <article class="odx-page odx-detail odx-compat">
+        <header class="odx-detail-head">
+          <nav class="odx-breadcrumb" aria-label="{"Breadcrumb" if en else "面包屑"}"><a href="{domain_path(locale, replacement.domain)}">{"Back to domain" if en else "返回能力域"}</a><span aria-hidden="true">·</span><span aria-current="page">Legacy</span></nav>
+          <p class="odx-kicker">PUBLIC COMPATIBILITY ROUTE · {escape(replacement.domain.plugin)}</p>
+          <h1>{escape(legacy_name)}<span>.</span></h1>
+          <p class="odx-lead">{escape(summary)}</p>
+          <div class="odx-actions"><a class="button button--ink" href="{target}">{"Open current Skill" if en else "打开当前 Skill"} →</a></div>
+        </header>
+        <figure class="odx-preview odx-preview--compat"><div class="odx-preview-bar"><span>SOIA / COMPATIBILITY</span><span>PUBLIC ROUTE</span></div><div class="odx-preview-main"><div><small>LEGACY</small><strong>{escape(legacy_name)}</strong><p>{body_copy}</p></div><div class="odx-preview-flow"><span><i>01</i>Legacy</span><span><i>02</i>Moved</span><span><i>03</i>Current</span></div></div><figcaption>{escape(replacement.name)} · {escape(commit[:10])} · {escape(commit_date)}</figcaption></figure>
+        <section class="odx-split"><div><p class="odx-kicker">COMPATIBILITY</p><h2>{headline}</h2></div><div><p>{body_copy}</p><div class="odx-links"><a href="{target}">{"Open the current Skill" if en else "打开当前 Skill"} →</a></div></div></section>
+      </article>"""
     return document(
         locale,
         "open",
